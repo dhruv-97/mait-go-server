@@ -13,7 +13,7 @@
 </head>
 <body>
 <div ng-controller="formController">
-<form role="form" name="timetableForm" ng-submit="sendTimeTable()" novalidate>
+<form role="form" id="timetableForm" ng-submit="sendTimeTable()" novalidate>
     <div id="info">
     <input type="number" id="sem" name="sem" placeholder="Semester"
                             ng-model="timetable.sem" required min="1" max="8">
