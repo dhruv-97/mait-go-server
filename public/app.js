@@ -22,8 +22,6 @@ angular.module('formExample', [])
 	             }).error(function(data, status, headers, config) {
 	               alert("Error");
 	            });
-	      
-	            $scope.timetableForm.$setPristine();
 	        };
       }])
   .controller('announcementController', ['$scope', '$http', function($scope, $http) {

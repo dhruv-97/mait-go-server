@@ -23,6 +23,7 @@ var userRouter = require('./routes/users');
 var timetableRouter=require('./routes/timeRouter');
 var announcementRouter=require('./routes/announcementRouter');
 var scrapeRouter=require('./routes/scrapeRouter');
+var facultyRouter= require('./routes/facultyRouter');
 
 var app = express();
 
@@ -46,7 +47,8 @@ app.use('/', routes);
 app.use('/users', userRouter);
 app.use('/timetable',timetableRouter);
 app.use('/announcement',announcementRouter);
-app.use('/scrape',scrapeRouter)
+app.use('/scrape',scrapeRouter);
+app.use('/faculty',facultyRouter);
 
 
 // catch 404 and forward to error handler

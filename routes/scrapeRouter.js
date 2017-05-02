@@ -190,38 +190,49 @@ scrapeRouter.route('/result/:rollNo')
 scrapeRouter.route('/faculty')
 .get(function (req, res, next) {
     var faculty=[];
-    request('http://cse.mait.ac.in/index.php/people/faculty', function(err,resp,body){
+    request('http://ece.mait.ac.in/index.php/people/faculty', function(err,resp,body){
         if(err)
             throw err;
         var $ = cheerio.load(body);
         var teacher = {
+            name:'',
             designation: '',
             qualification:'',
             exp:''
         }
-        $('.article-content table tr td table tr td:nth-child(2) p').each(function()   {
+        var i; var arr=[];
+        for(i = 0; i < $('.article-content td a').length; i++)  {
+                var facultyName;
+                facultyName = $('.article-content td a').eq(i).text();
+                arr.push(facultyName);
+        }
+        i=0;
+        setTimeout(function(){ $('.article-content table tr td table tr td:nth-child(2) p').each(function()   {
                      var info = $(this);
-                     
                      var infoText = info.text();
                      if(infoText.indexOf('Designation') > -1)
-                        teacher.designation=infoText.substring(25,infoText.length);
+                        teacher.designation=infoText.substring(24,infoText.length);
                         
                      else if(infoText.indexOf('Qualification') > -1)
                         teacher.qualification=infoText.substring(26,infoText.length);
                      else if(infoText.indexOf('Total') > -1){
-                        teacher.exp=infoText.substring(39,infoText.length);
+                        teacher.exp=infoText.substring(38,infoText.length);
+                        teacher.name=arr[i];
+                        i++;
                         faculty.push(teacher);
                         teacher = {
+                            name:'',
                             designation: '',
                             qualification:'',
                             exp:''
                         };
                      }
           
-                 });
+                 }); }, 2000);
+        
         
     })
-    setTimeout(function(){ res.json(faculty) }, 1000);
+    setTimeout(function(){ res.json(faculty) }, 4000);
 })
 scrapeRouter.route('/info/:rollNo')
 .get(function (req, res, next) {
