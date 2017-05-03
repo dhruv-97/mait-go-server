@@ -220,7 +220,7 @@ scrapeRouter.route('/faculty')
                         teacher.exp=infoText.substring(38,infoText.length);
                         teacher.name=arr[i];
                         i++;
-                        teacher.img='img/IT/'+i+'.jpg';
+                        teacher.img='img/CSE/'+i+'.jpg';
                         faculty.push(teacher);
                         teacher = {
                             name:'',
