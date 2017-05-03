@@ -190,7 +190,7 @@ scrapeRouter.route('/result/:rollNo')
 scrapeRouter.route('/faculty')
 .get(function (req, res, next) {
     var faculty=[];
-    request('http://ece.mait.ac.in/index.php/people/faculty', function(err,resp,body){
+    request('http://cse.mait.ac.in/index.php/people/faculty', function(err,resp,body){
         if(err)
             throw err;
         var $ = cheerio.load(body);
@@ -198,7 +198,8 @@ scrapeRouter.route('/faculty')
             name:'',
             designation: '',
             qualification:'',
-            exp:''
+            exp:'',
+            img:''
         }
         var i; var arr=[];
         for(i = 0; i < $('.article-content td a').length; i++)  {
@@ -211,14 +212,15 @@ scrapeRouter.route('/faculty')
                      var info = $(this);
                      var infoText = info.text();
                      if(infoText.indexOf('Designation') > -1)
-                        teacher.designation=infoText.substring(24,infoText.length);
+                        teacher.designation=infoText.substring(25,infoText.length);
                         
                      else if(infoText.indexOf('Qualification') > -1)
-                        teacher.qualification=infoText.substring(26,infoText.length);
+                        teacher.qualification=infoText.substring(27,infoText.length);
                      else if(infoText.indexOf('Total') > -1){
                         teacher.exp=infoText.substring(38,infoText.length);
                         teacher.name=arr[i];
                         i++;
+                        teacher.img='img/IT/'+i+'.jpg';
                         faculty.push(teacher);
                         teacher = {
                             name:'',

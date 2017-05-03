@@ -1,60 +1,356 @@
 {
-    "IT": [
-        {
-            "name": "Dr. M.L. Sharma",
-            "designation":"Associate Professor & Head of Department",
-            "qualification":"Ph. D.",
-            "total":"26+",
-            "email":""
-        },
-        {
-            "name": "Dr. M.L. Sharma",
-            "designation":"",
-            "qualification":"",
-            "total":"",
-            "email":""
-        },
-        {
-            "name": "Dr. M.L. Sharma",
-            "designation":"",
-            "qualification":"",
-            "total":"",
-            "email":""
-        },
-        {
-            "name": "Dr. M.L. Sharma",
-            "designation":"",
-            "qualification":"",
-            "total":"",
-            "email":""
-        },
-        {
-            "name": "Dr. M.L. Sharma",
-            "designation":"",
-            "qualification":"",
-            "total":"",
-            "email":""
-        },
-        {
-            "name": "Dr. M.L. Sharma",
-            "designation":"",
-            "qualification":"",
-            "total":"",
-            "email":""
-        },
-        {
-            "name": "Dr. M.L. Sharma",
-            "designation":"",
-            "qualification":"",
-            "total":"",
-            "email":""
-        },
-        {
-            "name": "Dr. M.L. Sharma",
-            "designation":"",
-            "qualification":"",
-            "total":"",
-            "email":""
-        },
-    ]
+    "CSE": [
+  {
+    "name": "Dr. Namita Gupta (HOD CSE)",
+    "designation": "Associate Professor & Head of Department",
+    "qualification": "Ph. D.",
+    "exp": " 17+",
+    "img": "img/IT/1.jpg"
+  },
+  {
+    "name": "Mr. Ajay Kr. Tiwari",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 11+",
+    "img": "img/IT/2.jpg"
+  },
+  {
+    "name": "Mr. Alok Kr. Sharma",
+    "designation": "Sys.Administrator/ Lecturer",
+    "qualification": "MCA",
+    "exp": " 15+",
+    "img": "img/IT/3.jpg"
+  },
+  {
+    "name": "Mr. Anupam Kumar",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 7+",
+    "img": "img/IT/4.jpg"
+  },
+  {
+    "name": "Dr. Ashish Khanna",
+    "designation": "Assistant Professor",
+    "qualification": "Ph.D.",
+    "exp": " 10+",
+    "img": "img/IT/5.jpg"
+  },
+  {
+    "name": "Mr. Ashish Sharma",
+    "designation": "Assistant Professor",
+    "qualification": "Pursuing Ph.D.",
+    "exp": " 12+",
+    "img": "img/IT/6.jpg"
+  },
+  {
+    "name": "Mr. Deepak Gupta",
+    "designation": "Assistant Professor",
+    "qualification": "Pursuing Ph.D.",
+    "exp": " 9+",
+    "img": "img/IT/7.jpg"
+  },
+  {
+    "name": "Ms. Deepti Gupta",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 10+",
+    "img": "img/IT/8.jpg"
+  },
+  {
+    "name": "Ms. Divya Arora",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 4+",
+    "img": "img/IT/9.jpg"
+  },
+  {
+    "name": "Dr. Farzil Kidwai",
+    "designation": "Assistant Professor",
+    "qualification": "Ph.D.",
+    "exp": "  6+",
+    "img": "img/IT/10.jpg"
+  },
+  {
+    "name": "Ms. Garima Gupta",
+    "designation": "Assistant Professor",
+    "qualification": "M.E., B. Tech.",
+    "exp": " 12+",
+    "img": "img/IT/11.jpg"
+  },
+  {
+    "name": "Ms. Karuna Middha",
+    "designation": "Assistant Professor",
+    "qualification": "M.E., B. Tech.",
+    "exp": " 10+",
+    "img": "img/IT/12.jpg"
+  },
+  {
+    "name": "Ms. Kavita Saxena",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 10+",
+    "img": "img/IT/13.jpg"
+  },
+  {
+    "name": "Mr. Mool Chand Sharma",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 4+",
+    "img": "img/IT/14.jpg"
+  },
+  {
+    "name": "Mr. Neeraj Garg",
+    "designation": "Associate Professor",
+    "qualification": "Pursuing Ph.D.",
+    "exp": " 18+",
+    "img": "img/IT/15.jpg"
+  },
+  {
+    "name": "Ms. Neetu Garg",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 10+",
+    "img": "img/IT/16.jpg"
+  },
+  {
+    "name": "Dr. Pooja Gupta",
+    "designation": "Assistant Professor",
+    "qualification": "Ph.D.",
+    "exp": " 14+",
+    "img": "img/IT/17.jpg"
+  },
+  {
+    "name": "Ms. Prerna Sharma",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 5+",
+    "img": "img/IT/18.jpg"
+  },
+  {
+    "name": "Ms. Rekha Singla",
+    "designation": "Associate Professor",
+    "qualification": "MS, B. Tech.",
+    "exp": " 25+",
+    "img": "img/IT/19.jpg"
+  },
+  {
+    "name": "Ms. Ruchi Goel",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 12+",
+    "img": "img/IT/20.jpg"
+  },
+  {
+    "name": "Mr. Sandeep Tayal",
+    "designation": "Assistant Professor",
+    "qualification": "Pursuing Ph.D.",
+    "exp": " 6+",
+    "img": "img/IT/21.jpg"
+  },
+  {
+    "name": "Mr. Saurabh Rastogi",
+    "designation": "Assistant Professor",
+    "qualification": "Pursuing Ph.D.",
+    "exp": " 9+",
+    "img": "img/IT/22.jpg"
+  },
+  {
+    "name": "Ms. Savita Sharma",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 9+",
+    "img": "img/IT/23.jpg"
+  },
+  {
+    "name": "Ms. Shallu Juneja",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 6+",
+    "img": "img/IT/24.jpg"
+  },
+  {
+    "name": "Ms. Sudha Narang",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 12+",
+    "img": "img/IT/25.jpg"
+  },
+  {
+    "name": "Mr. Yogesh Sharma",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 10+",
+    "img": "img/IT/26.jpg"
+  },
+  {
+    "name": "Ms. Zameer Fatima",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": " 9+",
+    "img": "img/IT/27.jpg"
+  }
+],
+"IT":[
+  {
+    "name": "Dr. M.L. Sharma (HOD IT)",
+    "designation": "Associate Professor & Head of Department",
+    "qualification": "Ph. D.",
+    "exp": "26+",
+    "img": "img/IT/1.jpg"
+  },
+  {
+    "name": "Mr. Ajay Kumar Kaushik",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "13+",
+    "img": "img/IT/2.jpg"
+  },
+  {
+    "name": "Dr. Amita Goel",
+    "designation": "Associate Professor",
+    "qualification": "Ph. D.",
+    "exp": "14+",
+    "img": "img/IT/3.jpg"
+  },
+  {
+    "name": "Mr. Bhaskar Kapoor",
+    "designation": "Assistant Professor",
+    "qualification": "M. E., B. E.",
+    "exp": "13+",
+    "img": "img/IT/4.jpg"
+  },
+  {
+    "name": "Dr. Bhoomi Gupta",
+    "designation": "Assistant Professor",
+    "qualification": "Ph.D.",
+    "exp": "14+",
+    "img": "img/IT/5.jpg"
+  },
+  {
+    "name": "Mrs. Meenu Garg",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "10+",
+    "img": "img/IT/6.jpg"
+  },
+  {
+    "name": "Mrs. Namita Goyal",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "4+",
+    "img": "img/IT/7.jpg"
+  },
+  {
+    "name": "Mrs.  Narinder Kaur",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "",
+    "img": "img/IT/8.jpg"
+  },
+  {
+    "name": "Mrs. Neelam Sharma",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "12+",
+    "img": "img/IT/9.jpg"
+  },
+  {
+    "name": "Dr. Neha Agrawal",
+    "designation": "Assistant Professor",
+    "qualification": "Ph.D.",
+    "exp": " 11+",
+    "img": "img/IT/10.jpg"
+  },
+  {
+    "name": "Mrs. Nidhi Sengar",
+    "designation": "Assistant Professor",
+    "qualification": "M.Tech., B. Tech.",
+    "exp": "13+",
+    "img": "img/IT/11.jpg"
+  },
+  {
+    "name": "Mr. Nitesh Kumar Wadhera",
+    "designation": "Assistant Professor",
+    "qualification": "M.Tech., B. Tech.",
+    "exp": "6+",
+    "img": "img/IT/12.jpg"
+  },
+  {
+    "name": "Mr. Pankaj Garg",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "6+",
+    "img": "img/IT/13.jpg"
+  },
+  {
+    "name": "Mr. Saurabh Gautam",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "2+",
+    "img": "img/IT/14.jpg"
+  },
+  {
+    "name": "Mrs. Seema Kalonia",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "6+",
+    "img": "img/IT/15.jpg"
+  },
+  {
+    "name": "Mrs. Shallu Bashambu",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "16+",
+    "img": "img/IT/16.jpg"
+  },
+  {
+    "name": "Mrs. Shreya Arora",
+    "designation": "Assistant Professor",
+    "qualification": "Pursuing Ph. D.",
+    "exp": "4+",
+    "img": "img/IT/17.jpg"
+  },
+  {
+    "name": "Mrs. Supriya Bansal",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "6+",
+    "img": "img/IT/18.jpg"
+  },
+  {
+    "name": "Mrs. Vandana Choudhary",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "4+",
+    "img": "img/IT/19.jpg"
+  },
+  {
+    "name": "Mr. Varun Goel",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "3+",
+    "img": "img/IT/20.jpg"
+  },
+  {
+    "name": "Mrs. Vasudha Bahl",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "13+",
+    "img": "img/IT/21.jpg"
+  },
+  {
+    "name": "Mr. Vibhor Sharma",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "6+",
+    "img": "img/IT/22.jpg"
+  },
+  {
+    "name": "Mr. Vinay Kumar Saini",
+    "designation": "Assistant Professor",
+    "qualification": "M. Tech., B. Tech.",
+    "exp": "14+",
+    "img": "img/IT/23.jpg"
+  }
+]
 }
