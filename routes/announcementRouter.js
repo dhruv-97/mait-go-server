@@ -12,9 +12,10 @@ announcementRouter.use(bodyParser.json());
 
 announcementRouter.route('/')
 .get(function (req, res, next) {
-    Announcements.find({}, function (err, announcements) {
+    
+    Announcements.find({}).sort('-createdAt').exec(function(err, announcements) { 
         if (err) throw err;
-        res.json(announcements);
+        res.json(announcements); 
     });
 })
 
@@ -47,7 +48,7 @@ announcementRouter.route('/:announcementId')
     var group= req.params.announcementId.substring(1,3);
     console.log(sem);
     console.log(group);
-    Announcements.find({"sem":sem,"group":group},function (err, announcement) {
+    Announcements.find({"sem":sem,"group":group}).sort('-createdAt').exec(function (err, announcement) {
         if (err) next(err);
         res.json(announcement);
         });
