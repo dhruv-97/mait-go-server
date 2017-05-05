@@ -55,6 +55,8 @@ angular.module('formExample', ['ngFileUpload'])
             'name':$scope.assignment.name,
             'sem':$scope.assignment.sem,
             'group':$scope.assignment.group,
+            'subject':$scope.assignment.subject,
+            'marks':$scope.assignment.marks,
             'last':$scope.assignment.last
             }
         }).then(function (resp) {

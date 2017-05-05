@@ -7,11 +7,13 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var authenticate = require('./authenticate');
+var autoIncrement = require('mongoose-auto-increment');
 
 var config = require('./config');
 
 mongoose.connect(config.mongoUrl);
 var db = mongoose.connection;
+autoIncrement.initialize(db);
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     // we're connected!
@@ -24,6 +26,7 @@ var timetableRouter=require('./routes/timeRouter');
 var announcementRouter=require('./routes/announcementRouter');
 var scrapeRouter=require('./routes/scrapeRouter');
 var facultyRouter= require('./routes/facultyRouter');
+var assignmentRouter = require('./routes/assignmentRouter');
 
 var app = express();
 
@@ -49,6 +52,7 @@ app.use('/timetable',timetableRouter);
 app.use('/announcement',announcementRouter);
 app.use('/scrape',scrapeRouter);
 app.use('/faculty',facultyRouter);
+app.use('/assignment',assignmentRouter);
 
 
 // catch 404 and forward to error handler
