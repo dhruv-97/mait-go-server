@@ -2,7 +2,7 @@ function jsUcfirst(string)
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-angular.module('formExample', [])
+angular.module('formExample', ['ngFileUpload'])
 	.config(function ($httpProvider) {
 	  $httpProvider.defaults.headers.common = {};
 	  $httpProvider.defaults.headers.post = {};
@@ -38,4 +38,33 @@ angular.module('formExample', [])
                   });
               };
   }])
+  .controller('MyCtrl',['$scope','Upload','$window',function($scope,Upload,$window){
+    $scope.assignment={};
+    $scope.submit = function(){ //function to call on form submit
+        //check if from is valid
+        if ($scope.form.file.$valid && $scope.file) {
+            console.log($scope.assignment);
+            $scope.upload($scope.file); 
+        }//call upload function
+    }
+    
+    $scope.upload = function (file) {
+        Upload.upload({
+            url: 'https://agile-hamlet-82527.herokuapp.com/assignment',
+            data: {file: file, 
+            'name':$scope.assignment.name,
+            'sem':$scope.assignment.sem,
+            'group':$scope.assignment.group,
+            'last':$scope.assignment.last
+            }
+        }).then(function (resp) {
+            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+        }, function (resp) {
+            console.log('Error status: ' + resp.status);
+        }, function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+        });
+    };
+}])
 ;

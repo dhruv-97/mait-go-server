@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" ng-app="formExample">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head 
+         content must come *after* these tags -->
+    
+    <title>assignment Form</title>    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style2.css">
+</head>
+<body>
+<br />
+<div class="inner contact">
+                <!-- Form Area -->
+                <div class="contact-form" ng-controller="MyCtrl">
+                    <!-- Form -->
+                    <form id="contact-us" name="form" ng-submit="submit()" novalidate>
+                        <!-- Left Inputs -->
+                        <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+                            <!-- Name -->
+                            <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" ng-model="assignment.name" />
+                            <!-- Email -->
+                            <input type="number" name="sem" id="sem" required="required" class="form" placeholder="Semester" ng-model="assignment.sem" />
+                            <!-- Subject -->
+                            <input type="text" name="group" id="group" required="required" class="form" placeholder="Group(I4)" ng-model="assignment.group" maxlength="2" />
+                        </div><!-- End Left Inputs -->
+                        <!-- Right Inputs -->
+                        <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
+                            <!-- Message -->
+                            <label>Last date of submission</label>
+                            <input type="date" name="last" id="last" required="required" class="form" ng-model="assignment.last" />
+                            <!-- Email -->
+                            <label>Upload assignment</label>
+                            <input type="file" 
+                            ngf-select 
+                            ng-model="file" 
+                            name="file" 
+                            ngf-pattern="'image/*'"
+                            accept="image/*" 
+                            ngf-max-size="20MB" />
+                        </div><!-- End Right Inputs -->
+                        <!-- Bottom Submit -->
+                        <div class="relative fullwidth col-xs-12">
+                            <!-- Send Button -->
+                            <button type="submit" id="submit" name="submit" class="form-btn semibold">Send assignment</button> 
+                        </div><!-- End Bottom Submit -->
+                        <!-- Clear -->
+                        <div class="clear"></div>
+                    </form>
+
+                    <!-- Your Mail Message -->
+                    <div class="mail-message-area">
+                        <!-- Message -->
+                        <div class="alert gray-bg mail-message not-visible-message">
+                            <strong>Thank You !</strong> Your assignment has been delivered.
+                        </div>
+                    </div>
+
+                </div><!-- End Contact Form Area -->
+ </div><!-- End Inner -->
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
+<script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
+
