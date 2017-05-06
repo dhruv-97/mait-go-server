@@ -55,7 +55,7 @@ assignmentRouter.route('/')
 });
 assignmentRouter.route('/:assignmentId')
 .get(function (req, res, next) {
-    var sem= req.params.assingmentId[0];
+    var sem= req.params.assignmentId[0];
     var group= req.params.assignmentId.substring(1,req.params.assignmentId.length);
     assignments.find({"sem":sem,"group":group},function (err, assignment) {
         if (err) next(err);

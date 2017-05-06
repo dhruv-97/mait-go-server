@@ -45,8 +45,8 @@ timetableRouter.route('/:timetableId')
 .get(function (req, res, next) {
     var sem= req.params.timetableId[0];
     var group= req.params.timetableId.substring(1,req.params.timetableId.length);
-    console.log(sem);
-    console.log(group);
+    //console.log(sem);
+    //console.log(group);
     TimeTables.findOne({"sem":sem,"group":group},function (err, timetable) {
         if (err) next(err);
         res.json(timetable);
