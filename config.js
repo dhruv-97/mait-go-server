@@ -1,9 +1,9 @@
 module.exports = {
-    'secretKey': process.env.SECRET,
-    'mongoUrl' : process.env.MONGO,
+    'secretKey': '12345-67890-09876-54321',
+    'mongoUrl' : 'mongodb://dhruv:abc@ds137730.mlab.com:37730/confusion',
     'facebook': {
-        clientID: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
+        clientID: '432948410371020',
+        clientSecret: 'd7b8565556425f9a6332271abc4a80a4',
         callbackURL: 'https://localhost:3443/users/facebook/callback'
     }
 }
