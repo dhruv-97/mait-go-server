@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var authenticate = require('./authenticate');
+//var authenticate = require('./authenticate');
 var autoIncrement = require('mongoose-auto-increment');
 
 var config = require('./config');
