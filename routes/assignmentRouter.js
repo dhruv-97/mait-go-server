@@ -35,9 +35,6 @@ assignmentRouter.route('/')
                 if (err) next(err);
                 console.log('assignment created!');
                 var id = assignment._id;
-                res.setHeader("Access-Control-Allow-Origin", 'https://agile-hamlet-82527.herokuapp.com');
-                res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE');
-                res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Accept');
                 res.writeHead(200, {
                     'Content-Type': 'text/plain'
                 });
