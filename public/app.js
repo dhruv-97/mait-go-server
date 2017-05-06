@@ -44,6 +44,7 @@ angular.module('formExample', ['ngFileUpload'])
         //check if from is valid
         if ($scope.form.file.$valid && $scope.file) {
             console.log($scope.assignment);
+            $scope.assignment.group=jsUcfirst($scope.assignment.group);
             $scope.upload($scope.file); 
         }//call upload function
     }
