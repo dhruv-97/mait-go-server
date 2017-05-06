@@ -55,7 +55,9 @@ assignmentRouter.route('/')
 });
 assignmentRouter.route('/:assignmentId')
 .get(function (req, res, next) {
-    assignments.findById(req.params.assignmentId,function (err, assignment) {
+    var sem= req.params.timetableId[0];
+    var group= req.params.timetableId.substring(1,req.params.timetableId.length);
+    assignments.find({"sem":sem,"group":group},function (err, assignment) {
         if (err) next(err);
         res.json(assignment);
         });
