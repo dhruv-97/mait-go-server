@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head 
          content must come *after* these tags -->
     
-    <title>assignment Form</title>    
+    <title>upcoming Form</title>    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style2.css">
 </head>
@@ -15,35 +15,36 @@
 <br />
 <div class="inner contact">
                 <!-- Form Area -->
-                <div class="contact-form" ng-controller="MyCtrl">
+                <div class="contact-form" ng-controller="MyCtrl2">
                     <!-- Form -->
-                    <form id="contact-us" name="form" ng-submit="sendAssignment()" novalidate>
+                    <form id="contact-us" name="form" ng-submit="sendUpcoming()" novalidate>
                         <!-- Left Inputs -->
                         <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
                             <!-- Name -->
-                            <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" ng-model="assignment.name" />
+                            <input type="text" name="name" id="name" required="required" class="form" placeholder="Event Name" ng-model="upcoming.eventName" />
                             <!-- Email -->
-                            <input type="number" name="sem" id="sem" min="1" max="8" required="required" class="form" placeholder="Semester" ng-model="assignment.sem" />
+                            <input type="text" name="sem" id="sem" required="required" class="form" placeholder="Organiser" ng-model="upcoming.organiser" />
                             <!-- Subject -->
-                            <input type="text" name="group" id="group" required="required" class="form" placeholder="Group(I4)" ng-model="assignment.group" maxlength="2" />
-                            <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Subject" ng-model="assignment.subject" />
+                            <input type="date" name="group" id="group" required="required" class="form" placeholder="Event Date" ng-model="upcoming.eventDate" />
+                            <input type="number" name="subject" id="subject" required="required" class="form" placeholder="Registration Fees" ng-model="upcoming.regisFee" />
                         </div><!-- End Left Inputs -->
                         <!-- Right Inputs -->
                         <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
                             <!-- Message -->
                             
                             <!-- Email -->
-                            <input type="number" min="1" max="100" name="marks" id="marks" required="required" class="form" placeholder="Marks" ng-model="assignment.marks" />
-                            <label>Last date of submission</label>
-                            <input type="date" name="last" id="last" required="required" class="form" ng-model="assignment.last" />
+                            <input type="number" name="marks" id="marks" required="required" class="form" placeholder="Organiser Phone Number" ng-model="upcoming.organiserNumber" />
+        
+                            <input type="text" name="last" id="last" required="required" class="form" placeholder="Organiser Email ID" ng-model="upcoming.organiserEmail" />
                             <!-- Email -->
-                            <label>Upload assignment</label>
-                            <input type="file" id="file-input" multiple />
+                            <input type="text" name="name" id="name" required="required" class="form" placeholder="Society" ng-model="upcoming.society" />
+                            <label>Upload Image</label>
+                            <input type="file" id="file-input"/>
                         </div><!-- End Right Inputs -->
                         <!-- Bottom Submit -->
                         <div class="relative fullwidth col-xs-12">
                             <!-- Send Button -->
-                            <button type="submit" id="submit" name="submit" class="form-btn semibold" >Send assignment</button> 
+                            <button type="submit" id="submit" name="submit" class="form-btn semibold" >Send upcoming</button> 
                         </div><!-- End Bottom Submit -->
                         <!-- Clear -->
                         <div class="clear"></div>
@@ -53,7 +54,7 @@
                     <div class="mail-message-area">
                         <!-- Message -->
                         <div class="alert gray-bg mail-message not-visible-message">
-                            <strong>Thank You !</strong> Your assignment has been delivered.
+                            <strong>Thank You !</strong> Your upcoming has been delivered.
                         </div>
                     </div>
 
@@ -63,4 +64,3 @@
 <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
-

@@ -27,7 +27,7 @@ var announcementRouter=require('./routes/announcementRouter');
 var scrapeRouter=require('./routes/scrapeRouter');
 var facultyRouter= require('./routes/facultyRouter');
 var assignmentRouter = require('./routes/assignmentRouter');
-
+var upcomingRouter = require('./routes/upcomingRouter');
 var app = express();
 
 // view engine setup
@@ -71,6 +71,7 @@ app.use('/announcement',announcementRouter);
 app.use('/scrape',scrapeRouter);
 app.use('/faculty',facultyRouter);
 app.use('/assignment',assignmentRouter);
+app.use('/upcoming',upcomingRouter);
 
 
 // catch 404 and forward to error handler

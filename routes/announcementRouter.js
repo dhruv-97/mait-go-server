@@ -24,9 +24,6 @@ announcementRouter.route('/')
         if (err) next(err);
         console.log('Announcement created!');
         var id = announcement._id;
-        res.setHeader("Access-Control-Allow-Origin", 'https://localhost:3443');
-        res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE');
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Accept');
         res.writeHead(200, {
             'Content-Type': 'text/plain'
         });

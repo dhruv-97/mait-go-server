@@ -1,42 +1,44 @@
 // grab the things we need
 var mongoose = require('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
 var Schema = mongoose.Schema;
-var assignmentSchema = new Schema({
-    name: {
+var upcomingSchema = new Schema({
+    eventName: {
         type: String,
         required: true
     },
-    sem:{
+    organiser:{
         type: String,
         required: true
     },
-    group: {
-        type: String,
+    eventDate: {
+        type: Date,
         required: true
 
     },
-    subject:{
+    regisFee:{
         type: String,
         required: true
     },
-    marks: {
+    imageUrl: {
         type: String,
         required: false
     },
-    last: {
-        type: Date,
+    organiserNumber: {
+        type:String,
         required: true
     },
-    files:{
-        type:[String],
+    organiserEmail:{
+        type:String,
+        required: true
+    },
+    society:{
+        type:String,
         required: true
     }
 }, {
     timestamps: true
 });
-assignmentSchema.plugin(autoIncrement.plugin, 'assignment');
-var assignments = mongoose.model('assignment', assignmentSchema);
+var upcomings = mongoose.model('upcoming', upcomingSchema);
 
 // make this available to our Node applications
-module.exports = assignments;
+module.exports = upcomings;
