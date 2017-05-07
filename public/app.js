@@ -46,7 +46,7 @@ angular.module('formExample', ['ngFileUpload'])
             console.log($scope.assignment);
             $scope.assignment.group=jsUcfirst($scope.assignment.group);
             var assignmentObj= angular.toJson($scope.assignment);
-            $http.post('http://localhost:3000/assignment',assignmentObj,{
+            $http.post('https://agile-hamlet-82527.herokuapp.com/assignment',assignmentObj,{
             headers: { 'Content-Type': 'application/json'}
         }).success(function(data, status, headers, config) {
                     alert("Success!");
