@@ -67,8 +67,6 @@ upcomingRouter.route('/sign-s3')
 
 upcomingRouter.route('/:upcomingId')
 .get(function (req, res, next) {
-    console.log(sem);
-    console.log(group);
     upcomings.findById(req.params.upcomingId,function (err, upcoming) {
         if (err) next(err);
         res.json(upcoming);

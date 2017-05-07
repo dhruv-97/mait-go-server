@@ -21,7 +21,7 @@ var upcomingSchema = new Schema({
     },
     imageUrl: {
         type: String,
-        required: false
+        required: true
     },
     organiserNumber: {
         type:String,

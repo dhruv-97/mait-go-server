@@ -40,11 +40,13 @@
                             <input type="text" name="name" id="name" required="required" class="form" placeholder="Society" ng-model="upcoming.society" />
                             <label>Upload Image</label>
                             <input type="file" id="file-input"/>
+                            <p ng-show="show">Uploading...</p>
+                            <p ng-show="done">Done...</p>
                         </div><!-- End Right Inputs -->
                         <!-- Bottom Submit -->
                         <div class="relative fullwidth col-xs-12">
                             <!-- Send Button -->
-                            <button type="submit" id="submit" name="submit" class="form-btn semibold" >Send upcoming</button> 
+                            <button type="submit" id="submit" name="submit" class="form-btn semibold" ng-disabled="check">Send upcoming</button> 
                         </div><!-- End Bottom Submit -->
                         <!-- Clear -->
                         <div class="clear"></div>

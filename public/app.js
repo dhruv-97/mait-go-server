@@ -114,6 +114,9 @@ angular.module('formExample', [])
 }])
 .controller('MyCtrl2',['$scope','$http','$window',function($scope,$http,$window){
     $scope.upcoming={};
+    $scope.check=true;
+    $scope.show=false;
+    $scope.done=false;
     $scope.sendUpcoming = function () {
             console.log($scope.upcoming);
             var upcomingObj= angular.toJson($scope.upcoming);
@@ -135,6 +138,9 @@ angular.module('formExample', [])
           if(xhr.status === 200){
             console.log(url);
             $scope.upcoming.imageUrl=url;
+            $scope.check=false;
+            $scope.show=false;
+            $scope.done=true;
           }
           else{
             alert('Could not upload file.');
@@ -179,6 +185,7 @@ angular.module('formExample', [])
         return alert('No file selected.');
       }
       getSignedRequest(files[0]);
+      $scope.show=true;
     }
     
     
