@@ -93,9 +93,7 @@ angular.module('formExample', [])
       };
       xhr.send();
     }
-    (() => {
-        document.getElementById('file-input').onchange = initUpload;
-    })();
+    
 
     /*
      Function called when file input updated. If there is a file selected, then
@@ -109,10 +107,13 @@ angular.module('formExample', [])
       for(var i=0; i<files.length; i++)
         getSignedRequest(files[i]);
     }
+    (() => {
+        document.getElementById('file-input').onchange = initUpload;
+    })();
     
     
 }])
-.controller('MyCtrl2',['$scope','$http','$window',function($scope,$http,$window){
+.controller('MyCtrl2',['$scope','$timeout','$http','$window',function($scope,$timeout,$http,$window){
     $scope.upcoming={};
     $scope.check=true;
     $scope.show=false;
@@ -136,11 +137,15 @@ angular.module('formExample', [])
       xhr.onreadystatechange = () => {
         if(xhr.readyState === 4){
           if(xhr.status === 200){
-            console.log(url);
-            $scope.upcoming.imageUrl=url;
+            alert('Image Uploading is now complete');
+            $timeout(function() {
             $scope.check=false;
             $scope.show=false;
             $scope.done=true;
+          }, 0);
+            
+            console.log($scope.check);
+            $scope.upcoming.imageUrl=url;
           }
           else{
             alert('Could not upload file.');
@@ -171,22 +176,26 @@ angular.module('formExample', [])
       };
       xhr.send();
     }
-    (() => {
-        document.getElementById('file-input').onchange = initUpload;
-    })();
+    
 
     /*
      Function called when file input updated. If there is a file selected, then
      start upload procedure by asking for a signed request from the app.
     */
     function initUpload(){
+      $timeout(function() {
+        $scope.show=true;
+      }, 0);
+      
       const files = document.getElementById('file-input').files;
       if(files.length == 0){
         return alert('No file selected.');
       }
       getSignedRequest(files[0]);
-      $scope.show=true;
     }
+    (() => {
+        document.getElementById('file-input').onchange = initUpload;
+    })();
     
     
 }])
