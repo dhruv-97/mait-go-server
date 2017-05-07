@@ -42,7 +42,6 @@ angular.module('formExample', ['ngFileUpload'])
     $scope.assignment={
         files:[]
     };
-    $scope.check=true;
     $scope.sendAssignment = function () {
             console.log($scope.assignment);
             $scope.assignment.group=jsUcfirst($scope.assignment.group);
@@ -107,11 +106,8 @@ angular.module('formExample', ['ngFileUpload'])
       if(files.length == 0){
         return alert('No file selected.');
       }
-      for(var i=0; i<files.length; i++){
+      for(var i=0; i<files.length; i++)
         getSignedRequest(files[i]);
-        if(i==files.length-1)
-            $scope.check=false;
-      }
     }
     
     
