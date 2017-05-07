@@ -38,10 +38,13 @@ angular.module('formExample', [])
                   });
               };
   }])
-  .controller('MyCtrl',['$scope','$http','$window',function($scope,$http,$window){
+  .controller('MyCtrl',['$scope','$timeout','$http','$window',function($scope,$timeout,$http,$window){
     $scope.assignment={
         files:[]
     };
+    $scope.check=true;
+    $scope.show=false;
+    $scope.done=false;
     $scope.sendAssignment = function () {
             console.log($scope.assignment);
             $scope.assignment.group=jsUcfirst($scope.assignment.group);
@@ -100,12 +103,25 @@ angular.module('formExample', [])
      start upload procedure by asking for a signed request from the app.
     */
     function initUpload(){
+      $timeout(function() {
+        $scope.show=true;
+      }, 0);
       const files = document.getElementById('file-input').files;
       if(files.length == 0){
         return alert('No file selected.');
       }
-      for(var i=0; i<files.length; i++)
+      var i;
+      for(i=0; i<files.length; i++)
         getSignedRequest(files[i]);
+      if(i==files.length){
+          alert('Image Uploading is now complete');
+            $timeout(function() {
+            $scope.check=false;
+            $scope.show=false;
+            $scope.done=true;
+          }, 0);
+
+        }
     }
     (() => {
         document.getElementById('file-input').onchange = initUpload;

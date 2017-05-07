@@ -6,7 +6,7 @@ var assignments = require('../models/assignment');
 var Verify=require('./verify');
 const aws = require('aws-sdk');
 aws.config.update({region: 'ap-south-1'});
-const S3_BUCKET = process.env.S3_BUCKET_NAME;
+const S3_BUCKET = process.env.S3_BUCKET_NAME||"mait-server-img";
 var assignmentRouter = express.Router();
 
 assignmentRouter.use(bodyParser.json());
