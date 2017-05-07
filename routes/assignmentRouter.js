@@ -7,7 +7,7 @@ var assignments = require('../models/assignment');
 var Verify=require('./verify');
 const aws = require('aws-sdk');
 aws.config.update({region: 'ap-south-1'});
-const S3_BUCKET = "mait-server-img";
+const S3_BUCKET = process.env.S3_BUCKET_NAME;
 var path = require('path'),
   multiparty = require('connect-multiparty'),
   multipartyMiddleware = multiparty();
