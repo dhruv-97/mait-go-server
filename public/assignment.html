@@ -17,7 +17,7 @@
                 <!-- Form Area -->
                 <div class="contact-form" ng-controller="MyCtrl">
                     <!-- Form -->
-                    <form id="contact-us" name="form" ng-submit="submit()" novalidate>
+                    <form id="contact-us" name="form" ng-submit="sendAssignment()" novalidate>
                         <!-- Left Inputs -->
                         <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
                             <!-- Name -->
@@ -38,18 +38,12 @@
                             <input type="date" name="last" id="last" required="required" class="form" ng-model="assignment.last" />
                             <!-- Email -->
                             <label>Upload assignment</label>
-                            <input type="file" 
-                            ngf-select 
-                            ng-model="file" 
-                            name="file" 
-                            ngf-pattern="'image/*'"
-                            accept="image/*" 
-                            ngf-max-size="20MB" />
+                            <input type="file" id="file-input" multiple />
                         </div><!-- End Right Inputs -->
                         <!-- Bottom Submit -->
                         <div class="relative fullwidth col-xs-12">
                             <!-- Send Button -->
-                            <button type="submit" id="submit" name="submit" class="form-btn semibold">Send assignment</button> 
+                            <button type="submit" id="submit" name="submit" class="form-btn semibold" ng-disabled="check">Send assignment</button> 
                         </div><!-- End Bottom Submit -->
                         <!-- Clear -->
                         <div class="clear"></div>

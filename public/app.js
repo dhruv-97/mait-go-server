@@ -38,36 +38,82 @@ angular.module('formExample', ['ngFileUpload'])
                   });
               };
   }])
-  .controller('MyCtrl',['$scope','Upload','$window',function($scope,Upload,$window){
-    $scope.assignment={};
-    $scope.submit = function(){ //function to call on form submit
-        //check if from is valid
-        if ($scope.form.file.$valid && $scope.file) {
+  .controller('MyCtrl',['$scope','$http','Upload','$window',function($scope,$http,Upload,$window){
+    $scope.assignment={
+        files:[]
+    };
+    $scope.check=true;
+    $scope.sendAssignment = function () {
             console.log($scope.assignment);
             $scope.assignment.group=jsUcfirst($scope.assignment.group);
-            $scope.upload($scope.file); 
-        }//call upload function
+            var assignmentObj= angular.toJson($scope.assignment);
+            $http.post('http://localhost:3000/assignment',assignmentObj,{
+            headers: { 'Content-Type': 'application/json'}
+        }).success(function(data, status, headers, config) {
+                    alert("Success!");
+                    $window.location.reload();
+                   }).error(function(data, status, headers, config) {
+                     alert("Error");
+                  });
+              };
+    
+    function uploadFile(file, signedRequest, url){
+      const xhr = new XMLHttpRequest();
+      xhr.open('PUT', signedRequest);
+      xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4){
+          if(xhr.status === 200){
+            $scope.assignment.files.push(url);
+          }
+          else{
+            alert('Could not upload file.');
+          }
+        }
+      };
+      xhr.send(file);
+    }
+
+    /*
+      Function to get the temporary signed request from the app.
+      If request successful, continue to upload the file using this signed
+      request.
+    */
+    function getSignedRequest(file){
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', `assignment/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+      xhr.onreadystatechange = () => {
+        if(xhr.readyState === 4){
+          if(xhr.status === 200){
+            const response = JSON.parse(xhr.responseText);
+            uploadFile(file, response.signedRequest, response.url);
+          }
+          else{
+            alert('Could not get signed URL.');
+          }
+        }
+      };
+      xhr.send();
+    }
+    (() => {
+        document.getElementById('file-input').onchange = initUpload;
+    })();
+
+    /*
+     Function called when file input updated. If there is a file selected, then
+     start upload procedure by asking for a signed request from the app.
+    */
+    function initUpload(){
+      const files = document.getElementById('file-input').files;
+      if(files.length == 0){
+        return alert('No file selected.');
+      }
+      for(var i=0; i<files.length; i++){
+        getSignedRequest(files[i]);
+        if(i==files.length-1)
+            $scope.check=false;
+      }
     }
     
-    $scope.upload = function (file) {
-        Upload.upload({
-            url: 'https://agile-hamlet-82527.herokuapp.com/assignment',
-            data: {file: file, 
-            'name':$scope.assignment.name,
-            'sem':$scope.assignment.sem,
-            'group':$scope.assignment.group,
-            'subject':$scope.assignment.subject,
-            'marks':$scope.assignment.marks,
-            'last':$scope.assignment.last
-            }
-        }).then(function (resp) {
-            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-        }, function (resp) {
-            console.log('Error status: ' + resp.status);
-        }, function (evt) {
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-        });
-    };
+    
 }])
 ;

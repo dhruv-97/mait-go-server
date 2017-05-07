@@ -28,14 +28,7 @@ var assignmentSchema = new Schema({
         type: Date,
         required: true
     },
-    file: {
-        type: String,
-        required: true
-    },
-    format: {
-        type: String,
-        required: true
-    }
+    files:[String]
 }, {
     timestamps: true
 });
