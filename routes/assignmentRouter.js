@@ -13,7 +13,7 @@ assignmentRouter.use(bodyParser.json());
 
 assignmentRouter.route('/')
 .get(function (req, res, next) {
-    assignments.find({}, function (err, assignment) {
+    assignments.find({}).sort('-createdAt').exec( function (err, assignment) {
         if (err) throw err;
         res.json(assignment);
     });
@@ -67,7 +67,7 @@ assignmentRouter.route('/:assignmentId')
 .get(function (req, res, next) {
     var sem= req.params.assignmentId[0];
     var group= req.params.assignmentId.substring(1,req.params.assignmentId.length);
-    assignments.find({"sem":sem,"group":group},function (err, assignment) {
+    assignments.find({"sem":sem,"group":group}).sort('-createdAt').exec(function (err, assignment) {
         if (err) next(err);
         res.json(assignment);
         });
