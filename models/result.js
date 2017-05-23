@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var markSchema = new Schema({
     subjectID:  {
-        type: String,
+        type: Number,
         required: true
     },
     subjectCode:  {
@@ -14,37 +14,42 @@ var markSchema = new Schema({
         required: true
     },
     internal: {
-        type: String,
+        type: Number,
+        max: 40,
+        min:0,
         required: true
 
     },
     external: {
-        type: String,
+        type: Number,
+        min:0,
+        max:75,
         required: true
     },
     total: {
-        type: String,
+        type: Number,
+        min: 0,
+        max: 100,
         required: true
 
     },
     credits:{
-        type: String,
+        type: Number,
         required: true
     }
     
 });
 var resultSchema = new Schema({
-    roll: {
-        type: String,
-        required: true,
-        unique: true
-    },
     percentage: {
-        type: String,
+        type: Number,
+        min: 0,
+        max: 100,
         required: true
     },
     creditp: {
-        type: String,
+        type: Number,
+        min: 0,
+        max: 100,
         required: true
     },
     marks: [markSchema]

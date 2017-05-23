@@ -96,10 +96,10 @@ scrapeRouter.route('/result/:rollNo')
             var infoText='';
             var semText='';
             form.append('Roll_No', req.params.rollNo);
-            form.submit('http://ipuresult.com/index.php', function(err, res) {
-              // res – response object (http.IncomingMessage)  // 
-                res.resume();
-                var coo= mkdataCookie(res.headers['set-cookie']);
+            form.submit('http://ipuresult.com/index.php', function(err, res2) {
+              // res2 – response object (http.IncomingMessage)  // 
+                res2.resume();
+                var coo= mkdataCookie(res2.headers['set-cookie']);
                 var cookie=dataCookieToString(coo);
                 //console.log(cookie);
                 request({
@@ -176,11 +176,11 @@ scrapeRouter.route('/result/:rollNo')
                 results.create(final, function (err, result) {
                                 if (err) next(err);
                                 console.log('result created!');
+                                res.json(final);
                             });
 
                 });
             });
-            setTimeout(function(){ res.json(final) }, 3000);
 
                 }
     });
@@ -247,10 +247,10 @@ scrapeRouter.route('/info/:rollNo')
         stream:''
     };
     form.append('Roll_No', req.params.rollNo);
-    form.submit('http://ipuresult.com/index.php', function(err, res) {
+    form.submit('http://ipuresult.com/index.php', function(err, res2) {
       // res – response object (http.IncomingMessage)  // 
-        res.resume();
-        var coo= mkdataCookie(res.headers['set-cookie']);
+        res2.resume();
+        var coo= mkdataCookie(res2.headers['set-cookie']);
         var cookie=dataCookieToString(coo);
         //console.log(cookie);
         request({
@@ -269,9 +269,9 @@ scrapeRouter.route('/info/:rollNo')
             infoj.name= infoText.substring(40,i-1);
             infoj.college=infoText.substring(i+11,116);
             infoj.stream=infoText.substring(126,infoText.length);
-        });
+            res.json(infoj);
+        })
     });
-    setTimeout(function(){ res.json(infoj) }, 5000);
 })
 
 module.exports=scrapeRouter;

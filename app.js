@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -28,6 +29,7 @@ var scrapeRouter=require('./routes/scrapeRouter');
 var facultyRouter= require('./routes/facultyRouter');
 var assignmentRouter = require('./routes/assignmentRouter');
 var upcomingRouter = require('./routes/upcomingRouter');
+var infoRouter = require('./routes/infoRouter');
 var app = express();
 
 // view engine setup
@@ -72,6 +74,7 @@ app.use('/scrape',scrapeRouter);
 app.use('/faculty',facultyRouter);
 app.use('/assignment',assignmentRouter);
 app.use('/upcoming',upcomingRouter);
+app.use('/info',infoRouter);
 
 
 // catch 404 and forward to error handler
