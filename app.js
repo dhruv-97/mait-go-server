@@ -11,7 +11,7 @@ var passport = require('passport');
 var autoIncrement = require('mongoose-auto-increment');
 
 var config = require('./config');
-
+mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoUrl);
 var db = mongoose.connection;
 autoIncrement.initialize(db);
@@ -30,6 +30,7 @@ var facultyRouter= require('./routes/facultyRouter');
 var assignmentRouter = require('./routes/assignmentRouter');
 var upcomingRouter = require('./routes/upcomingRouter');
 var infoRouter = require('./routes/infoRouter');
+var resultRouter = require('./routes/resultRouter');
 var app = express();
 
 // view engine setup
@@ -75,6 +76,7 @@ app.use('/faculty',facultyRouter);
 app.use('/assignment',assignmentRouter);
 app.use('/upcoming',upcomingRouter);
 app.use('/info',infoRouter);
+app.use('/result',resultRouter);
 
 
 // catch 404 and forward to error handler

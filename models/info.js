@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var infoSchema = new Schema({
-    roll:{
-      type: String,
-      required: true
+    _id:{
+      type: String
     },
     name:{
       type: String,
@@ -19,8 +18,13 @@ var infoSchema = new Schema({
     },
     result: {
       type: Schema.Types.ObjectId,
+      ref: 'result',
       required: true
     }
+});
+infoSchema.pre('remove', function(next) {
+    this.model('result').remove({ _id: this.result }).exec();
+    next();
 });
 var infos = mongoose.model('info', infoSchema);
 

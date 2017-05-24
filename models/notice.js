@@ -10,6 +10,8 @@ var noticeSchema = new Schema({
         type: String,
         required: true
     }
+}, {
+    timestamps: true
 });
 var notices = mongoose.model('notice', noticeSchema);
 

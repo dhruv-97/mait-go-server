@@ -42,7 +42,25 @@ infoRouter.use(bodyParser.json());
 
 infoRouter.route('/')
 .get(function (req, res, next) {
-    informations.findOne(req.query, function (err, infos) {
+    informations.find(req.query, function(err,resp) {
+      if(err) next(err);
+      res.json(resp);
+    })
+    
+})
+.delete(function (req, res, next) {
+    informations.remove({}, function (err, resp) {
+        if (err) next(err);
+        results.remove({}, function (err, respo) {
+            if (err) next(err);
+            res.json(respo);
+        });
+    });
+});
+
+infoRouter.route('/:roll')
+.get(function (req, res, next) {
+    informations.findById(req.params.roll, function (err, infos) {
         if (err) throw err;
         if(infos==null){
           var form = new FormData();
@@ -54,12 +72,12 @@ infoRouter.route('/')
             };
             var infoText='';
             var infoj={
-                roll: req.query.roll,
+                _id: req.params.roll,
                 name: '',
                 college:'',
                 stream:''
             };
-            form.append('Roll_No', req.query.roll);
+            form.append('Roll_No', req.params.roll);
             form.submit('http://ipuresult.com/index.php', function(err, res2) {
               // res2 – response object (http.IncomingMessage)  // 
                 res2.resume();
@@ -82,7 +100,7 @@ infoRouter.route('/')
                     infoj.name= infoText.substring(40,i-1);
                     infoj.college=infoText.substring(i+11,116);
                     infoj.stream=infoText.substring(126,infoText.length);
-                    res.json(infoj);
+                    //res.json(infoj);
                     var mark ={
                         subjectID:'',
                         subjectCode:'',
@@ -136,6 +154,7 @@ infoRouter.route('/')
                 final.percentage=(score/j).toFixed(2);
                 final.creditp=(score2/tcredit).toFixed(2);
                 final.marks=marks;
+                //console.log(final);
                 results.create(final, function (err, result) {
                                 if (err) next(err);
                                 console.log('result created!');
@@ -143,7 +162,7 @@ infoRouter.route('/')
                                 informations.create(infoj, function (err, infoObject) {
                                     if (err) next(err);
                                     console.log('Info created!');
-                                    //res.json(infoj);
+                                    res.json(infoj);
                                 });
                             });
 
@@ -154,53 +173,10 @@ infoRouter.route('/')
           res.json(infos);
     });
 })
-
-.post(function (req, res, next) {
-    informations.create(req.body, function (err, info) {
-        if (err) next(err);
-        console.log('info created!');
-        var id = info._id;
-        res.writeHead(200, {
-            'Content-Type': 'text/plain'
-        });
-
-        res.end('Added the info with id: ' + id);
-    });
-})
-
 .delete(function (req, res, next) {
-    informations.remove({}, function (err, resp) {
+        informations.findById(req.params.roll, function (err, resp) {
         if (err) next(err);
-        res.json(resp);
-    });
-});
-
-infoRouter.route('/:infoId')
-.get(function (req, res, next) {
-    var sem= req.params.infoId[0];
-    var group= req.params.infoId.substring(1,req.params.infoId.length);
-    //console.log(sem);
-    //console.log(group);
-    informations.findOne({"sem":sem,"group":group},function (err, info) {
-        if (err) next(err);
-        res.json(info);
-        });
-})
-
-.put(function (req, res, next) {
-    informations.findByIdAndUpdate(req.params.infoId, {
-        $set: req.body
-    }, {
-        new: true
-    }, function (err, info) {
-        if (err) next(err);
-        res.json(info);
-    });
-})
-
-.delete(function (req, res, next) {
-        informations.findByIdAndRemove(req.params.infoId, function (err, resp) {
-        if (err) next(err);
+        resp.remove();
         res.json(resp);
     });
 });
