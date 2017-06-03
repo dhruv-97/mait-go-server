@@ -53,7 +53,7 @@ scrapeRouter.route('/')
 
 scrapeRouter.route('/notices')
 .get(function (req, res, next) {
-    notices.find({}).sort('-createdAt').exec(function (err, notices) {
+    notices.find({}).sort('createdAt').exec(function (err, notices) {
         if (err) throw err;
         res.json(notices);
     });
