@@ -1,6 +1,5 @@
 // grab the things we need
 var mongoose = require('mongoose');
-var autoIncrement = require('mongoose-auto-increment');
 var Schema = mongoose.Schema;
 var assignmentSchema = new Schema({
     name: {
@@ -35,7 +34,6 @@ var assignmentSchema = new Schema({
 }, {
     timestamps: true
 });
-assignmentSchema.plugin(autoIncrement.plugin, 'assignment');
 var assignments = mongoose.model('assignment', assignmentSchema);
 
 // make this available to our Node applications

@@ -29,7 +29,7 @@ var scrapeRouter=require('./routes/scrapeRouter');
 var facultyRouter= require('./routes/facultyRouter');
 var assignmentRouter = require('./routes/assignmentRouter');
 var upcomingRouter = require('./routes/upcomingRouter');
-var infoRouter = require('./routes/infoRouter');
+var markRouter = require('./routes/markRouter');
 var resultRouter = require('./routes/resultRouter');
 var app = express();
 
@@ -75,7 +75,7 @@ app.use('/scrape',scrapeRouter);
 app.use('/faculty',facultyRouter);
 app.use('/assignment',assignmentRouter);
 app.use('/upcoming',upcomingRouter);
-app.use('/info',infoRouter);
+app.use('/marks',markRouter);
 app.use('/result',resultRouter);
 
 

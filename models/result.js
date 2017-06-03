@@ -1,45 +1,31 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var markSchema = new Schema({
-    subjectID:  {
-        type: Number,
-        required: true
-    },
-    subjectCode:  {
-        type: String,
-        required: true
-    },
-    subjectName: {
-        type: String,
-        required: true
-    },
-    internal: {
-        type: Number,
-        max: 40,
-        min:0,
-        required: true
-
-    },
-    external: {
-        type: Number,
-        min:0,
-        max:75,
-        required: true
-    },
-    total: {
-        type: Number,
-        min: 0,
-        max: 100,
-        required: true
-
-    },
-    credits:{
-        type: Number,
-        required: true
-    }
-    
-});
 var resultSchema = new Schema({
+    roll:{
+        type: String,
+        required: true
+    },
+    sem:{
+        type: Number,
+        min:1,
+        max:8
+    },
+    name:{
+      type: String,
+      required: true
+    },
+    college:{
+      type: String,
+      required: true
+    },
+    programme:{
+      type: String,
+      required: true
+    },
+    batch:{
+      type: String,
+      required: true
+    },
     percentage: {
         type: Number,
         min: 0,
@@ -52,7 +38,15 @@ var resultSchema = new Schema({
         max: 100,
         required: true
     },
-    marks: [markSchema]
+    gpa:{
+        type: Number,
+        min: 0,
+        max:10
+    },
+    marks:[{
+        type: Schema.Types.ObjectId,
+        ref: 'Mark'
+    }]
     
 });
 var results = mongoose.model('result', resultSchema);

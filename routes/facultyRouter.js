@@ -16,5 +16,17 @@ facultyRouter.route('/')
         if (err) next(err);
         res.json(faculty);
         });
+})
+.post(function (req, res, next) {
+    faculties.create(req.body, function (err, faculty) {
+        if (err) next(err);
+        console.log('faculty created!');
+        var id = faculty._id;
+        res.writeHead(200, {
+            'Content-Type': 'text/plain'
+        });
+
+        res.end('Added the faculty with id: ' + id);
+    });
 });
 module.exports=facultyRouter;
