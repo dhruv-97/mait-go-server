@@ -34,14 +34,71 @@ resultRouter.use(bodyParser.json());
 
 resultRouter.route('/')
 .get(function (req, res, next) {
-    results.find(req.query).sort('-creditp').exec( function(err,resp){
-      if(err) throw(err);
-      resp.map(function(ele){
-        ele.college=mapCollege(ele.college);
-        ele.programme=mapProgramme(ele.programme);
-      });
-      res.json(resp);
-    })
+    if(req.query.college=='148'||req.query.college=='964'){
+      results.find({college:{ $in: [ '148', '964' ] },programme:req.query.programme,sem:req.query.sem} )
+      .sort('-creditp').exec( function(err,resp){
+        if(err) throw(err);
+        resp.map(function(ele){
+          ele.college=mapCollege(ele.college);
+          ele.programme=mapProgramme(ele.programme);
+        });
+        res.json(resp);
+      })  
+    }
+    else if(req.query.college=='115'||req.query.college=='512'){
+      results.find({college:{ $in: [ '115', '512' ] },programme:req.query.programme,sem:req.query.sem} )
+      .sort('-creditp').exec( function(err,resp){
+        if(err) throw(err);
+        resp.map(function(ele){
+          ele.college=mapCollege(ele.college);
+          ele.programme=mapProgramme(ele.programme);
+        });
+        res.json(resp);
+      })
+    }
+    else if(req.query.college=='132'||req.query.college=='768'){
+      results.find({college:{ $in: [ '132', '768' ] },programme:req.query.programme,sem:req.query.sem} )
+      .sort('-creditp').exec( function(err,resp){
+        if(err) throw(err);
+        resp.map(function(ele){
+          ele.college=mapCollege(ele.college);
+          ele.programme=mapProgramme(ele.programme);
+        });
+        res.json(resp);
+      })
+    }
+    else if(req.query.college=='962'||req.query.college=='156'){
+      results.find({college:{ $in: [ '962', '156' ] },programme:req.query.programme,sem:req.query.sem} )
+      .sort('-creditp').exec( function(err,resp){
+        if(err) throw(err);
+        resp.map(function(ele){
+          ele.college=mapCollege(ele.college);
+          ele.programme=mapProgramme(ele.programme);
+        });
+        res.json(resp);
+      })
+    }
+    else if(req.query.college=='963'||req.query.college=='150'){
+      results.find({college:{ $in: [ '963', '150' ] },programme:req.query.programme,sem:req.query.sem} )
+      .sort('-creditp').exec( function(err,resp){
+        if(err) throw(err);
+        resp.map(function(ele){
+          ele.college=mapCollege(ele.college);
+          ele.programme=mapProgramme(ele.programme);
+        });
+        res.json(resp);
+      })
+    }
+    else{
+      results.find(req.query).sort('-creditp').exec( function(err,resp){
+        if(err) throw(err);
+        resp.map(function(ele){
+          ele.college=mapCollege(ele.college);
+          ele.programme=mapProgramme(ele.programme);
+        });
+        res.json(resp);
+      })
+    }
 })
 .post(function (req, res, next) {
     results.create(req.body, function (err, result) {
