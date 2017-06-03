@@ -19,7 +19,14 @@ facultyRouter.route('/')
 })
 .post(function (req, res, next) {
     faculties.create(req.body, function (err, faculty) {
-        if (err) next(err);
+        if (err) {
+            console.log('Error Inserting New Data');
+            if (err.name == 'ValidationError') {
+                for (field in err.errors) {
+                    console.log(err.errors[field].message); 
+                }
+            }
+        }
         console.log('faculty created!');
         var id = faculty._id;
         res.writeHead(200, {
