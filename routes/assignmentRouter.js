@@ -39,7 +39,7 @@ assignmentRouter.route('/')
 });
 assignmentRouter.route('/sign-s3')
 .get(function (req, res, next) {
-    const s3 = new aws.S3({signatureVersion: 'v4'});
+const s3 = new aws.S3({signatureVersion: 'v4'});
   const fileName = shortid.generate();
   const fileType = req.query['file-type'];
   const s3Params = {

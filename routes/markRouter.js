@@ -125,7 +125,7 @@ function createResult(){
               gpa+=mapGrade(result[index2].grade)*result[index2].credits;
               
               Marks.create(result[index2], function (err, mark) {
-                  if (err) next(err);
+                  if (err) throw(err);
                   console.log('Mark created');
                   var id = mark._id;
                   resolve(id);
@@ -147,12 +147,58 @@ function createResult(){
       infoarr.forEach(function(element,index3){
         element.marks=marksarr[index3];
         results.create(element, function (err, result2) {
-            if (err) next(err);
+            if (err) throw(err);
             console.log('result created!');
         });
       })
     },20000);
 
+}
+function createUniversityRank(){
+  results.find({}).sort('-creditp').exec( function(err,resp){
+        if(err) throw(err);
+        var rank=0,prev=101,trank;
+        resp.forEach(function(curr){
+          if(prev==curr.creditp)
+            trank=rank;
+          else{
+            trank=rank+1;
+            rank++;
+          }
+          results.findByIdAndUpdate(curr._id, {
+              $set: {"urank":trank}
+          }, {
+              new: true
+          }, function (err, result) {
+              if (err) next(err);
+              console.log(result);
+          });
+          prev=curr.creditp;
+        })
+  })
+}
+function createCollegeRank(){
+  results.find({college:'208'}).sort('-creditp').exec( function(err,resp){
+        if(err) throw(err);
+        var rank=0,prev=101,trank;
+        resp.forEach(function(curr){
+          if(prev==curr.creditp)
+            trank=rank;
+          else{
+            trank=rank+1;
+            rank++;
+          }
+          results.findByIdAndUpdate(curr._id, {
+              $set: {"crank":trank}
+          }, {
+              new: true
+          }, function (err, result) {
+              if (err) next(err);
+              console.log(result);
+          });
+          prev=curr.creditp;
+        })
+  })
 }
 
 var MarkRouter = express.Router();
@@ -181,6 +227,16 @@ MarkRouter.route('/')
 MarkRouter.route('/create')
 .get(function (req, res, next) {
   createResult();
+  res.send('Trying my best');
+});
+MarkRouter.route('/rank')
+.get(function (req, res, next) {
+  createUniversityRank();
+  res.send('Trying my best');
+});
+MarkRouter.route('/crank')
+.get(function (req, res, next) {
+  createCollegeRank();
   res.send('Trying my best');
 });
 module.exports=MarkRouter;

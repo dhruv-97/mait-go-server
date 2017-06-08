@@ -43,6 +43,12 @@ var resultSchema = new Schema({
         min: 0,
         max:10
     },
+    urank:{
+        type: Number
+    },
+    crank:{
+        type: Number
+    },
     marks:[{
         type: Schema.Types.ObjectId,
         ref: 'Mark'
