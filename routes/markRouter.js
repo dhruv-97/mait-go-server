@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var async = require('async');
 var Marks = require('../models/mark');
 var results = require('../models/result');
-var arr= require('./data2.js');
+//var arr= require('./data2.js');
 function mapGrade(x){
   switch(x) {
     case 'O': return 10;
