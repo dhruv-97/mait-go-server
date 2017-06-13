@@ -3,72 +3,70 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-var MaitUsers = require('../models/user');
+var Users = require('../models/user');
 //var Verify=require('./verify');
 
-var MaitUserRouter = express.Router();
+var UserRouter = express.Router();
 
-MaitUserRouter.use(bodyParser.json());
+UserRouter.use(bodyParser.json());
 
-MaitUserRouter.route('/')
+UserRouter.route('/')
 .get(function (req, res, next) {
-    MaitUsers.find({}, function (err, MaitUsers) {
+    Users.find({}, function (err, Users) {
         if (err) throw err;
-        res.json(MaitUsers);
+        res.json(Users);
     });
 })
 
 .post(function (req, res, next) {
-  MaitUsers.find({"roll":req.body.roll}, function (err, user) {
+  Users.findById(req.body._id, function (err, user) {
         if (err) throw err;
         if(user==null){
-          console.log('Inside IF');
-          MaitUsers.create(req.body, function (err, MaitUser) {
+          Users.create(req.body, function (err, User) {
               if (err) next(err);
-              console.log('MaitUser created!');
-              var id = MaitUser._id;
+              console.log('User created!');
+              var id = User._id;
               res.writeHead(200, {
                   'Content-Type': 'text/plain'
               });
 
-              res.end('Added the MaitUser with id: ' + id);
+              res.end('Added the User with id: ' + id);
           });
         }
         else
           res.json(user);
     });
 })
-
 .delete(function (req, res, next) {
-    MaitUsers.remove({}, function (err, resp) {
+    Users.remove({}, function (err, resp) {
         if (err) next(err);
         res.json(resp);
     });
 });
 
-MaitUserRouter.route('/:MaitUserId')
+UserRouter.route('/:UserId')
 .get(function (req, res, next) {
-    MaitUsers.findById(req.params.MaitUserId, function (err, resp) {
+    Users.findById(req.params.UserId, function (err, resp) {
         if (err) next(err);
         res.json(resp);
     });
 })
 
 .put(function (req, res, next) {
-    MaitUsers.findByIdAndUpdate(req.params.MaitUserId, {
+    Users.findByIdAndUpdate(req.params.UserId, {
         $set: req.body
     }, {
         new: true
-    }, function (err, MaitUser) {
+    }, function (err, User) {
         if (err) next(err);
-        res.json(MaitUser);
+        res.json(User);
     });
 })
 
 .delete(function (req, res, next) {
-        MaitUsers.findByIdAndRemove(req.params.MaitUserId, function (err, resp) {
+        Users.findByIdAndRemove(req.params.UserId, function (err, resp) {
         if (err) next(err);
         res.json(resp);
     });
 });
-module.exports=MaitUserRouter;
+module.exports=UserRouter;

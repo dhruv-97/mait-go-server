@@ -1,26 +1,21 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var MaitUser = new Schema({
-    roll: {
-        type: String,
-        unique: true,
-        required: true
+var User = new Schema({
+    _id: {
+        type: String
     },
     name:{
         type: String,
         required: true
     },
-    sem: {
+    class: {
         type: String,
         required: true
     },
-    group: {
+    deviceID: {
         type: String,
         required: true
     }
 });
-MaitUser.methods.getCode = function() {
-    return (this.sem +this.group);
-};
-module.exports = mongoose.model('MaitUser', MaitUser);
+module.exports = mongoose.model('User', User);
