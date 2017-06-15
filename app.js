@@ -1,4 +1,4 @@
-//require('dotenv').config()
+require('dotenv').config()
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -8,13 +8,11 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 //var authenticate = require('./authenticate');
-var autoIncrement = require('mongoose-auto-increment');
 
 var config = require('./config');
 mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoUrl);
 var db = mongoose.connection;
-autoIncrement.initialize(db);
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     // we're connected!

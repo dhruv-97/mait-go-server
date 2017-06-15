@@ -226,7 +226,7 @@ syllabiRouter.use(bodyParser.json());
 
 syllabiRouter.route('/')
 .get(function (req, res, next) {
-    Syllabus.find({}, function (err, resp) {
+    Syllabus.find(req.query, function (err, resp) {
         if (err) throw err;
         res.json(resp);
     });
@@ -246,7 +246,7 @@ syllabiRouter.route('/')
 })
 
 .delete(function (req, res, next) {
-    Syllabus.remove({}, function (err, resp) {
+    Syllabus.remove(req.query, function (err, resp) {
         if (err) next(err);
         res.json(resp);
     });
