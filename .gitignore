@@ -1,6 +1,7 @@
 /node_modules
 npm-debug.log
 /routes/data2.js
+/routes/syllabus.pdf
 .DS_Store
 /*.env
 # Elastic Beanstalk Files

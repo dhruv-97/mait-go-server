@@ -31,6 +31,7 @@ var assignmentRouter = require('./routes/assignmentRouter');
 var upcomingRouter = require('./routes/upcomingRouter');
 var markRouter = require('./routes/markRouter');
 var resultRouter = require('./routes/resultRouter');
+var syllabusRouter = require('./routes/syllabusRouter');
 var app = express();
 
 // view engine setup
@@ -43,25 +44,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://agile-hamlet-82527.herokuapp.com');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
-    next();
-});
-
 // passport config
 app.use(passport.initialize());
 
@@ -77,6 +59,7 @@ app.use('/assignment',assignmentRouter);
 app.use('/upcoming',upcomingRouter);
 app.use('/marks',markRouter);
 app.use('/result',resultRouter);
+app.use('/syllabus',syllabusRouter);
 
 
 // catch 404 and forward to error handler
