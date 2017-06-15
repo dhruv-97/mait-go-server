@@ -12,7 +12,6 @@ upcomingRouter.use(bodyParser.json());
 
 upcomingRouter.route('/')
 .get(function (req, res, next) {
-    
     upcomings.find({}).sort('eventDate').exec(function(err, upcomings) { 
         if (err) throw err;
         res.json(upcomings); 
