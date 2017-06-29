@@ -5,6 +5,7 @@ var cheerio= require('cheerio');
 var FormData = require('form-data');
 var Verify=require('./verify');
 var notices = require('../models/notice');
+var datesheets = require('../models/datesheet');
 var results = require('../models/result');
 function scrapeNotices(){
     request('http://ipu.ac.in/exam_notices.php', function(err,resp,body){
@@ -41,7 +42,41 @@ setInterval(function () {
     scrapeNotices();
      
 },3600000);
-
+function scrapeDatesheets(){
+    request('http://ipu.ac.in/exam_datesheet.php', function(err,resp,body){
+        if(err)
+            throw err;
+        var $ = cheerio.load(body);
+        var check=true;
+        $('.table-box td a').each(function(){
+            var content = $(this);
+            var contentText = content.text();
+            if(contentText.toLowerCase().indexOf('b. tech')!=-1 || contentText.toLowerCase().indexOf("b.tech")!=-1){
+                //console.log(contentText);
+                var urlText = $(this).attr('href');
+                    datesheets.find({'url':urlText}).sort('-createdAt').limit(1).exec(function (err, datesheet){
+                        if(check==false)
+                            return false;
+                        if(datesheet.length==0){
+                            datesheets.create({"datesheet":contentText,"url":urlText}, function (err, datesheet) {
+                                if (err) throw(err);
+                                console.log('datesheet created!');
+                            });
+                        }
+                        else{
+                            console.log('Still here');
+                            check=false;
+                        }
+                    })
+                }
+            });
+        })
+}
+scrapeDatesheets();
+setInterval(function () {
+    scrapeDatesheets();
+     
+},3700000);
 var scrapeRouter = express.Router();
 
 scrapeRouter.use(bodyParser.json());
@@ -56,6 +91,14 @@ scrapeRouter.route('/notices')
     notices.find({}).sort('createdAt').exec(function (err, notices) {
         if (err) throw err;
         res.json(notices);
+    });
+})
+
+scrapeRouter.route('/datesheets')
+.get(function (req, res, next) {
+    datesheets.find({}).sort('createdAt').exec(function (err, datesheet) {
+        if (err) throw err;
+        res.json(datesheet);
     });
 })
 scrapeRouter.route('/faculty')
