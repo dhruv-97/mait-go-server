@@ -352,5 +352,336 @@
     "exp": "14+",
     "img": "img/IT/23.jpg"
   }
+],
+"ECE": [
+    {
+        "name": "Prof. (Dr.) Neelam Sharma",
+        "designation": "Professor & Head, Dean (Women Welfare)",
+        "qualification": "Ph. D, M. Tech., B. Tech.",
+        "exp": " VLSI Technology, Digital Logic Design, Microprocessor & Microcontroller",
+        "img": "img/ECE/1.png"
+    },
+    {
+        "name": "Prof. (Dr.) R.S. Gupta",
+        "designation": "Professor",
+        "qualification": "Ph. D, M. Sc., B. Sc.",
+        "exp": " Solid State Electronics Devices, VLSI Design and modeling of Microelectronic Devices",
+        "img": "img/ECE/2.png"
+    },
+    {
+        "name": "Mr. Ajay Kumar Garg",
+        "designation": "Associate Professor",
+        "qualification": "Ph. D. (Purs.), M. Tech., B. Tech.",
+        "exp": " Communication Engineering",
+        "img": "img/ECE/3.png"
+    },
+    {
+        "name": "Dr. Sunil Kumar",
+        "designation": "Associate Professor",
+        "qualification": "Ph. D, M. Tech., B. Tech.",
+        "exp": " Microprocessors and controllers, Digital Design, Image Processing",
+        "img": "img/ECE/4.png"
+    },
+    {
+        "name": "Mr. M.G.Mohod",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Embedded Systems, Robotics",
+        "img": "img/ECE/5.png"
+    },
+    {
+        "name": "Dr. Ganga Prasad Pandey ",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D, M. Tech., B. Tech.",
+        "exp": " Microwave and Antenna",
+        "img": "img/ECE/6.png"
+    },
+    {
+        "name": "Mr. Parween Kr. Sinha",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D. (Purs.), M. Tech., B. Tech.",
+        "exp": " VLSI, Analog Signal Processing, VHDL",
+        "img": "img/ECE/7.png"
+    },
+    {
+        "name": "Mr. Binay Kumar Singh",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Electronics Design & Technology",
+        "img": "img/ECE/8.png"
+    },
+    {
+        "name": "Dr. Navneet Yadav",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D, M. Tech., B. Tech.",
+        "exp": " DSP, DIP",
+        "img": "img/ECE/9.png"
+    },
+    {
+        "name": "Mrs Abhilasha Gokhale",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Microcontrollers & Embedded Systems",
+        "img": "img/ECE/10.png"
+    },
+    {
+        "name": "Mr. R. K.Choudhary",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " VLSI Design",
+        "img": "img/ECE/11.png"
+    },
+    {
+        "name": "Dr.K.L.Pushkar",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D, M. Tech., B. Tech.",
+        "exp": " Analog Signal Processing, Embedded System Design",
+        "img": "img/ECE/12.png"
+    },
+    {
+        "name": "Mr. Javed Ahmad",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D. (Purs.), M. Tech., B. Tech.",
+        "exp": " Analog Signal Processing",
+        "img": "img/ECE/13.png"
+    },
+    {
+        "name": "Mr. Himanshu Khanna",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D. (Purs.), M. Tech., B. Tech.",
+        "exp": " Wireless Communication",
+        "img": "img/ECE/14.png"
+    },
+    {
+        "name": "Mr Parveen Choudhary",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " VLSI",
+        "img": "img/ECE/15.png"
+    },
+    {
+        "name": "Mr. Amit Saxena ",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " VLSI",
+        "img": "img/ECE/16.png"
+    },
+    {
+        "name": "Mrs Divya Goyal",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D. (Purs.), M. Tech., B. Tech.",
+        "exp": "",
+        "img": "img/ECE/17.png"
+    },
+    {
+        "name": "Mrs.Preeti Goyal",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " VLSI",
+        "img": "img/ECE/18.png"
+    },
+    {
+        "name": "Mr. Nitin Sharma ",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D. (Purs.), M. Tech., B. Tech.",
+        "exp": " Digital Image Processing",
+        "img": "img/ECE/19.png"
+    },
+    {
+        "name": "Ms. Sapna Gupta",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " VLSI",
+        "img": "img/ECE/20.png"
+    },
+    {
+        "name": "Mrs. Anubha Goyal",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": "",
+        "img": "img/ECE/21.png"
+    },
+    {
+        "name": "Mr. Umesh Ch. Singh",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Communication System",
+        "img": "img/ECE/22.png"
+    },
+    {
+        "name": "Dr.Awadhesh Kr. Singh",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D, M. Tech., B. Tech.",
+        "exp": " BIOTECHNOLGY",
+        "img": "img/ECE/23.png"
+    },
+    {
+        "name": "Mr. Ajay Kumar Gupta",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Digital Signal Processing",
+        "img": "img/ECE/24.png"
+    },
+    {
+        "name": "Mrs. Alpana Sahu",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Signal Processing",
+        "img": "img/ECE/25.png"
+    },
+    {
+        "name": "Mrs. Vatsala Khanna",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " VLSI",
+        "img": "img/ECE/26.png"
+    },
+    {
+        "name": "Mrs. Swati Sharma",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Electronics Product and Design Technology",
+        "img": "img/ECE/27.png"
+    },
+    {
+        "name": "Mrs.Rajni Gulati",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D. (Purs.), M. Tech., B. Tech.",
+        "exp": " ECE",
+        "img": "img/ECE/28.png"
+    },
+    {
+        "name": "Ms. Sonia Jain",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " ECE",
+        "img": "img/ECE/29.png"
+    },
+    {
+        "name": "Mr. S. K. Kundu",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D. (Purs.), M. Tech., B. Tech.",
+        "exp": " Microwave Engg.",
+        "img": "img/ECE/30.png"
+    },
+    {
+        "name": "Mrs. Sonam Rewari",
+        "designation": "Assistant Professor",
+        "qualification": "Ph. D. (Purs.), M. Tech., B. Tech.",
+        "exp": " VLSI",
+        "img": "img/ECE/31.png"
+    },
+    {
+        "name": "Ms. Stuti",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Rf and Microwave",
+        "img": "img/ECE/32.png"
+    },
+    {
+        "name": "Mr. Priyank Kr. Saxena",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " VLSI Design",
+        "img": "img/ECE/33.png"
+    },
+    {
+        "name": "Mr. Nitish Uppal",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Digital and Wireless Communication",
+        "img": "img/ECE/34.png"
+    },
+    {
+        "name": "Mr. Rohit Uday Lakhane",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Digital and Wireless Communication",
+        "img": "img/ECE/35.png"
+    },
+    {
+        "name": "Ms. Sumedha Gupta",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Signal Processing",
+        "img": "img/ECE/36.png"
+    },
+    {
+        "name": "Mrs. Kanika Agarwal",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " ECE",
+        "img": "img/ECE/37.png"
+    },
+    {
+        "name": "Mr. Vaibhav Nizhavan ",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " VLSI Design And Embedded Systems",
+        "img": "img/ECE/38.png"
+    },
+    {
+        "name": "Mr. Hemant Tulsani",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Signal Processing",
+        "img": "img/ECE/39.png"
+    },
+    {
+        "name": "Ms. Sonam ",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Digital Communication",
+        "img": "img/ECE/40.png"
+    },
+    {
+        "name": "Ms. Kanika Singhal ",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Communication Systems",
+        "img": "img/ECE/41.png"
+    },
+    {
+        "name": "Ms. Palak ",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " DIP",
+        "img": "img/ECE/42.png"
+    },
+    {
+        "name": "Ms. Neeraj Malik ",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Communication Systems",
+        "img": "img/ECE/43.png"
+    },
+    {
+        "name": "Mrs. Shalu Garg",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Digital Signal Processsing",
+        "img": "img/ECE/44.png"
+    },
+    {
+        "name": "Mr. Rohit Singh ",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " VLSI",
+        "img": "img/ECE/45.png"
+    },
+    {
+        "name": "Mr. Naveen Kumar ",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " Analog Signal Processing",
+        "img": "img/ECE/46.png"
+    },
+    {
+        "name": "Mr. Neeraj Gupta",
+        "designation": "Assistant Professor",
+        "qualification": "M. Tech., B. Tech.",
+        "exp": " VLSI and Embedded Systems",
+        "img": "img/ECE/47.png"
+    }
 ]
 }

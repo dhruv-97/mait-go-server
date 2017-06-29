@@ -31,7 +31,8 @@ var teacherSchema = new Schema({
 // create a schema
 var facultySchema = new Schema({
     IT: [teacherSchema],
-    CSE: [teacherSchema]
+    CSE: [teacherSchema],
+    ECE: [teacherSchema]
 
 });
 

@@ -17,6 +17,16 @@ facultyRouter.route('/')
         res.json(faculty);
         });
 })
+.put(function (req, res, next) {
+    faculties.findByIdAndUpdate("5909cbfef36d2842bdf885b7", {
+        $set: req.body
+    }, {
+        new: true
+    }, function (err, faculty) {
+        if (err) next(err);
+        res.json(faculty);
+    });
+})
 .post(function (req, res, next) {
     faculties.create(req.body, function (err, faculty) {
         if (err) {
