@@ -90,7 +90,13 @@ scrapeRouter.route('/notices')
 .get(function (req, res, next) {
     notices.find({}).sort('createdAt').exec(function (err, notices) {
         if (err) throw err;
-        res.json(notices);
+        let data = {};
+        data.exams=notices;
+        datesheets.find({}).sort('createdAt').exec(function (err, datesheet) {
+            if (err) throw err;
+            data.datesheets=datesheet;
+            res.json(data);
+        });
     });
 })
 
