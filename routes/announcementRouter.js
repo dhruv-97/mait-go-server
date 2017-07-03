@@ -13,17 +13,20 @@ var options = {
     'Content-Type': 'application/json',
     'Authorization': 'key=AAAAiS4AtkA:APA91bGunMyKw0ite-QmK_Vnma39aHLp5uMw04o0gODo4SYjq3ujWiWcMPhEOHyDLV_oF6xdMRPU9QIbOeMbgIMy_AfiIUZJR5DiLRabbCzQBF894jtGXe7L0JvyMNfEezzNWt-ay8I7'
   },
-  body: {
+  body: {        
+ 	"to":"d0bP5AhToDc:APA91bEbA2PC4sgZZkUBHfZSI8btNCswNVVHSo7a_fOzY2KlFAYEFFOLSM8F5FTchxW7BBVGEO-yKmUo47_6s9y02j3Iz8nJe8ElHVnu6AGhESTpa6HnO792FCQQ66ioYxLMxzisr2Sw",
+    
 	"data": {
     "title":"fetchFornotification",
-    "body":"data"
+    "body":"data",
+    "sound": "default"
     },
     "notification": {
     "title":"fetchForNotification",
-    "body":"notify"
-    },
-  "to":"fHYlJkaRpCU:APA91bGWOwt3UnQekAWmbDbdornJQlMuJA8xKgQOFCd6izmcKvFYM-o3JUqao8GFjaxSk66-BWVB_IPl_E1ByyCPsdRVG2ErIkg5MA5sIDSIVZxWxPf2v2mgQXEw92Fzz5oMH-RyOpQ3"
+    "body":"New announcement!",
+    "sound": "default"
     }
+ }
 
 };
 
