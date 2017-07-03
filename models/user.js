@@ -2,11 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var User = new Schema({
-    class: {
-        type: String,
-        required: true
+    _id: {
+        type: String
     },
-    deviceID: {
+    class: {
         type: String,
         required: true
     },

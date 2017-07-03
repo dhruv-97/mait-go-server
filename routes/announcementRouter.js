@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var Announcements = require('../models/announcements');
+var Users = require('./models/user');
+
 var Verify=require('./verify');
 
 var announcementRouter = express.Router();
@@ -27,7 +29,7 @@ announcementRouter.route('/')
         res.writeHead(200, {
             'Content-Type': 'text/plain'
         });
-
+        var group = announcement.sem + announcement.group;
         res.end('Added the announcement with id: ' + id);
     });
 })
