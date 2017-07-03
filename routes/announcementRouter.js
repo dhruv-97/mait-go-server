@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var Announcements = require('../models/announcements');
-var Users = require('./models/user');
+var Users = require('../models/user');
 
 var Verify=require('./verify');
 
