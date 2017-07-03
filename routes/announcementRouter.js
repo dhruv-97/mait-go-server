@@ -5,6 +5,26 @@ var mongoose = require('mongoose');
 
 var Announcements = require('../models/announcements');
 var Users = require('../models/user');
+var request = require('request');
+var options = {
+  url: 'https://XXX/index.php?/api/V2/get_case/2',
+  method: 'POST',
+  headers: {
+    'content-type': 'application/json'
+  },
+  body: {
+	"data": {
+    "title":"fetchFornotification",
+    "body":"data"
+    },
+    "notification": {
+    "title":"fetchForNotification",
+    "body":"notify"
+    },
+  "to":"fHYlJkaRpCU:APA91bGWOwt3UnQekAWmbDbdornJQlMuJA8xKgQOFCd6izmcKvFYM-o3JUqao8GFjaxSk66-BWVB_IPl_E1ByyCPsdRVG2ErIkg5MA5sIDSIVZxWxPf2v2mgQXEw92Fzz5oMH-RyOpQ3"
+    }
+
+};
 
 var Verify=require('./verify');
 
@@ -29,8 +49,19 @@ announcementRouter.route('/')
         res.writeHead(200, {
             'Content-Type': 'text/plain'
         });
-        var group = announcement.sem + announcement.group;
         res.end('Added the announcement with id: ' + id);
+        var group = announcement.sem + announcement.group;
+        Users.find({class:group},function(err,response){
+            console.log(response);
+            response.forEach(function(element) {
+                let token = element.token;
+                options.body.to=token;
+                request(options, function(err,response2,body){
+                    let json = JSON.parse(body);
+                    console.log(body);
+                })
+            }, this);
+        });
     });
 })
 
