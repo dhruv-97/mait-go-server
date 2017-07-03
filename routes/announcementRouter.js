@@ -7,14 +7,14 @@ var Announcements = require('../models/announcements');
 var Users = require('../models/user');
 var request = require('request');
 var options = {
-  url: 'https://XXX/index.php?/api/V2/get_case/2',
+  url: 'https://fcm.googleapis.com/fcm/send',
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'key=AAAAiS4AtkA:APA91bGunMyKw0ite-QmK_Vnma39aHLp5uMw04o0gODo4SYjq3ujWiWcMPhEOHyDLV_oF6xdMRPU9QIbOeMbgIMy_AfiIUZJR5DiLRabbCzQBF894jtGXe7L0JvyMNfEezzNWt-ay8I7'
   },
   body: {        
- 	"to":"d0bP5AhToDc:APA91bEbA2PC4sgZZkUBHfZSI8btNCswNVVHSo7a_fOzY2KlFAYEFFOLSM8F5FTchxW7BBVGEO-yKmUo47_6s9y02j3Iz8nJe8ElHVnu6AGhESTpa6HnO792FCQQ66ioYxLMxzisr2Sw",
+ 	"to":"c5Imac8r67A:APA91bH5ZUGZTkYz-3fj5pAWQ9zgho8tbaskfxy82xKTX47Xt-qc9sXpPUsAu8f0HygILI99xiz6RyVR8T2WhlFnvbdUt6FE08_iCMeMdXKf7XGOSof7UuAEm03iNp3LT2n9PIzSGjkI",
     
 	"data": {
     "title":"fetchFornotification",
