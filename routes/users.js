@@ -33,8 +33,16 @@ UserRouter.route('/')
               res.end('Added the User with id: ' + id);
           });
         }
-        else
-          res.json(user);
+        else{
+            Users.findByIdAndUpdate(req.body._id, {
+                $set: req.body
+            }, {
+                new: true
+            }, function (err, User) {
+                if (err) next(err);
+                res.json(User);
+            });
+                }
     });
 })
 .delete(function (req, res, next) {
