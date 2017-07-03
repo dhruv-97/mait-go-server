@@ -61,7 +61,6 @@ announcementRouter.route('/')
                 let token = element.token;
                 options.body.to=token;
                 request(options, function(err,response2,body){
-                    let json = JSON.parse(body);
                     console.log(body);
                 })
             }, this);
