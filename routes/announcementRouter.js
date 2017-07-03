@@ -10,7 +10,8 @@ var options = {
   url: 'https://XXX/index.php?/api/V2/get_case/2',
   method: 'POST',
   headers: {
-    'content-type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': 'key=AAAAiS4AtkA:APA91bGunMyKw0ite-QmK_Vnma39aHLp5uMw04o0gODo4SYjq3ujWiWcMPhEOHyDLV_oF6xdMRPU9QIbOeMbgIMy_AfiIUZJR5DiLRabbCzQBF894jtGXe7L0JvyMNfEezzNWt-ay8I7'
   },
   body: {
 	"data": {
