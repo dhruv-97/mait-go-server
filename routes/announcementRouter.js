@@ -47,11 +47,11 @@ announcementRouter.route('/')
         Users.find({class:group},function(err,response){
             console.log(response);
             response.forEach(function(element) {
+                let token = element.token;
                 unirest.post('https://fcm.googleapis.com/fcm/send')
                 .headers({'Content-Type': 'application/json',
                         'Authorization': 'key=AAAAiS4AtkA:APA91bGunMyKw0ite-QmK_Vnma39aHLp5uMw04o0gODo4SYjq3ujWiWcMPhEOHyDLV_oF6xdMRPU9QIbOeMbgIMy_AfiIUZJR5DiLRabbCzQBF894jtGXe7L0JvyMNfEezzNWt-ay8I7'})
-                .send({ "to":"cBclOgkMWgE:APA91bH7CYvI3wvWg8E5W9Q-Lq_RV8g9uV-HmYaC92iQIkMoQyyx2b0rdaku-5TSoqalpQFfHQS3FKu18LZO4fbUHw0_wxI3ykvJrGBDvxHFNXSqSTZsAq0noIQQfxxSPwUQS-QgrTGm",
-                        
+                .send({ "to":token,
                         "data": {
                         "title":"fetchFornotification",
                         "body":"data",
