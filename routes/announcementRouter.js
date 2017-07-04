@@ -29,6 +29,19 @@ var options = {
  }
 
 };
+function sendNotifications(group) {
+    Users.find({class:group},function(err,response){
+            console.log(response);
+            response.forEach(function(element) {
+                let token = element.token;
+                options.body.to=token;
+                console.log(options);
+                request(options, function(err,response2,body){
+                    console.log(body);
+                })
+            }, this);
+    });
+}
 
 var Verify=require('./verify');
 
@@ -53,18 +66,9 @@ announcementRouter.route('/')
         res.writeHead(200, {
             'Content-Type': 'text/plain'
         });
-        res.end('Added the announcement with id: ' + id);
         var group = announcement.sem + announcement.group;
-        Users.find({class:group},function(err,response){
-            console.log(response);
-            response.forEach(function(element) {
-                let token = element.token;
-                options.body.to=token;
-                request(options, function(err,response2,body){
-                    console.log(body);
-                })
-            }, this);
-        });
+        sendNotifications(group);
+        res.end('Added the announcement with id: ' + id);
     });
 })
 
