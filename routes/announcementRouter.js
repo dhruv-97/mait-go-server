@@ -62,6 +62,7 @@ announcementRouter.route('/')
             response.forEach(function(element) {
                 let token = element.token;
                 options.body.to=token;
+                options.body=JSON.stringify(body);
                 console.log(options);
                 request(options, function(err,response2,body){
                     console.log(body);
