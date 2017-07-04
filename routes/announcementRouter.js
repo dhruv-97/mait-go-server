@@ -5,34 +5,31 @@ var mongoose = require('mongoose');
 
 var Announcements = require('../models/announcements');
 var Users = require('../models/user');
-var request = require('request');
+var http = require('http');
+
+var headers =  {
+    'Content-Type': 'application/json',
+    'Authorization': 'key=AAAAiS4AtkA:APA91bGunMyKw0ite-QmK_Vnma39aHLp5uMw04o0gODo4SYjq3ujWiWcMPhEOHyDLV_oF6xdMRPU9QIbOeMbgIMy_AfiIUZJR5DiLRabbCzQBF894jtGXe7L0JvyMNfEezzNWt-ay8I7'
+};
+var body ={        
+ 	to:"c5Imac8r67A:APA91bH5ZUGZTkYz-3fj5pAWQ9zgho8tbaskfxy82xKTX47Xt-qc9sXpPUsAu8f0HygILI99xiz6RyVR8T2WhlFnvbdUt6FE08_iCMeMdXKf7XGOSof7UuAEm03iNp3LT2n9PIzSGjkI",
+    
+	data: {
+    title:"fetchFornotification",
+    body:"data",
+    sound: "default"
+    },
+    notification: {
+    title:"fetchForNotification",
+    body:"New announcement!",
+    sound: "default"
+    }
+};
 var options = {
   url: 'https://fcm.googleapis.com/fcm/send',
   method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'key=AAAAiS4AtkA:APA91bGunMyKw0ite-QmK_Vnma39aHLp5uMw04o0gODo4SYjq3ujWiWcMPhEOHyDLV_oF6xdMRPU9QIbOeMbgIMy_AfiIUZJR5DiLRabbCzQBF894jtGXe7L0JvyMNfEezzNWt-ay8I7'
-  },
-  body: {        
- 	"to":"c5Imac8r67A:APA91bH5ZUGZTkYz-3fj5pAWQ9zgho8tbaskfxy82xKTX47Xt-qc9sXpPUsAu8f0HygILI99xiz6RyVR8T2WhlFnvbdUt6FE08_iCMeMdXKf7XGOSof7UuAEm03iNp3LT2n9PIzSGjkI",
-    
-	"data": {
-    "title":"fetchFornotification",
-    "body":"data",
-    "sound": "default"
-    },
-    "notification": {
-    "title":"fetchForNotification",
-    "body":"New announcement!",
-    "sound": "default"
-    }
- }
-
+  headers: headers
 };
-function sendNotifications(group) {
-    
-}
-
 var Verify=require('./verify');
 
 var announcementRouter = express.Router();
@@ -61,13 +58,10 @@ announcementRouter.route('/')
             console.log(response);
             response.forEach(function(element) {
                 let token = element.token;
-                options.body.to=token;
-                options.body=JSON.stringify(body);
+                body.to=token;
+                let bodyString=JSON.stringify(body);
                 console.log(options);
-                request(options, function(err,response2,body){
-                    console.log(body);
-                    res.end('Added the announcement with id: ' + id);
-                })
+                http.request(options, callback).write(bodyString);
             }, this);
         }); 
     });
