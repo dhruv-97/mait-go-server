@@ -47,10 +47,6 @@ announcementRouter.route('/')
         Users.find({class:group},function(err,response){
             console.log(response);
             response.forEach(function(element) {
-                let token = element.token;
-                options.body.to=token;
-                options.body=JSON.stringify(body);
-                console.log(options);
                 unirest.post('https://fcm.googleapis.com/fcm/send')
                 .headers({'Content-Type': 'application/json',
                         'Authorization': 'key=AAAAiS4AtkA:APA91bGunMyKw0ite-QmK_Vnma39aHLp5uMw04o0gODo4SYjq3ujWiWcMPhEOHyDLV_oF6xdMRPU9QIbOeMbgIMy_AfiIUZJR5DiLRabbCzQBF894jtGXe7L0JvyMNfEezzNWt-ay8I7'})
