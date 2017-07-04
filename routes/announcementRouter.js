@@ -30,17 +30,7 @@ var options = {
 
 };
 function sendNotifications(group) {
-    Users.find({class:group},function(err,response){
-            console.log(response);
-            response.forEach(function(element) {
-                let token = element.token;
-                options.body.to=token;
-                console.log(options);
-                request(options, function(err,response2,body){
-                    console.log(body);
-                })
-            }, this);
-    });
+    
 }
 
 var Verify=require('./verify');
@@ -67,8 +57,18 @@ announcementRouter.route('/')
             'Content-Type': 'text/plain'
         });
         var group = announcement.sem + announcement.group;
-        sendNotifications(group);
-        res.end('Added the announcement with id: ' + id);
+        Users.find({class:group},function(err,response){
+            console.log(response);
+            response.forEach(function(element) {
+                let token = element.token;
+                options.body.to=token;
+                console.log(options);
+                request(options, function(err,response2,body){
+                    console.log(body);
+                    res.end('Added the announcement with id: ' + id);
+                })
+            }, this);
+        }); 
     });
 })
 
