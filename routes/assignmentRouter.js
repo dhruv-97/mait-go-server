@@ -41,14 +41,8 @@ assignmentRouter.route('/')
                         'Authorization': 'key=AAAAiS4AtkA:APA91bHv6islehAx0nRsakGfz8rEahTFa7DFzPVHipDAV_8__v5utSn4e3PVi2CCNph27-BEmK3Tk_uh47Etj9JF6ppXd2OKKNNIvdQgEhXBH16bk6b42-IHjn_sVlBR06lDU4k9MCe9'})
                 .send({ "to":token,
                         "data": {
-                        "title":"fetchFornotification",
-                        "body":"data",
-                        "sound": "default"
-                        },
-                        "notification": {
-                        "title":"fetchForNotification",
-                        "body":"New assignment!",
-                        "sound": "default"
+                        "title":"New Assignment!",
+                        "body": assignment.name+ " has uploaded a new assignment."
                         } })
                 .end(function (response) {
                 console.log(response.body);
