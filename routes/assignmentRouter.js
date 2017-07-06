@@ -3,6 +3,8 @@ var shortid = require('shortid');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var assignments = require('../models/assignment');
+var Users = require('../models/user');
+var unirest = require('unirest');
 var Verify=require('./verify');
 const aws = require('aws-sdk');
 aws.config.update({region: 'ap-south-1'});
@@ -29,6 +31,30 @@ assignmentRouter.route('/')
         });
 
         res.end('Added the assignment with id: ' + id);
+        var group = assignment.sem + assignment.group;
+        Users.find({class:group},function(err,response){
+            console.log(response);
+            response.forEach(function(element) {
+                let token = element.token;
+                unirest.post('https://fcm.googleapis.com/fcm/send')
+                .headers({'Content-Type': 'application/json',
+                        'Authorization': 'key=AAAAiS4AtkA:APA91bHv6islehAx0nRsakGfz8rEahTFa7DFzPVHipDAV_8__v5utSn4e3PVi2CCNph27-BEmK3Tk_uh47Etj9JF6ppXd2OKKNNIvdQgEhXBH16bk6b42-IHjn_sVlBR06lDU4k9MCe9'})
+                .send({ "to":token,
+                        "data": {
+                        "title":"fetchFornotification",
+                        "body":"data",
+                        "sound": "default"
+                        },
+                        "notification": {
+                        "title":"fetchForNotification",
+                        "body":"New assignment!",
+                        "sound": "default"
+                        } })
+                .end(function (response) {
+                console.log(response.body);
+                });
+            }, this);
+        });
     });
 })
 .delete(function (req, res, next) {
