@@ -7,6 +7,7 @@ function mapProgramme(x){
   switch(x){
     case '077':
     case '031': return 'BACHELOR OF TECHNOLOGY (INFORMATION TECHNOLOGY)';
+    case '027': return 'BACHELOR OF TECHNOLOGY (COMPUTER SCIENCE AND ENGINEERING)';
   }
 }
 function mapCollege(x){

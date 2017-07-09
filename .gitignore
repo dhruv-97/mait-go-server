@@ -2,6 +2,7 @@
 npm-debug.log
 /routes/data2.js
 /routes/syllabus.pdf
+/parsing
 .DS_Store
 /*.env
 # Elastic Beanstalk Files

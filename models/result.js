@@ -10,6 +10,9 @@ var resultSchema = new Schema({
         min:1,
         max:8
     },
+    credits:{
+        type: Number
+    },
     name:{
       type: String,
       required: true
