@@ -151,9 +151,9 @@ resultRouter.route('/:roll')
       if(resp==null)
         res.json({});
       else{
-        resp.college=mapCollege(resp.college);
-        resp.programme=mapProgramme(resp.programme);
-        res.json(resp);
+        resp[0].college=mapCollege(resp.college);
+        resp[0].programme=mapProgramme(resp.programme);
+        res.json(resp[0]);
       }
     });
 });
