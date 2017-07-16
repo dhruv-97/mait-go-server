@@ -49,17 +49,24 @@ function createResult(){
       },this);
       setTimeout(function(){
         createUniversityRank(sem,pro);
-        createCollegeRank('133',sem,pro);
         createCollegeRank('207',sem,pro);
         createCollegeRank('208',sem,pro);
         createCollegeRank('104',sem,pro);
+        createCollegeRank('101',sem,pro);
+        createCollegeRank('180',sem,pro);
+        createCollegeRank('209',sem,pro);
+        createCollegeRank('255',sem,pro);
+        createCollegeRank('551',sem,pro);
+        createCollegeRank('702',sem,pro);
+        createCollegeRank('153',sem,pro);
         createCollegeRank2('512','115',sem,pro);
         createCollegeRank2('964','148',sem,pro);
         createCollegeRank2('768','132',sem,pro);
         createCollegeRank2('963','150',sem,pro);
         createCollegeRank2('962','156',sem,pro);
-      },10000);
-    },10000);
+        createCollegeRank2('965','133',sem,pro);
+      },5000);
+    },5000);
 }
 function createUniversityRank(x,y){
   results.find({sem:x,programme:y}).sort('-creditp').exec( function(err,resp){
@@ -156,4 +163,11 @@ MarkRouter.route('/create')
   createResult();
   res.send('Trying my best');
 });
+MarkRouter.route('/rank')
+.get(function(req,res,next){
+  createCollegeRank('702',3,'112');
+  
+
+  res.send('Trying my best');
+})
 module.exports=MarkRouter;

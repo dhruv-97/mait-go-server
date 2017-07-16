@@ -8,6 +8,18 @@ function mapProgramme(x){
     case '077':
     case '031': return 'BACHELOR OF TECHNOLOGY (INFORMATION TECHNOLOGY)';
     case '027': return 'BACHELOR OF TECHNOLOGY (COMPUTER SCIENCE AND ENGINEERING)';
+    case '028': return 'BACHELOR OF TECHNOLOGY (ELECTRONICS AND COMMUNICATIONS ENGINEERING)';
+    case '036': return 'BACHELOR OF TECHNOLOGY (MECHANICAL AND AUTOMATION ENGINEERING)';
+    case '049': return 'BACHELOR OF TECHNOLOGY (ELECTRICAL & ELECTRONICS ENGINEERING)';
+    case '034': return 'BACHELOR OF TECHNOLOGY (CIVIL ENGINEERING)';
+    case '111': return 'BACHELOR OF TECHNOLOGY (MECHANICAL ENGINEERING)';
+    case '030': return 'BACHELOR OF TECHNOLOGY (INSTRUMENTATION AND CONTROL ENGINEERING)';
+    case '112': return 'BACHELOR OF TECHNOLOGY (MECHATRONICS)';
+    case '110': return 'BACHELOR OF TECHNOLOGY (ELECTRICAL ENGINEERING)';
+    case '037': return 'BACHELOR OF TECHNOLOGY (POWER ENGINEERING)';
+    case '056': return 'BACHELOR OF TECHNOLOGY (ENVIRONMENTAL ENGINEERING)';
+    case '086': return 'BACHELOR OF TECHNOLOGY (TOOLS ENGINEERING)';
+    default: return 'Not found';
   }
 }
 function mapCollege(x){
@@ -17,6 +29,7 @@ function mapCollege(x){
     case '115': return 'BHARATI VIDYAPEETH COLLEGE OF ENGINEERING';
     case '768':
     case '132': return 'GURU TEGH BAHADUR INSTITUTE OF TECHNOLOGY';
+    case '965':
     case '133': return 'HMR INSTITUTE OF TECHNOLOGY & MANAGEMENT';
     case '964':
     case '148': return 'MAHARAJA AGRASEN INSTITUTE OF TECHNOLOGY';
@@ -26,7 +39,14 @@ function mapCollege(x){
     case '156': return 'NORTHERN INDIA ENGINEERING COLLEGE';
     case '207': return 'CH. BRAHAM PRAKASH GOVERNMENT ENGINEERING COLLEGE (FORMERLY GEC)';
     case '208': return 'BHAGWAN PARSHURAM INSTITUTE OF TECHNOLOGY';
-
+    case '101': return 'AMBEDKAR INSTITUTE OF ADVANCED COMMUNICATION TECHNOLOGIES & RESEARCH (FORMERLY AIT)';
+    case '180': return 'DELHI TECHNICAL CAMPUS, GREATER NOIDA';
+    case '209': return 'G B PANT GOVT. ENGINEERING COLLEGE';
+    case '255': return 'JIMS ENGINEERING MANAGEMENT TECHNICAL CAMPUS, GREATER NOIDA';
+    case '551': return 'MAHAVIR SWAMI INSTITUTE OF TECHNOLOGY';
+    case '702': return 'DELHI INSTITUTE OF TOOL ENGINEERING';
+    case '153': return 'NATIONAL POWER TRAINING INSTITUTE';
+    default: return 'Not found';
   }
 }
 var resultRouter = express.Router();
@@ -123,13 +143,18 @@ resultRouter.route('/')
 resultRouter.route('/:roll')
 .get(function (req, res, next) {
   req.query.roll=req.params.roll;
-  results.findOne(req.query)
+  results.find(req.query)
+    .sort('-sem')
     .populate('marks')
     .exec(function (err, resp) {
       if(err) next(err);
-      resp.college=mapCollege(resp.college);
-      resp.programme=mapProgramme(resp.programme);
-      res.json(resp);
+      if(resp==null)
+        res.json({});
+      else{
+        resp.college=mapCollege(resp.college);
+        resp.programme=mapProgramme(resp.programme);
+        res.json(resp);
+      }
     });
 });
 module.exports=resultRouter;
