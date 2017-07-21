@@ -3,8 +3,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Marks = require('../models/mark');
 var results = require('../models/result');
-var map = require('../parsing/mapping.js');
-var data = require('../parsing/data.js');
+// var map = require('../parsing/mapping.js');
+// var data = require('../parsing/data.js');
 
 function createResult(){
   let marksarr=[];
