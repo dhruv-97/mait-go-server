@@ -15,7 +15,7 @@ var markSchema = new Schema({
     },
     internal: {
         type: Number,
-        max: 40,
+        max: 100,
         min:0,
         required: true
 
@@ -23,7 +23,7 @@ var markSchema = new Schema({
     external: {
         type: Number,
         min:0,
-        max:75,
+        max:100,
         required: true
     },
     total: {

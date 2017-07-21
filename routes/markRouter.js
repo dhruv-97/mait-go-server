@@ -3,8 +3,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Marks = require('../models/mark');
 var results = require('../models/result');
-// var map = require('../parsing/mapping.js');
-// var data = require('../parsing/data.js');
+var map = require('../parsing/mapping.js');
+var data = require('../parsing/data.js');
 
 function createResult(){
   let marksarr=[];
@@ -65,8 +65,9 @@ function createResult(){
         createCollegeRank2('963','150',sem,pro);
         createCollegeRank2('962','156',sem,pro);
         createCollegeRank2('965','133',sem,pro);
-      },5000);
-    },5000);
+        console.log('We are done');
+      },10000);
+    },10000);
 }
 function createUniversityRank(x,y){
   results.find({sem:x,programme:y}).sort('-creditp').exec( function(err,resp){

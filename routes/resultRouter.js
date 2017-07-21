@@ -145,14 +145,16 @@ resultRouter.route('/:roll')
   req.query.roll=req.params.roll;
   results.find(req.query)
     .sort('-sem')
+    //.limit(1)
     .populate('marks')
     .exec(function (err, resp) {
       if(err) next(err);
       if(resp==null)
         res.json({});
       else{
-        resp[0].college=mapCollege(resp.college);
-        resp[0].programme=mapProgramme(resp.programme);
+        console.log(resp);
+        resp[0].college=mapCollege(resp[0].college);
+        resp[0].programme=mapProgramme(resp[0].programme);
         res.json(resp[0]);
       }
     });

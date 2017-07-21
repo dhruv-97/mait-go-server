@@ -30,9 +30,11 @@ var assignmentSchema = new Schema({
     files:{
         type:[String],
         required: true
+    },
+    createdAt: {
+        type: String,
+        required: true
     }
-}, {
-    timestamps: true
 });
 var assignments = mongoose.model('assignment', assignmentSchema);
 

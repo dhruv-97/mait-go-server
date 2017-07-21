@@ -18,9 +18,11 @@ var announcementSchema = new Schema({
     message: {
         type: String,
         required: true
+    },
+    createdAt: {
+        type: String,
+        required: true
     }
-}, {
-    timestamps: true
 });
 var Announcements = mongoose.model('announcement', announcementSchema);
 

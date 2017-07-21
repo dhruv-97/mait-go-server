@@ -35,6 +35,8 @@ announcementRouter.route('/')
 })
 
 .post(function (req, res, next) {
+    let date = Date.now();
+    req.body.createdAt = date.toString();
     Announcements.create(req.body, function (err, announcement) {
         if (err) next(err);
         console.log('Announcement created!');
