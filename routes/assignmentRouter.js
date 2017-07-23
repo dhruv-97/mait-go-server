@@ -21,8 +21,13 @@ assignmentRouter.route('/')
     });
 })
 .post(function (req, res, next) {
-    let date = Date.now();
-    req.body.createdAt = date.toString();
+    let date = new Date();
+    req.body.createdAt = date.getDate() + "/"
+                + (date.getMonth()+1)  + "/" 
+                + date.getFullYear() + " @ "  
+                + date.getHours() + ":"  
+                + date.getMinutes() + ":" 
+                + date.getSeconds();
     assignments.create(req.body, function (err, assignment) {
         if (err) next(err);
         console.log('assignment created!');
