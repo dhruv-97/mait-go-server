@@ -43,6 +43,11 @@ var timeSchema = new Schema({
         type: String,
         default: 'found'
     },
+    shift: {
+        type: String,
+        enum: ['morning','evening'],
+        required: true
+    },
     monday: [daySchema],
     tuesday: [daySchema],
     wednesday: [daySchema],
