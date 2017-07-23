@@ -37,7 +37,7 @@ angular.module('formExample', [])
     $scope.announcement={};
     $scope.sendAnnouncement = function () {
             $scope.announcement.group=jsUcfirst($scope.announcement.group);
-            $scope.announcement.date=creatDate();
+            $scope.announcement.createdAt=creatDate();
             var announcementObj= angular.toJson($scope.announcement);
             $http.post('http://ec2-52-66-87-230.ap-south-1.compute.amazonaws.com/announcement',announcementObj,{
             headers: { 'Content-Type': 'application/json'}
@@ -58,7 +58,7 @@ angular.module('formExample', [])
     $scope.sendAssignment = function () {
             console.log($scope.assignment);
             $scope.assignment.group=jsUcfirst($scope.assignment.group);
-            $scope.assignment.date=creatDate();
+            $scope.assignment.createdAt=creatDate();
             var assignmentObj= angular.toJson($scope.assignment);
             $http.post('http://ec2-52-66-87-230.ap-south-1.compute.amazonaws.com/assignment',assignmentObj,{
             headers: { 'Content-Type': 'application/json'}
