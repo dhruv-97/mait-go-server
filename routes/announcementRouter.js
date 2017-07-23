@@ -21,7 +21,7 @@ var options = {
 };
 var Verify=require('./verify');
 
-function creatDate(){
+function createDate(){
   let date = new Date();
     return date.getDate() + "/"
                 + (date.getMonth()+1)  + "/" 
@@ -46,7 +46,6 @@ announcementRouter.route('/')
 
 .post(function (req, res, next) {
     req.body.createdAt = createDate();
-    console.log(req.body);
     Announcements.create(req.body, function (err, announcement) {
         if (err) throw(err);
         console.log('Announcement created!');
