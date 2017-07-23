@@ -21,6 +21,16 @@ var options = {
 };
 var Verify=require('./verify');
 
+function creatDate(){
+  let date = new Date();
+    return date.getDate() + "/"
+                + (date.getMonth()+1)  + "/" 
+                + date.getFullYear() + " @ "  
+                + date.getHours() + ":"  
+                + date.getMinutes() + ":" 
+                + date.getSeconds();
+}
+
 var announcementRouter = express.Router();
 
 announcementRouter.use(bodyParser.json());
@@ -35,6 +45,7 @@ announcementRouter.route('/')
 })
 
 .post(function (req, res, next) {
+    req.body.createdAt = createDate();
     Announcements.create(req.body, function (err, announcement) {
         if (err) next(err);
         console.log('Announcement created!');

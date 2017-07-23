@@ -7,6 +7,17 @@ var Users = require('../models/user');
 var unirest = require('unirest');
 var Verify=require('./verify');
 const aws = require('aws-sdk');
+
+function creatDate(){
+  let date = new Date();
+    return date.getDate() + "/"
+                + (date.getMonth()+1)  + "/" 
+                + date.getFullYear() + " @ "  
+                + date.getHours() + ":"  
+                + date.getMinutes() + ":" 
+                + date.getSeconds();
+}
+
 aws.config.update({region: 'ap-south-1'});
 const S3_BUCKET = process.env.S3_BUCKET_NAME||"mait-server-img";
 var assignmentRouter = express.Router();
@@ -21,6 +32,7 @@ assignmentRouter.route('/')
     });
 })
 .post(function (req, res, next) {
+    req.body.createdAt = createDate();
     assignments.create(req.body, function (err, assignment) {
         if (err) next(err);
         console.log('assignment created!');
