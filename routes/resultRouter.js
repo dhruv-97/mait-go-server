@@ -145,11 +145,12 @@ resultRouter.route('/:roll')
   req.query.roll=req.params.roll;
   results.find(req.query)
     .sort('-sem')
-    .limit(1)
+    // .limit(1)
     .populate('marks')
     .exec(function (err, resp) {
+      console.log(resp);
       if(err) next(err);
-      if(resp==null)
+      if(resp==[])
         res.json({});
       else{
         console.log(resp);

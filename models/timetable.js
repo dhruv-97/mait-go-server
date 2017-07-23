@@ -39,6 +39,10 @@ var timeSchema = new Schema({
         type: String,
         required: true
     },
+    notification: {
+        type: String,
+        default: 'found'
+    },
     monday: [daySchema],
     tuesday: [daySchema],
     wednesday: [daySchema],

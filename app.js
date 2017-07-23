@@ -30,6 +30,8 @@ var upcomingRouter = require('./routes/upcomingRouter');
 var markRouter = require('./routes/markRouter');
 var resultRouter = require('./routes/resultRouter');
 var syllabusRouter = require('./routes/syllabusRouter');
+var infoRouter = require('./routes/infoRouter');
+
 var app = express();
 
 // view engine setup
@@ -41,12 +43,6 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use( bodyParser.json({limit: '50mb'}) );
-app.use(bodyParser.urlencoded({
-  limit: '50mb',
-  extended: true,
-  parameterLimit:50000
-}));
 app.use(cookieParser());
 // passport config
 app.use(passport.initialize());
@@ -64,6 +60,7 @@ app.use('/upcoming',upcomingRouter);
 app.use('/marks',markRouter);
 app.use('/result',resultRouter);
 app.use('/syllabus',syllabusRouter);
+app.use('/info',infoRouter);
 
 
 // catch 404 and forward to error handler
