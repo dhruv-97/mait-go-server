@@ -148,12 +148,10 @@ resultRouter.route('/:roll')
     // .limit(1)
     .populate('marks')
     .exec(function (err, resp) {
-      console.log(resp);
       if(err) next(err);
       if(resp==[])
         res.json({});
       else{
-        console.log(resp);
         resp[0].college=mapCollege(resp[0].college);
         resp[0].programme=mapProgramme(resp[0].programme);
         res.json(resp[0]);

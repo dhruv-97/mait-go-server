@@ -44,7 +44,7 @@ timetableRouter.route('/:timetableId')
     var group= req.params.timetableId.substring(1,req.params.timetableId.length);
     TimeTables.findOne({"sem":sem,"group":group},function (err, timetable) {
         if (err) next(err);
-        if(timetable={})
+        if(timetable=={})
             res.json({notification:'notfound'});
         else
             res.json(timetable);
