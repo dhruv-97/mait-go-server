@@ -46,8 +46,9 @@ announcementRouter.route('/')
 
 .post(function (req, res, next) {
     req.body.createdAt = createDate();
+    console.log(req.body);
     Announcements.create(req.body, function (err, announcement) {
-        if (err) next(err);
+        if (err) throw(err);
         console.log('Announcement created!');
         var id = announcement._id;
         res.writeHead(200, {
