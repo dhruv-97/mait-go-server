@@ -20,7 +20,7 @@ timetableRouter.route('/')
 
 .post(function (req, res, next) {
     TimeTables.create(req.body, function (err, timetable) {
-        if (err) next(err);
+        if (err) throw(err);
         console.log('Timetable created!');
         var id = timetable._id;
         res.writeHead(200, {
