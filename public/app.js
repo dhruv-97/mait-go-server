@@ -15,7 +15,7 @@ angular.module('formExample', [])
 	    $scope.sendTimeTable = function () {
             $scope.timetable.group=jsUcfirst($scope.timetable.group);
             var time= angular.toJson($scope.timetable);
-		        $http.post('http://localhost:9000/timetable',time,{
+		        $http.post('http://ec2-52-66-87-230.ap-south-1.compute.amazonaws.com/timetable',time,{
         headers: { 'Content-Type': 'application/json'}
     }).success(function(data, status, headers, config) {
 	              alert("Success!")
@@ -29,7 +29,7 @@ angular.module('formExample', [])
     $scope.sendAnnouncement = function () {
             $scope.announcement.group=jsUcfirst($scope.announcement.group);
             var announcementObj= angular.toJson($scope.announcement);
-            $http.post('http://localhost:9000/announcement',announcementObj,{
+            $http.post('http://ec2-52-66-87-230.ap-south-1.compute.amazonaws.com/announcement',announcementObj,{
             headers: { 'Content-Type': 'application/json'}
         }).success(function(data, status, headers, config) {
                     alert("Success!")
@@ -49,7 +49,7 @@ angular.module('formExample', [])
             console.log($scope.assignment);
             $scope.assignment.group=jsUcfirst($scope.assignment.group);
             var assignmentObj= angular.toJson($scope.assignment);
-            $http.post('http://localhost:9000/assignment',assignmentObj,{
+            $http.post('http://ec2-52-66-87-230.ap-south-1.compute.amazonaws.com/assignment',assignmentObj,{
             headers: { 'Content-Type': 'application/json'}
         }).success(function(data, status, headers, config) {
                     alert("Success!");
@@ -137,7 +137,7 @@ angular.module('formExample', [])
     $scope.sendUpcoming = function () {
             console.log($scope.upcoming);
             var upcomingObj= angular.toJson($scope.upcoming);
-            $http.post('http://localhost:9000/upcoming',upcomingObj,{
+            $http.post('http://ec2-52-66-87-230.ap-south-1.compute.amazonaws.com/upcoming',upcomingObj,{
             headers: { 'Content-Type': 'application/json'}
         }).success(function(data, status, headers, config) {
                     alert("Success!");
