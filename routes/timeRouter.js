@@ -19,8 +19,101 @@ timetableRouter.route('/')
 })
 
 .post(function (req, res, next) {
-    if(req.body.shift=='evening')
-        req.body.time='11:45 - 12:45,1:45 - 2:45,2:45 - 3:45,4:00 - 5:00,5:00 - 6:00,6:00 - 7:00';
+    if(req.body.shift=='evening'){
+        req.body.friday.forEach(function(period){
+            period.p1[0].time='11:45 - 12:45';
+            period.p2[0].time='12:45 - 1:45';
+            period.p3[0].time='1:45 - 2:45';
+            period.p4[0].time='2:45 - 3:45';
+            period.p5[0].time='4:00 - 5:00';
+            period.p6[0].time='5:00 - 6:00';
+            period.p7[0].time='6:00 - 7:00';
+        },this);
+        req.body.thursday.forEach(function(period){
+            period.p1[0].time='11:45 - 12:45';
+            period.p2[0].time='12:45 - 1:45';
+            period.p3[0].time='1:45 - 2:45';
+            period.p4[0].time='2:45 - 3:45';
+            period.p5[0].time='4:00 - 5:00';
+            period.p6[0].time='5:00 - 6:00';
+            period.p7[0].time='6:00 - 7:00';
+        },this);
+        req.body.wednesday.forEach(function(period){
+            period.p1[0].time='11:45 - 12:45';
+            period.p2[0].time='12:45 - 1:45';
+            period.p3[0].time='1:45 - 2:45';
+            period.p4[0].time='2:45 - 3:45';
+            period.p5[0].time='4:00 - 5:00';
+            period.p6[0].time='5:00 - 6:00';
+            period.p7[0].time='6:00 - 7:00';
+        },this);
+        req.body.tuesday.forEach(function(period){
+            period.p1[0].time='11:45 - 12:45';
+            period.p2[0].time='12:45 - 1:45';
+            period.p3[0].time='1:45 - 2:45';
+            period.p4[0].time='2:45 - 3:45';
+            period.p5[0].time='4:00 - 5:00';
+            period.p6[0].time='5:00 - 6:00';
+            period.p7[0].time='6:00 - 7:00';
+        },this);
+        req.body.monday.forEach(function(period){
+            period.p1[0].time='11:45 - 12:45';
+            period.p2[0].time='12:45 - 1:45';
+            period.p3[0].time='1:45 - 2:45';
+            period.p4[0].time='2:45 - 3:45';
+            period.p5[0].time='4:00 - 5:00';
+            period.p6[0].time='5:00 - 6:00';
+            period.p7[0].time='6:00 - 7:00';
+        },this);
+    }
+    else{
+        req.body.friday.forEach(function(period){
+            period.p1[0].time='8:15 - 9:15';
+            period.p2[0].time='9:15 - 10:15';
+            period.p3[0].time='10:15 - 11:15';
+            period.p4[0].time='11:45 - 12:45';
+            period.p5[0].time='12:45 - 1:45';
+            period.p6[0].time='1:45 - 2:45';
+            period.p7[0].time='2:45 - 3:45';
+        },this);
+        req.body.thursday.forEach(function(period){
+            period.p1[0].time='8:15 - 9:15';
+            period.p2[0].time='9:15 - 10:15';
+            period.p3[0].time='10:15 - 11:15';
+            period.p4[0].time='11:45 - 12:45';
+            period.p5[0].time='12:45 - 1:45';
+            period.p6[0].time='1:45 - 2:45';
+            period.p7[0].time='2:45 - 3:45';
+        },this);
+        req.body.wednesday.forEach(function(period){
+            period.p1[0].time='8:15 - 9:15';
+            period.p2[0].time='9:15 - 10:15';
+            period.p3[0].time='10:15 - 11:15';
+            period.p4[0].time='11:45 - 12:45';
+            period.p5[0].time='12:45 - 1:45';
+            period.p6[0].time='1:45 - 2:45';
+            period.p7[0].time='2:45 - 3:45';
+        },this);
+        req.body.tuesday.forEach(function(period){
+            period.p1[0].time='8:15 - 9:15';
+            period.p2[0].time='9:15 - 10:15';
+            period.p3[0].time='10:15 - 11:15';
+            period.p4[0].time='11:45 - 12:45';
+            period.p5[0].time='12:45 - 1:45';
+            period.p6[0].time='1:45 - 2:45';
+            period.p7[0].time='2:45 - 3:45';
+        },this);
+        req.body.monday.forEach(function(period){
+            period.p1[0].time='8:15 - 9:15';
+            period.p2[0].time='9:15 - 10:15';
+            period.p3[0].time='10:15 - 11:15';
+            period.p4[0].time='11:45 - 12:45';
+            period.p5[0].time='12:45 - 1:45';
+            period.p6[0].time='1:45 - 2:45';
+            period.p7[0].time='2:45 - 3:45';
+        },this);
+
+    }
     TimeTables.create(req.body, function (err, timetable) {
         if (err) throw(err);
         console.log('Timetable created!');

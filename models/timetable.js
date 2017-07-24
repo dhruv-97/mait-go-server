@@ -17,8 +17,11 @@ var periodSchema = new Schema({
         type: String,
         required: false,
         default:'121'
+    },
+    time: {
+        type: String,
+        required:true
     }
-    
 });
 // create a schema
 var daySchema = new Schema({
@@ -38,11 +41,6 @@ var timeSchema = new Schema({
     group: {
         type: String,
         required: true
-    },
-    time: {
-        type: String,
-        required:true,
-        default: '8:15 - 9:15,9:15 - 10:15,10:15 - 11:15,11:45 - 12:45,1:45 - 2:45,2:45 - 3:45'
     },
     notification: {
         type: String,
