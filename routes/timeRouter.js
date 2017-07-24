@@ -19,6 +19,8 @@ timetableRouter.route('/')
 })
 
 .post(function (req, res, next) {
+    if(req.body.shift=='evening')
+        req.body.time='11:45 - 12:45,1:45 - 2:45,2:45 - 3:45,4:00 - 5:00,5:00 - 6:00,6:00 - 7:00';
     TimeTables.create(req.body, function (err, timetable) {
         if (err) throw(err);
         console.log('Timetable created!');

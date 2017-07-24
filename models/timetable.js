@@ -39,6 +39,11 @@ var timeSchema = new Schema({
         type: String,
         required: true
     },
+    time: {
+        type: String,
+        required:true,
+        default: '8:15 - 9:15,9:15 - 10:15,10:15 - 11:15,11:45 - 12:45,1:45 - 2:45,2:45 - 3:45'
+    },
     notification: {
         type: String,
         default: 'found'

@@ -1,4 +1,4 @@
-//require('dotenv').config()
+require('dotenv').config()
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -8,7 +8,20 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 //var authenticate = require('./authenticate');
-
+// var option = {
+//     server: {
+//         socketOptions: {
+//             keepAlive: 300000,
+//             connectTimeoutMS: 30000
+//         }
+//     },
+//     replset: {
+//         socketOptions: {
+//             keepAlive: 300000,
+//             connectTimeoutMS: 30000
+//         }
+//     }
+// };
 var config = require('./config');
 mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoUrl);

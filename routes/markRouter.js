@@ -3,9 +3,11 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Marks = require('../models/mark');
 var results = require('../models/result');
-// var map = require('../parsing/mapping.js');
-// var data = require('../parsing/data.js');
-
+var map = require('../parsing/mapping.js');
+var data = require('../parsing/data.js');
+let programmes = ['031','027','028','036','049','034','030'];
+let batches = ['16','15','14'];
+let sems = [1,2,3,4,5];
 function createResult(){
   let marksarr=[];
   data.forEach(function(element) {
@@ -48,29 +50,29 @@ function createResult(){
         });
       },this);
       setTimeout(function(){
-        createUniversityRank(sem,pro);
-        createCollegeRank('207',sem,pro);
-        createCollegeRank('208',sem,pro);
-        createCollegeRank('104',sem,pro);
-        createCollegeRank('101',sem,pro);
-        createCollegeRank('180',sem,pro);
-        createCollegeRank('209',sem,pro);
-        createCollegeRank('255',sem,pro);
-        createCollegeRank('551',sem,pro);
-        createCollegeRank('702',sem,pro);
-        createCollegeRank('153',sem,pro);
-        createCollegeRank2('512','115',sem,pro);
-        createCollegeRank2('964','148',sem,pro);
-        createCollegeRank2('768','132',sem,pro);
-        createCollegeRank2('963','150',sem,pro);
-        createCollegeRank2('962','156',sem,pro);
-        createCollegeRank2('965','133',sem,pro);
+        createUniversityRank(sem,pro,batch);
+        createCollegeRank('207',sem,pro,batch);
+        createCollegeRank('208',sem,pro,batch);
+        createCollegeRank('104',sem,pro,batch);
+        createCollegeRank('101',sem,pro,batch);
+        createCollegeRank('180',sem,pro,batch);
+        createCollegeRank('209',sem,pro,batch);
+        createCollegeRank('255',sem,pro,batch);
+        createCollegeRank('551',sem,pro,batch);
+        createCollegeRank('702',sem,pro,batch);
+        createCollegeRank('153',sem,pro,batch);
+        createCollegeRank2('512','115',sem,pro,batch);
+        createCollegeRank2('964','148',sem,pro,batch);
+        createCollegeRank2('768','132',sem,pro,batch);
+        createCollegeRank2('963','150',sem,pro,batch);
+        createCollegeRank2('962','156',sem,pro,batch);
+        createCollegeRank2('965','133',sem,pro,batch);
         console.log('We are done');
       },10000);
     },10000);
 }
-function createUniversityRank(x,y){
-  results.find({sem:x,programme:y}).sort('-creditp').exec( function(err,resp){
+function createUniversityRank(x,y,w){
+  results.find({sem:x,programme:y,batch:w}).sort('-creditp').exec( function(err,resp){
         if(err) throw(err);
         var rank=0,prev=101,trank;
         resp.forEach(function(curr){
@@ -85,14 +87,14 @@ function createUniversityRank(x,y){
           }, {
               new: true
           }, function (err, result) {
-              if (err) next(err);
+              if (err) throw(err);
           });
           prev=curr.creditp;
         })
   })
 }
-function createCollegeRank(x,y,z){
-  results.find({college:x,sem:y,programme:z}).sort('-creditp').exec( function(err,resp){
+function createCollegeRank(x,y,z,w){
+  results.find({college:x,sem:y,programme:z,batch:w}).sort('-creditp').exec( function(err,resp){
         if(err) throw(err);
         var rank=0,prev=101,trank;
         resp.forEach(function(curr){
@@ -107,14 +109,14 @@ function createCollegeRank(x,y,z){
           }, {
               new: true
           }, function (err, result) {
-              if (err) next(err);
+              if (err) throw(err);
           });
           prev=curr.creditp;
         })
   })
 }
-function createCollegeRank2(a,b,y,z){
-  results.find({college:{ $in: [ a, b ] },sem:y,programme:z}).sort('-creditp').exec( function(err,resp){
+function createCollegeRank2(a,b,y,z,w){
+  results.find({college:{ $in: [ a, b ] },sem:y,programme:z,batch:w}).sort('-creditp').exec( function(err,resp){
         if(err) throw(err);
         var rank=0,prev=101,trank;
         resp.forEach(function(curr){
@@ -129,7 +131,7 @@ function createCollegeRank2(a,b,y,z){
           }, {
               new: true
           }, function (err, result) {
-              if (err) next(err);
+              if (err) throw(err);
           });
           prev=curr.creditp;
         })
@@ -166,9 +168,30 @@ MarkRouter.route('/create')
 });
 MarkRouter.route('/rank')
 .get(function(req,res,next){
-  createCollegeRank('702',3,'112');
-  
-
+  batches.forEach(function(batch) {
+    programmes.forEach(function(pro) {
+      sems.forEach(function(sem) {
+        createUniversityRank(sem,pro,batch);
+        createCollegeRank('207',sem,pro,batch);
+        createCollegeRank('208',sem,pro,batch);
+        createCollegeRank('104',sem,pro,batch);
+        createCollegeRank('101',sem,pro,batch);
+        createCollegeRank('180',sem,pro,batch);
+        createCollegeRank('209',sem,pro,batch);
+        createCollegeRank('255',sem,pro,batch);
+        createCollegeRank('551',sem,pro,batch);
+        createCollegeRank('702',sem,pro,batch);
+        createCollegeRank('153',sem,pro,batch);
+        createCollegeRank2('512','115',sem,pro,batch);
+        createCollegeRank2('964','148',sem,pro,batch);
+        createCollegeRank2('768','132',sem,pro,batch);
+        createCollegeRank2('963','150',sem,pro,batch);
+        createCollegeRank2('962','156',sem,pro,batch);
+        createCollegeRank2('965','133',sem,pro,batch);
+        console.log('We are done');
+      }, this);
+    }, this);  
+  }, this);
   res.send('Trying my best');
 })
 module.exports=MarkRouter;
