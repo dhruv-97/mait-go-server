@@ -32,9 +32,10 @@ assignmentRouter.route('/')
     });
 })
 .post(function (req, res, next) {
+    console.log(req.body);
     req.body.createdAt = createDate();
     assignments.create(req.body, function (err, assignment) {
-        if (err) next(err);
+        if (err) throw(err);
         console.log('assignment created!');
         var id = assignment._id;
         res.writeHead(200, {
