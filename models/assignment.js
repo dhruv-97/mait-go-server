@@ -24,7 +24,7 @@ var assignmentSchema = new Schema({
         required: false
     },
     last: {
-        type: Date,
+        type: String,
         required: true
     },
     files:{
