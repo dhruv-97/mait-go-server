@@ -44,7 +44,7 @@ announcementRouter.route('/')
     });
 })
 
-.post(function (req, res, next) {
+.post(Verify.verifyOrdinaryUser,function (req, res, next) {
     req.body.createdAt = createDate();
     Announcements.create(req.body, function (err, announcement) {
         if (err) throw(err);

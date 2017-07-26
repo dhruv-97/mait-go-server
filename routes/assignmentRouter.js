@@ -31,7 +31,7 @@ assignmentRouter.route('/')
         res.json(assignment);
     });
 })
-.post(function (req, res, next) {
+.post(Verify.verifyOrdinaryUser,function (req, res, next) {
     console.log(req.body);
     req.body.createdAt = createDate();
     assignments.create(req.body, function (err, assignment) {

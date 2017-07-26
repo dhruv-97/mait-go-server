@@ -76,7 +76,20 @@ router.post('/login', function(req, res, next) {
     });
   })(req,res,next);
 });
-
+router.post('/reset', Verify.verifyOrdinaryUser, function(req, res) {
+    userModel.findByUsername(req.body.username).then(function(sanitizedUser){
+      if (sanitizedUser){
+          sanitizedUser.setPassword(req.body.password, function(){
+              sanitizedUser.save();
+              res.status(200).json({message: 'password reset successful'});
+          });
+      } else {
+          res.status(500).json({message: 'This user does not exist'});
+      }
+  },function(err){
+      console.error(err);
+  })
+});
 router.get('/logout', function(req, res) {
     req.logout();
   res.status(200).json({
