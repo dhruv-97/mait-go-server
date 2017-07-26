@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
-//var authenticate = require('./authenticate');
+var authenticate = require('./authenticate');
 // var option = {
 //     server: {
 //         socketOptions: {
@@ -44,6 +44,7 @@ var markRouter = require('./routes/markRouter');
 var resultRouter = require('./routes/resultRouter');
 var syllabusRouter = require('./routes/syllabusRouter');
 var infoRouter = require('./routes/infoRouter');
+var teacherRouter = require('./routes/teacherRouter');
 
 var app = express();
 
@@ -74,6 +75,7 @@ app.use('/marks',markRouter);
 app.use('/result',resultRouter);
 app.use('/syllabus',syllabusRouter);
 app.use('/info',infoRouter);
+app.use('/teacher',teacherRouter);
 
 
 // catch 404 and forward to error handler

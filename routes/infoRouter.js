@@ -34,7 +34,7 @@ function mapSem(x){
   }
 }
 infoRouter.route('/:roll')
-.get(function (req, res, next) {
+.get(verify.verifyAppUser,function (req, res, next) {
     let branch = mapProgramme(req.params.roll.substring(6,9));
     let sem = mapSem(req.params.roll.substring(9,11));
     res.json({branch,sem});

@@ -11,7 +11,7 @@ var upcomingRouter = express.Router();
 upcomingRouter.use(bodyParser.json());
 
 upcomingRouter.route('/')
-.get(function (req, res, next) {
+.get(verify.verifyAppUser,function (req, res, next) {
     upcomings.find({}).sort('eventDate').exec(function(err, upcomings) { 
         if (err) throw err;
         res.json(upcomings); 
@@ -65,7 +65,7 @@ upcomingRouter.route('/sign-s3')
 });
 
 upcomingRouter.route('/:upcomingId')
-.get(function (req, res, next) {
+.get(verify.verifyAppUser,function (req, res, next) {
     upcomings.findById(req.params.upcomingId,function (err, upcoming) {
         if (err) next(err);
         res.json(upcoming);

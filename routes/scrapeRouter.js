@@ -110,7 +110,7 @@ scrapeRouter.route('/datesheets')
 scrapeRouter.route('/faculty')
 .get(function (req, res, next) {
     var faculty=[];
-    request('http://ece.mait.ac.in/index.php/people/faculty', function(err,resp,body){
+    request('http://eee.mait.ac.in/index.php/people/faculty', function(err,resp,body){
         if(err)
             throw err;
         var $ = cheerio.load(body);
@@ -140,7 +140,7 @@ scrapeRouter.route('/faculty')
                         teacher.exp=infoText.substring(27,infoText.length);
                         teacher.name=arr[i];
                         i++;
-                        teacher.img='img/ECE/'+i+'.png';
+                        teacher.img='img/EEE/'+i+'.png';
                         faculty.push(teacher);
                         teacher = {
                             name:'',

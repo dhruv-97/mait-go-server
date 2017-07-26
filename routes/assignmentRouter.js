@@ -96,7 +96,7 @@ const s3 = new aws.S3({signatureVersion: 'v4'});
   });
 });
 assignmentRouter.route('/:assignmentId')
-.get(function (req, res, next) {
+.get(verify.verifyAppUser,function (req, res, next) {
     var sem= req.params.assignmentId[0];
     var group= req.params.assignmentId.substring(1,req.params.assignmentId.length);
     assignments.find({"sem":sem,"group":group}).sort('-createdAt').exec(function (err, assignment) {

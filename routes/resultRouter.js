@@ -141,7 +141,7 @@ resultRouter.route('/')
     });
 });
 resultRouter.route('/:roll')
-.get(function (req, res, next) {
+.get(verify.verifyAppUser,function (req, res, next) {
   req.query.roll=req.params.roll;
   results.find(req.query)
     .sort('-sem')

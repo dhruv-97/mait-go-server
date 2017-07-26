@@ -1,4 +1,4 @@
-var User = require('../models/user');
+var User = require('../models/teacher');
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('../config.js');
 
@@ -55,3 +55,20 @@ exports.verifyAdmin = function (req, res, next) {
     }
 
 };
+exports.verifyAppUser = function (req, res, next) {
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    if(token){
+        if(token=='6SFsbxfypf2o5FyIy0ug')
+            next();
+        else{
+            var err = new Error('You are not authenticated!');
+            err.status = 401;
+            return next(err);
+        }
+    }
+    else{
+        var err = new Error('No token provided!');
+        err.status = 403;
+        return next(err);
+    }
+}

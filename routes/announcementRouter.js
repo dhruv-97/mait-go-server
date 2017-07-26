@@ -2,7 +2,7 @@ var express = require('express');
 
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+var verify = require('./verify');
 var Announcements = require('../models/announcements');
 var Users = require('../models/user');
 var unirest = require('unirest');
@@ -83,7 +83,7 @@ announcementRouter.route('/')
 });
 
 announcementRouter.route('/:announcementId')
-.get(function (req, res, next) {
+.get(verify.verifyAppUser, function (req, res, next) {
     var sem= req.params.announcementId[0];
     var group= req.params.announcementId.substring(1,3);
     console.log(sem);
