@@ -12,13 +12,13 @@ facultyRouter.use(bodyParser.json());
 
 facultyRouter.route('/')
 .get(Verify.verifyAppUser,function (req, res, next) {
-    faculties.findById("5909cbfef36d2842bdf885b7",function (err, faculty) {
+    faculties.findById("59791301c9953e5f7b62177f",function (err, faculty) {
         if (err) next(err);
         res.json(faculty);
         });
 })
 .put(function (req, res, next) {
-    faculties.findByIdAndUpdate("5909cbfef36d2842bdf885b7", {
+    faculties.findByIdAndUpdate("59791301c9953e5f7b62177f", {
         $set: req.body
     }, {
         new: true
