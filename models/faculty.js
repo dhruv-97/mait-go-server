@@ -4,30 +4,30 @@ var Schema = mongoose.Schema;
 var teacherSchema = new Schema({
     name:  {
         type: String,
-        required: true
+        // required: true
     },
     designation:  {
         type: String,
-        required: true
+        // required: true
     },
     qualification: {
         type: String,
-        required: true
+        // required: true
     },
     exp:{
         type: String,
-        required: true
+        // required: true
     },
     img:{
         type:String,
-        required: true
+        // required: true
     },
     email:{
         type: String
     },
     room:{
         type: String,
-        required: true
+        // required: true
     }
     
 });
