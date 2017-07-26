@@ -134,7 +134,7 @@ timetableRouter.route('/')
 });
 
 timetableRouter.route('/:timetableId')
-.get(verify.verifyAppUser,function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     var sem= req.params.timetableId[0];
     var group= req.params.timetableId.substring(1,req.params.timetableId.length);
     TimeTables.findOne({"sem":sem,"group":group},function (err, timetable) {

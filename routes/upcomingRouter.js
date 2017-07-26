@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var shortid = require('shortid');
 var upcomings = require('../models/upcoming');
 const aws = require('aws-sdk');
+var verify = require('./verify');
 aws.config.update({region: 'ap-south-1'});
 const S3_BUCKET = process.env.S3_BUCKET_NAME;
 var upcomingRouter = express.Router();

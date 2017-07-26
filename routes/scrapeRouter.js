@@ -87,7 +87,7 @@ scrapeRouter.route('/')
 })
 
 scrapeRouter.route('/notices')
-.get(function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     notices.find({}).sort('createdAt').exec(function (err, notices) {
         if (err) throw err;
         let data = {};
@@ -101,7 +101,7 @@ scrapeRouter.route('/notices')
 })
 
 scrapeRouter.route('/datesheets')
-.get(function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     datesheets.find({}).sort('createdAt').exec(function (err, datesheet) {
         if (err) throw err;
         res.json(datesheet);

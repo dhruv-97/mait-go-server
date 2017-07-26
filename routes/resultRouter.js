@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var results = require('../models/result');
-
+var Verify = require('./verify');
 function mapProgramme(x){
   switch(x){
     case '077':
@@ -141,7 +141,7 @@ resultRouter.route('/')
     });
 });
 resultRouter.route('/:roll')
-.get(verify.verifyAppUser,function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
   req.query.roll=req.params.roll;
   results.find(req.query)
     .sort('-sem')

@@ -11,7 +11,7 @@ var facultyRouter = express.Router();
 facultyRouter.use(bodyParser.json());
 
 facultyRouter.route('/')
-.get(verify.verifyAppUser,function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     faculties.findById("5909cbfef36d2842bdf885b7",function (err, faculty) {
         if (err) next(err);
         res.json(faculty);

@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var infoRouter = express.Router();
-
+var Verify = require('./verify');
 infoRouter.use(bodyParser.json());
 
 function mapProgramme(x){
@@ -34,7 +34,7 @@ function mapSem(x){
   }
 }
 infoRouter.route('/:roll')
-.get(verify.verifyAppUser,function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     let branch = mapProgramme(req.params.roll.substring(6,9));
     let sem = mapSem(req.params.roll.substring(9,11));
     res.json({branch,sem});
