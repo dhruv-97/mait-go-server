@@ -140,7 +140,7 @@ timetableRouter.route('/:timetableId')
     TimeTables.findOne({"sem":sem,"group":group},function (err, timetable) {
         if (err) next(err);
         if(timetable==null)
-            res.json({notification:'Please be patient!! Your timetable will be uploaded soon!!'});
+            res.json({notification:'Please be patient, your timetable will be uploaded soon.'});
         else
             res.json(timetable);
         });

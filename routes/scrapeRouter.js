@@ -128,16 +128,17 @@ scrapeRouter.route('/faculty')
                 arr.push(facultyName);
         }
         i=0;
-        setTimeout(function(){ $('.article-content table tr td table tr td:nth-child(2) p').each(function()   {
+        setTimeout(function(){ $('.rticle-content table tr td table tr td a span').each(function()   {
                      var info = $(this);
                      var infoText = info.text();
+                     console.log(infoText);
                      if(infoText.indexOf('Designation') > -1)
                         teacher.designation=infoText.substring(25,infoText.length);
                         
                      else if(infoText.indexOf('Qualification') > -1)
                         teacher.qualification=infoText.substring(27,infoText.length);
-                     else if(infoText.indexOf('Specialization') > -1){
-                        teacher.exp=infoText.substring(27,infoText.length);
+                     else if(infoText.indexOf('Total') > -1){
+                        teacher.exp=infoText.substring(54,infoText.length);
                         teacher.name=arr[i];
                         i++;
                         teacher.img='img/EEE/'+i+'.png';
