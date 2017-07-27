@@ -141,9 +141,18 @@ router.post('/login', function(req, res, next) {
   })(req,res,next);
 });
 router.post('/reset', Verify.verifyOrdinaryUser, function(req, res) {
-    userModel.findByUsername(req.body.username).then(function(sanitizedUser){
+  passport.authenticate('local', function(err, user, info) {
+    if (err) {
+      throw(err);
+    }
+    if (!user) {
+      return res.status(401).json({
+        err: info
+      });
+    }
+    User.findByUsername(req.body.username).then(function(sanitizedUser){
       if (sanitizedUser){
-          sanitizedUser.setPassword(req.body.password, function(){
+          sanitizedUser.setPassword(req.body.newPassword, function(){
               sanitizedUser.save();
               res.status(200).json({message: 'password reset successful'});
           });
@@ -153,6 +162,7 @@ router.post('/reset', Verify.verifyOrdinaryUser, function(req, res) {
   },function(err){
       console.error(err);
   })
+  })(req,res,next);
 });
 router.get('/logout', function(req, res) {
     req.logout();
