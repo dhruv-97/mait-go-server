@@ -140,7 +140,7 @@ router.post('/login', function(req, res, next) {
     });
   })(req,res,next);
 });
-router.post('/reset', Verify.verifyOrdinaryUser, function(req, res) {
+router.post('/reset', Verify.verifyOrdinaryUser, function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) {
       throw(err);
