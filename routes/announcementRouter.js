@@ -25,10 +25,11 @@ function createDate(){
   let date = new Date();
     return date.getDate() + "/"
                 + (date.getMonth()+1)  + "/" 
-                + date.getFullYear() + " @ "  
-                + date.getHours() + ":"  
-                + date.getMinutes() + ":" 
-                + date.getSeconds();
+                + date.getFullYear();
+}
+function createTime(){
+    let date = new Date();
+    return date.getHours()+ ":" + date.getMinutes();
 }
 
 var announcementRouter = express.Router();
@@ -45,7 +46,8 @@ announcementRouter.route('/')
 })
 
 .post(Verify.verifyOrdinaryUser,function (req, res, next) {
-    req.body.createdAt = createDate();
+    req.body.date = createDate();
+    req.body.time = createTime();
     Announcements.create(req.body, function (err, announcement) {
         if (err) throw(err);
         console.log('Announcement created!');

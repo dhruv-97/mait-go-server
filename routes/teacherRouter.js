@@ -1,11 +1,12 @@
 var express = require('express');
-
+var fs = require('fs');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var User = require('../models/teacher');
+var faculties = require('../models/faculty');
 var Verify    = require('./verify');
-
+var generator = require('generate-password');
 var router = express.Router();
 router.use(bodyParser.json());
 
@@ -22,6 +23,69 @@ router.get('/', Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res
   }
 
 }); */
+function createAuthentication(){
+  let teacherArr = [];
+  faculties.findById("59791301c9953e5f7b62177f",function (err, faculty) {
+    if (err) next(err);
+    faculty.CSE.forEach(function(element) {
+      let username = element.email.substring(0,element.email.indexOf('@'));
+      let password = generator.generate({
+          length: 6,
+          numbers: true
+      });
+      User.register(new User({ username}),
+        password, function(err, user) {
+        if (err) {
+            throw(err);
+        }
+        user.save(function(err,user) {  
+          console.log('Registration Successful!');
+          teacherArr.push({username,password});
+        });
+      });
+    }, this);
+    faculty.IT.forEach(function(element) {
+      let username = element.email.substring(0,element.email.indexOf('@'));
+      let password = generator.generate({
+          length: 6,
+          numbers: true
+      });
+      User.register(new User({ username}),
+        password, function(err, user) {
+        if (err) {
+            throw(err);
+        }
+        user.save(function(err,user) {
+
+                console.log('Registration Successful!');
+                teacherArr.push({username,password});
+        });
+      });
+    }, this);
+    faculty.ECE.forEach(function(element) {
+      let username = element.email.substring(0,element.email.indexOf('@'));
+      let password = generator.generate({
+          length: 6,
+          numbers: true
+      });
+      User.register(new User({ username}),
+        password, function(err, user) {
+        if (err) {
+            throw(err);
+        }
+        user.save(function(err,user) {
+                console.log('Registration Successful!');
+                teacherArr.push({username,password});
+        });
+      });
+    }, this);
+    setTimeout(function(){
+      console.log(teacherArr);
+      fs.createWriteStream('../parsing/teacher.json').write(JSON.stringify(teacherArr));
+    },30000);
+  });
+}
+
 router.get('/',Verify.verifyOrdinaryUser, function(req, res, next) {
   User.find({}, function (err, users) {
         if (err) throw err;
@@ -95,5 +159,9 @@ router.get('/logout', function(req, res) {
   res.status(200).json({
     status: 'Bye!'
   });
+});
+router.get('/create', function(req, res) {
+    createAuthentication();
+    res.send('Trying my best');
 });
 module.exports = router;

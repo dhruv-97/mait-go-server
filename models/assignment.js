@@ -31,10 +31,16 @@ var assignmentSchema = new Schema({
         type:[String],
         required: true
     },
-    createdAt: {
+    date: {
+        type: String,
+        required: true
+    },
+    time: {
         type: String,
         required: true
     }
+}, {
+    timestamps: true
 });
 var assignments = mongoose.model('assignment', assignmentSchema);
 

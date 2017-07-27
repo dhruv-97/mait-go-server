@@ -12,10 +12,11 @@ function createDate(){
   let date = new Date();
     return date.getDate() + "/"
                 + (date.getMonth()+1)  + "/" 
-                + date.getFullYear() + " @ "  
-                + date.getHours() + ":"  
-                + date.getMinutes() + ":" 
-                + date.getSeconds();
+                + date.getFullYear();
+}
+function createTime(){
+    let date = new Date();
+    return date.getHours()+ ":" + date.getMinutes();
 }
 
 aws.config.update({region: 'ap-south-1'});
@@ -32,8 +33,8 @@ assignmentRouter.route('/')
     });
 })
 .post(Verify.verifyOrdinaryUser,function (req, res, next) {
-    console.log(req.body);
-    req.body.createdAt = createDate();
+    req.body.date = createDate();
+    req.body.time = createTime();
     assignments.create(req.body, function (err, assignment) {
         if (err) throw(err);
         console.log('assignment created!');

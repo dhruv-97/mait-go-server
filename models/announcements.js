@@ -19,10 +19,16 @@ var announcementSchema = new Schema({
         type: String,
         required: true
     },
-    createdAt: {
+    date: {
+        type: String,
+        required: true
+    },
+    time: {
         type: String,
         required: true
     }
+}, {
+    timestamps: true
 });
 var Announcements = mongoose.model('announcement', announcementSchema);
 
