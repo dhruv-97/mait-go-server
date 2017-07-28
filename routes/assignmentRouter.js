@@ -35,6 +35,8 @@ assignmentRouter.route('/')
 .post(Verify.verifyOrdinaryUser,function (req, res, next) {
     req.body.date = createDate();
     req.body.time = createTime();
+    if(req.body.files[1].indexOf('amazon')!=-1)
+        req.body.files=req.body.files.slice(1);
     assignments.create(req.body, function (err, assignment) {
         if (err) throw(err);
         console.log('assignment created!');
@@ -46,7 +48,6 @@ assignmentRouter.route('/')
         res.end('Added the assignment with id: ' + id);
         var group = assignment.sem + assignment.group;
         Users.find({class:group},function(err,response){
-            console.log(response);
             response.forEach(function(element) {
                 let token = element.token;
                 unirest.post('https://fcm.googleapis.com/fcm/send')
@@ -58,7 +59,6 @@ assignmentRouter.route('/')
                         "body": assignment.name+ " has uploaded a new assignment."
                         } })
                 .end(function (response) {
-                console.log(response.body);
                 });
             }, this);
         });
