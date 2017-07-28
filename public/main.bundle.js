@@ -281,7 +281,7 @@ var AssignmentComponent = (function () {
     AssignmentComponent.prototype.getSignedRequest = function (file) {
         var _this = this;
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', "http://localhost:9000/assignment/sign-s3?file-name=" + file.name + "&file-type=" + file.type);
+        xhr.open('GET', "http://ec2-52-66-87-230.ap-south-1.compute.amazonaws.com/assignment/sign-s3?file-name=" + file.name + "&file-type=" + file.type);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
@@ -412,7 +412,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var IpuGoService = (function () {
     function IpuGoService(http) {
         this.http = http;
-        this.base = 'http://localhost:9000/';
+        this.base = 'http://ec2-52-66-87-230.ap-south-1.compute.amazonaws.com/';
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
     }
     IpuGoService.prototype.setName = function (x) {
