@@ -29,7 +29,19 @@ function createDate(){
 }
 function createTime(){
     let date = new Date();
-    return date.getHours()+ ":" + date.getMinutes();
+    let hours = date.getHours();
+    let hoursString;
+    if(hours<10)
+        hoursString='0'+String(hours);
+    else
+        hoursString=String(hours);
+    let mins = date.getMinutes();
+    let minsString;
+    if(mins<10)
+        minsString='0'+String(mins);
+    else
+        minsString=String(mins);
+    return hoursString+':'+minsString;
 }
 
 var announcementRouter = express.Router();
