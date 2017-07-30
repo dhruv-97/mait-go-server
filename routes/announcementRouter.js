@@ -103,7 +103,7 @@ announcementRouter.route('/:announcementId')
     Announcements.find({"sem":sem,"group":group}).sort('-createdAt').exec(function (err, announcement) {
         if (err) next(err);
         if(announcement=[])
-            res.json([{name:"Uddish Verma",message:"Teachers will post announcement here",
+            res.json([{name:"Uddish Verma",message:"Faculty messages will be posted here",
                 date:createDate(),time:createTime()}]);
         else
             res.json(announcement);
