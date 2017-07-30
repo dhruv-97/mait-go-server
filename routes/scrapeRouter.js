@@ -108,7 +108,7 @@ scrapeRouter.route('/datesheets')
     });
 })
 scrapeRouter.route('/faculty')
-.get(function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     var faculty=[];
     request('http://eee.mait.ac.in/index.php/people/faculty', function(err,resp,body){
         if(err)

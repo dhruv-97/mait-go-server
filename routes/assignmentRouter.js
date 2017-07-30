@@ -26,7 +26,7 @@ var assignmentRouter = express.Router();
 assignmentRouter.use(bodyParser.json());
 
 assignmentRouter.route('/')
-.get(function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     assignments.find({}).sort('-createdAt').exec( function (err, assignment) {
         if (err) throw err;
         res.json(assignment);
@@ -64,7 +64,7 @@ assignmentRouter.route('/')
         });
     });
 })
-.delete(function (req, res, next) {
+.delete(Verify.verifyAppUser,function (req, res, next) {
     assignments.remove({}, function (err, resp) {
         if (err) next(err);
         res.json(resp);
@@ -107,7 +107,7 @@ assignmentRouter.route('/:assignmentId')
 })
 
 
-.put(function (req, res, next) {
+.put(Verify.verifyAppUser,function (req, res, next) {
     assignments.findByIdAndUpdate(req.params.assignmentId, {
         $set: req.body
     }, {
@@ -118,7 +118,7 @@ assignmentRouter.route('/:assignmentId')
     });
 })
 
-.delete(function (req, res, next) {
+.delete(Verify.verifyAppUser,function (req, res, next) {
         assignments.findByIdAndRemove(req.params.assignmentId, function (err, resp) {
         if (err) next(err);
         res.json(resp);

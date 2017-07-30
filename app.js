@@ -8,20 +8,6 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var authenticate = require('./authenticate');
-// var option = {
-//     server: {
-//         socketOptions: {
-//             keepAlive: 300000,
-//             connectTimeoutMS: 30000
-//         }
-//     },
-//     replset: {
-//         socketOptions: {
-//             keepAlive: 300000,
-//             connectTimeoutMS: 30000
-//         }
-//     }
-// };
 var config = require('./config');
 mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoUrl);
@@ -32,7 +18,6 @@ db.once('open', function () {
     console.log("Connected correctly to server");
 });
 
-var routes = require('./routes/index');
 var userRouter = require('./routes/users');
 var timetableRouter=require('./routes/timeRouter');
 var announcementRouter=require('./routes/announcementRouter');
@@ -40,7 +25,7 @@ var scrapeRouter=require('./routes/scrapeRouter');
 var facultyRouter= require('./routes/facultyRouter');
 var assignmentRouter = require('./routes/assignmentRouter');
 var upcomingRouter = require('./routes/upcomingRouter');
-var markRouter = require('./routes/markRouter');
+//var markRouter = require('./routes/markRouter');
 var resultRouter = require('./routes/resultRouter');
 var syllabusRouter = require('./routes/syllabusRouter');
 var infoRouter = require('./routes/infoRouter');
@@ -63,7 +48,6 @@ app.use(passport.initialize());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
 app.use('/users', userRouter);
 app.use('/timetable',timetableRouter);
 app.use('/announcement',announcementRouter);
@@ -71,7 +55,7 @@ app.use('/scrape',scrapeRouter);
 app.use('/faculty',facultyRouter);
 app.use('/assignment',assignmentRouter);
 app.use('/upcoming',upcomingRouter);
-app.use('/marks',markRouter);
+//app.use('/marks',markRouter);
 app.use('/result',resultRouter);
 app.use('/syllabus',syllabusRouter);
 app.use('/info',infoRouter);

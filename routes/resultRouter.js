@@ -54,7 +54,7 @@ var resultRouter = express.Router();
 resultRouter.use(bodyParser.json());
 
 resultRouter.route('/')
-.get(function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     if(req.query.college=='148'||req.query.college=='964'){
       results.find({college:{ $in: [ '148', '964' ] },programme:req.query.programme,sem:req.query.sem} )
       .sort('-creditp').exec( function(err,resp){
@@ -120,32 +120,13 @@ resultRouter.route('/')
         res.json(resp);
       })
     }
-})
-.post(function (req, res, next) {
-    results.create(req.body, function (err, result) {
-        if (err) next(err);
-        console.log('result created!');
-        var id = result._id;
-        res.writeHead(200, {
-            'Content-Type': 'text/plain'
-        });
-
-        res.end('Added the result with id:' , id);
-    });
-})
-.delete(function (req, res, next) {
-    results.remove({}, function (err, resp) {
-        if (err) next(err);
-        
-        res.json(resp);
-    });
 });
 resultRouter.route('/:roll')
 .get(Verify.verifyAppUser,function (req, res, next) {
   req.query.roll=req.params.roll;
   results.find(req.query)
     .sort('-sem')
-    // .limit(1)
+    .limit(1)
     .populate('marks')
     .exec(function (err, resp) {
       if(err) next(err);

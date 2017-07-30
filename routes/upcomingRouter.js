@@ -4,7 +4,8 @@ var mongoose = require('mongoose');
 var shortid = require('shortid');
 var upcomings = require('../models/upcoming');
 const aws = require('aws-sdk');
-var verify = require('./verify');
+var Verify=require('./verify');
+
 aws.config.update({region: 'ap-south-1'});
 const S3_BUCKET = process.env.S3_BUCKET_NAME;
 var upcomingRouter = express.Router();
@@ -12,14 +13,14 @@ var upcomingRouter = express.Router();
 upcomingRouter.use(bodyParser.json());
 
 upcomingRouter.route('/')
-.get(verify.verifyAppUser,function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     upcomings.find({}).sort('eventDate').exec(function(err, upcomings) { 
         if (err) throw err;
         res.json(upcomings); 
     });
 })
 
-.post(function (req, res, next) {
+.post(Verify.verifyAppUser,function (req, res, next) {
     upcomings.create(req.body, function (err, upcoming) {
         if (err) next(err);
         console.log('upcoming created!');
@@ -32,7 +33,7 @@ upcomingRouter.route('/')
     });
 })
 
-.delete(function (req, res, next) {
+.delete(Verify.verifyAppUser,function (req, res, next) {
     upcomings.remove({}, function (err, resp) {
         if (err) next(err);
         res.json(resp);
@@ -66,14 +67,14 @@ upcomingRouter.route('/sign-s3')
 });
 
 upcomingRouter.route('/:upcomingId')
-.get(verify.verifyAppUser,function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     upcomings.findById(req.params.upcomingId,function (err, upcoming) {
         if (err) next(err);
         res.json(upcoming);
         });
 })
 
-.put(function (req, res, next) {
+.put(Verify.verifyAppUser,function (req, res, next) {
     upcomings.findByIdAndUpdate(req.params.upcomingId, {
         $set: req.body
     }, {
@@ -84,7 +85,7 @@ upcomingRouter.route('/:upcomingId')
     });
 })
 
-.delete(function (req, res, next) {
+.delete(Verify.verifyAppUser,function (req, res, next) {
         upcomings.findByIdAndRemove(req.params.upcomingId, function (err, resp) {
         if (err) next(err);
         res.json(resp);

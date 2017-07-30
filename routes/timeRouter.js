@@ -5,20 +5,21 @@ var mongoose = require('mongoose');
 
 var TimeTables = require('../models/timetable');
 var Verify=require('./verify');
+var sample = require('./timetable.json');
 
 var timetableRouter = express.Router();
 
 timetableRouter.use(bodyParser.json());
 
 timetableRouter.route('/')
-.get(function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     TimeTables.find({}, function (err, timetables) {
         if (err) throw err;
         res.json(timetables);
     });
 })
 
-.post(function (req, res, next) {
+.post(Verify.verifyAppUser,function (req, res, next) {
     if(req.body.shift=='evening'){
         req.body.friday.forEach(function(period){
             period.p1[0].time='11:45 - 12:45';
@@ -126,7 +127,7 @@ timetableRouter.route('/')
     });
 })
 
-.delete(function (req, res, next) {
+.delete(Verify.verifyAppUser,function (req, res, next) {
     TimeTables.remove({}, function (err, resp) {
         if (err) next(err);
         res.json(resp);
@@ -140,13 +141,13 @@ timetableRouter.route('/:timetableId')
     TimeTables.findOne({"sem":sem,"group":group},function (err, timetable) {
         if (err) next(err);
         if(timetable==null)
-            res.json({notification:'Please be patient, your timetable will be uploaded soon.'});
+            res.json(sample);
         else
             res.json(timetable);
         });
 })
 
-.put(function (req, res, next) {
+.put(Verify.verifyAppUser,function (req, res, next) {
     TimeTables.findByIdAndUpdate(req.params.timetableId, {
         $set: req.body
     }, {
@@ -157,7 +158,7 @@ timetableRouter.route('/:timetableId')
     });
 })
 
-.delete(function (req, res, next) {
+.delete(Verify.verifyAppUser,function (req, res, next) {
         TimeTables.findByIdAndRemove(req.params.timetableId, function (err, resp) {
         if (err) next(err);
         res.json(resp);

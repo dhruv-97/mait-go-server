@@ -37,7 +37,7 @@ var announcementRouter = express.Router();
 announcementRouter.use(bodyParser.json());
 
 announcementRouter.route('/')
-.get(function (req, res, next) {
+.get(Verify.verifyAppUser,function (req, res, next) {
     
     Announcements.find({}).sort('-createdAt').exec(function(err, announcements) { 
         if (err) throw err;
@@ -77,7 +77,7 @@ announcementRouter.route('/')
     });
 })
 
-.delete(function (req, res, next) {
+.delete(Verify.verifyAppUser,function (req, res, next) {
     Announcements.remove({}, function (err, resp) {
         if (err) next(err);
         res.json(resp);
@@ -88,15 +88,17 @@ announcementRouter.route('/:announcementId')
 .get(Verify.verifyAppUser, function (req, res, next) {
     var sem= req.params.announcementId[0];
     var group= req.params.announcementId.substring(1,3);
-    console.log(sem);
-    console.log(group);
     Announcements.find({"sem":sem,"group":group}).sort('-createdAt').exec(function (err, announcement) {
         if (err) next(err);
-        res.json(announcement);
+        if(announcement=[])
+            res.json([{name:"Uddish Verma",message:"Teachers will post announcement here",
+                date:createDate(),time:createTime()}]);
+        else
+            res.json(announcement);
         });
 })
 
-.put(function (req, res, next) {
+.put(Verify.verifyAppUser,function (req, res, next) {
     Announcements.findByIdAndUpdate(req.params.announcementId, {
         $set: req.body
     }, {
@@ -107,7 +109,7 @@ announcementRouter.route('/:announcementId')
     });
 })
 
-.delete(function (req, res, next) {
+.delete(Verify.verifyAppUser,function (req, res, next) {
         Announcements.findByIdAndRemove(req.params.announcementId, function (err, resp) {
         if (err) next(err);
         res.json(resp);

@@ -3,8 +3,8 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Marks = require('../models/mark');
 var results = require('../models/result');
-// var map = require('../parsing/mapping.js');
-// var data = require('../parsing/data.js');
+var map = require('../parsing/mapping.js');
+var data = require('../parsing/data.js');
 let programmes = ['031','027','028','036','049','034','030'];
 let batches = ['16','15','14'];
 let sems = [1,2,3,4,5];
@@ -34,11 +34,12 @@ function createResult(){
     })
   }, this);
   setTimeout(function(){
-       let sem,pro;
+       let sem,pro,batch;
       data.forEach(function(element,index3){
         if(index3==0){
           sem=element.sem;
           pro=element.programme;
+          batch=element.batch;
         }
         element.marks=marksarr[index3];
         results.create(element, function (err, result2) {

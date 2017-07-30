@@ -17,7 +17,7 @@ facultyRouter.route('/')
         res.json(faculty);
         });
 })
-.put(function (req, res, next) {
+.put(Verify.verifyAppUser,function (req, res, next) {
     faculties.findByIdAndUpdate("59791301c9953e5f7b62177f", {
         $set: req.body
     }, {
@@ -27,7 +27,7 @@ facultyRouter.route('/')
         res.json(faculty);
     });
 })
-.post(function (req, res, next) {
+.post(Verify.verifyAppUser,function (req, res, next) {
     faculties.create(req.body, function (err, faculty) {
         if (err) {
             console.log('Error Inserting New Data');
