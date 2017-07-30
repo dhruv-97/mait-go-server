@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 
 var TimeTables = require('../models/timetable');
 var Verify=require('./verify');
-var sample = require('./timetable.json');
+//var sample = require('./timetable.json');
 
 var timetableRouter = express.Router();
 
@@ -141,7 +141,7 @@ timetableRouter.route('/:timetableId')
     TimeTables.findOne({"sem":sem,"group":group},function (err, timetable) {
         if (err) next(err);
         if(timetable==null)
-            res.json(sample);
+            res.json({notification:"University has not issued your timetable. It will be uploaded soon."});
         else
             res.json(timetable);
         });
