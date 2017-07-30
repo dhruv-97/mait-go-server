@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var Marks = require('../models/mark');
 var results = require('../models/result');
 var Verify = require('./verify');
 function mapProgramme(x){
