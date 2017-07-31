@@ -130,9 +130,9 @@ router.post('/login', function(req, res, next) {
           err: 'Could not log in user'
         });
       }
-        
       var token = Verify.getToken(user);
               res.status(200).json({
+        student: user.student,
         status: 'Login successful!',
         success: true,
         token: token
@@ -170,8 +170,8 @@ router.get('/logout', function(req, res) {
     status: 'Bye!'
   });
 });
-router.get('/create', function(req, res) {
-    createAuthentication();
-    res.send('Trying my best');
-});
+// router.get('/create', function(req, res) {
+//     createAuthentication();
+//     res.send('Trying my best');
+// });
 module.exports = router;

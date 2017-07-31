@@ -64,7 +64,6 @@ var AnnouncementComponent = (function () {
     AnnouncementComponent.prototype.ngOnInit = function () {
     };
     AnnouncementComponent.prototype.post = function () {
-        var success = false;
         this.ipuService.postAnnouncement(this.announcement).then(function (res) { return alert('Announcement posted successfully'); }, function (err) { return alert('Announcement could not be posted'); });
     };
     return AnnouncementComponent;
@@ -104,7 +103,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The whole content below can be removed with the new code.-->\n<app-login></app-login>\n\n"
+module.exports = "<!--The whole content below can be removed with the new code.-->\n<router-outlet></router-outlet>\n\n"
 
 /***/ }),
 
@@ -155,6 +154,12 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ipu_go_service__ = __webpack_require__("../../../../../src/app/ipu-go.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__failure_failure_component__ = __webpack_require__("../../../../../src/app/failure/failure.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__success_success_component__ = __webpack_require__("../../../../../src/app/success/success.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__student_student_component__ = __webpack_require__("../../../../../src/app/student/student.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__timetable_timetable_component__ = __webpack_require__("../../../../../src/app/timetable/timetable.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__updatetime_updatetime_component__ = __webpack_require__("../../../../../src/app/updatetime/updatetime.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__updateform_updateform_component__ = __webpack_require__("../../../../../src/app/updateform/updateform.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__reset_reset_component__ = __webpack_require__("../../../../../src/app/reset/reset.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__event_event_component__ = __webpack_require__("../../../../../src/app/event/event.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -174,11 +179,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+
+
+
 var appRoutes = [
     { path: 'postannouncement', component: __WEBPACK_IMPORTED_MODULE_7__announcement_announcement_component__["a" /* AnnouncementComponent */] },
     { path: 'postassignment', component: __WEBPACK_IMPORTED_MODULE_8__assignment_assignment_component__["a" /* AssignmentComponent */] },
     { path: 'failure', component: __WEBPACK_IMPORTED_MODULE_10__failure_failure_component__["a" /* FailureComponent */] },
     { path: 'success', component: __WEBPACK_IMPORTED_MODULE_11__success_success_component__["a" /* SuccessComponent */] },
+    { path: 'student', component: __WEBPACK_IMPORTED_MODULE_12__student_student_component__["a" /* StudentComponent */] },
+    { path: 'posttimetable', component: __WEBPACK_IMPORTED_MODULE_13__timetable_timetable_component__["a" /* TimetableComponent */] },
+    { path: 'changepassword', component: __WEBPACK_IMPORTED_MODULE_16__reset_reset_component__["a" /* ResetComponent */] },
+    { path: 'postevent', component: __WEBPACK_IMPORTED_MODULE_17__event_event_component__["a" /* EventComponent */] },
+    { path: 'updateform', component: __WEBPACK_IMPORTED_MODULE_15__updateform_updateform_component__["a" /* UpdateformComponent */] },
+    { path: 'updatetime', component: __WEBPACK_IMPORTED_MODULE_14__updatetime_updatetime_component__["a" /* UpdatetimeComponent */] },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_6__login_login_component__["a" /* LoginComponent */] }
 ];
 var AppModule = (function () {
@@ -194,7 +211,13 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_7__announcement_announcement_component__["a" /* AnnouncementComponent */],
             __WEBPACK_IMPORTED_MODULE_8__assignment_assignment_component__["a" /* AssignmentComponent */],
             __WEBPACK_IMPORTED_MODULE_10__failure_failure_component__["a" /* FailureComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__success_success_component__["a" /* SuccessComponent */]
+            __WEBPACK_IMPORTED_MODULE_11__success_success_component__["a" /* SuccessComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__student_student_component__["a" /* StudentComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__timetable_timetable_component__["a" /* TimetableComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__updatetime_updatetime_component__["a" /* UpdatetimeComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__updateform_updateform_component__["a" /* UpdateformComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__reset_reset_component__["a" /* ResetComponent */],
+            __WEBPACK_IMPORTED_MODULE_17__event_event_component__["a" /* EventComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */].forRoot(appRoutes, { enableTracing: true } // <-- debugging purposes only
@@ -233,7 +256,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/assignment/assignment.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class='login'>\n  <div class='login_title'>\n    <span>Post an assignment</span>\n  </div>\n  <div class='login_fields'>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>\n      </div>\n      <input placeholder='Semester - Eg.(4)' type='text'[(ngModel)]=\"assignment.sem\" max=\"8\" required>\n        <div class='validation'>\n          <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n        </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Class - Eg.( I4 )' type='text' [(ngModel)]=\"assignment.group\" maxlength=\"2\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Subject - Eg.( COA )' type='text' [(ngModel)]=\"assignment.subject\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Marks - Eg.(20)' type='number' [(ngModel)]=\"assignment.marks\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input type='date' placeholder=\"Date - Eg. (04/04/2017)\" [(ngModel)]=\"assignment.last\" maxlength=\"10\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Marks-Eg.(20)' type='file' multiple (change)=\"fileChangeEvent($event)\" placeholder=\"Upload file...\">\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__submit'>\n      <input type='submit' value='Post' (click)=\"post()\">\n      <a routerLink=\"/success\">Go Back</a>\n    </div>\n  </div>\n"
+module.exports = "\n<div class='login'>\n  <div class='login_title'>\n    <span>Post an assignment</span>\n  </div>\n  <div class='login_fields'>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>\n      </div>\n      <input placeholder='Semester - Eg.(4)' type='text'[(ngModel)]=\"assignment.sem\" max=\"8\" required>\n        <div class='validation'>\n          <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n        </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Class - Eg.( I4 )' type='text' [(ngModel)]=\"assignment.group\" maxlength=\"2\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Subject - Eg.( COA )' type='text' [(ngModel)]=\"assignment.subject\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Marks - Eg.(20)' type='number' [(ngModel)]=\"assignment.marks\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input type='date' placeholder=\"Last Date\" [(ngModel)]=\"assignment.last\" maxlength=\"10\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input type='file' multiple (change)=\"fileChangeEvent($event)\" placeholder=\"Upload file...\">\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__submit'>\n      <input type='submit' value='Post' (click)=\"post()\">\n      <a routerLink=\"/success\">Go Back</a>\n    </div>\n  </div>\n"
 
 /***/ }),
 
@@ -261,6 +284,9 @@ var AssignmentComponent = (function () {
         this.assignment = { name: '', sem: '', group: '', subject: '', marks: '', last: '', files: [''] };
     }
     AssignmentComponent.prototype.ngOnInit = function () {
+        if ($('[type="date"]').prop('type') != 'date') {
+            $('[type="date"]').datepicker();
+        }
     };
     AssignmentComponent.prototype.uploadFile = function (file, signedRequest, url) {
         var _this = this;
@@ -324,6 +350,127 @@ AssignmentComponent = __decorate([
 
 var _a;
 //# sourceMappingURL=assignment.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/event/event.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "a{\n  text-decoration: none;\n  display: block;\n  margin-top:20px;\n  border-radius: 50px;\n  background: transparent;\n  padding: 10px 50px;\n  border: 2px solid #DC6180;\n  color: #DC6180;\n  text-transform: uppercase;\n  font-size: 11px;\n  transition-property: background,color;\n  transition-duration: .2s;\n}\n a:focus {\n  box-shadow: none;\n  outline: none;\n}\n a:hover {\n  color: white;\n  background: #DC6180;\n  cursor: pointer;\n  transition-property: background,color;\n  transition-duration: .2s;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/event/event.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class='login'>\n  <div class='login_title'>\n    <span>Post an Event</span>\n  </div>\n  <div class='login_fields'>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>\n      </div>\n      <input placeholder='Event Name' type='text' [(ngModel)]=\"event.eventName\"  required >\n        <div class='validation'>\n          <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n        </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Organiser' type='text' [(ngModel)]=\"event.organiser\"  required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Registration Fees' type='number' [(ngModel)]=\"event.regisFee\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Contact Number' type='text' [(ngModel)]=\"event.organiserNumber\"  required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Contact Email' type='text' [(ngModel)]=\"event.organiserEmail\"  required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Society' type='text' [(ngModel)]=\"event.society\"  required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input type='date' placeholder=\"Date\" [(ngModel)]=\"event.eventDate\" id=\"date-input\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input type='file' (change)=\"fileChangeEvent($event)\" placeholder=\"Upload file...\">\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__submit'>\n      <input type='submit' value='Post' (click)=\"post()\">\n      <a routerLink=\"/student\">Go Back</a>\n    </div>\n  </div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/event/event.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__ = __webpack_require__("../../../../../src/app/ipu-go.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var EventComponent = (function () {
+    function EventComponent(ipuService) {
+        this.ipuService = ipuService;
+        this.event = {
+            eventName: '',
+            organiser: '',
+            eventDate: '',
+            regisFee: '',
+            organiserNumber: '',
+            organiserEmail: '',
+            society: '',
+            imageUrl: ''
+        };
+    }
+    EventComponent.prototype.ngOnInit = function () {
+        if ($('[type="date"]').prop('type') != 'date') {
+            $('[type="date"]').datepicker();
+        }
+    };
+    EventComponent.prototype.uploadFile = function (file, signedRequest, url) {
+        var _this = this;
+        var xhr = new XMLHttpRequest();
+        xhr.open('PUT', signedRequest);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    _this.event.imageUrl = url;
+                    alert('Image uploading is now complete');
+                }
+                else {
+                    alert('Could not upload file.');
+                }
+            }
+        };
+        xhr.send(file);
+    };
+    EventComponent.prototype.getSignedRequest = function (file) {
+        var _this = this;
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', "http://ec2-52-66-87-230.ap-south-1.compute.amazonaws.com/assignment/sign-s3?file-name=" + file.name + "&file-type=" + file.type);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    _this.uploadFile(file, response.signedRequest, response.url);
+                }
+                else {
+                    alert('Could not get signed URL.');
+                }
+            }
+        };
+        xhr.send();
+    };
+    EventComponent.prototype.fileChangeEvent = function (fileInput) {
+        if (fileInput.target.files[0])
+            this.getSignedRequest(fileInput.target.files[0]);
+    };
+    EventComponent.prototype.post = function () {
+        this.event.eventDate = $('#date-input').val();
+        console.log(this.event);
+        this.ipuService.postEvent(this.event).then(function (res) { return alert('Event posted successfully'); }, function (err) { return alert('Event could not be posted'); });
+    };
+    return EventComponent;
+}());
+EventComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'app-event',
+        template: __webpack_require__("../../../../../src/app/event/event.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/event/event.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */]) === "function" && _a || Object])
+], EventComponent);
+
+var _a;
+//# sourceMappingURL=event.component.js.map
 
 /***/ }),
 
@@ -416,10 +563,28 @@ var IpuGoService = (function () {
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
     }
     IpuGoService.prototype.setName = function (x) {
-        this.name = x;
+        this.store('name', x);
     };
     IpuGoService.prototype.setToken = function (x) {
-        this.token = x;
+        this.store('token', x);
+    };
+    IpuGoService.prototype.setUsername = function (x) {
+        this.store('username', x);
+    };
+    IpuGoService.prototype.setStudent = function (x) {
+        this.store('student', x);
+    };
+    IpuGoService.prototype.getStudent = function () {
+        return this.retrieve('student');
+    };
+    IpuGoService.prototype.setGroup = function (x) {
+        this.store('group', x);
+    };
+    IpuGoService.prototype.store = function (key, content) {
+        localStorage.setItem(key, content);
+    };
+    IpuGoService.prototype.retrieve = function (key) {
+        return localStorage.getItem(key);
     };
     IpuGoService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
@@ -434,20 +599,64 @@ var IpuGoService = (function () {
     };
     IpuGoService.prototype.postAssignment = function (assignment) {
         var _this = this;
-        this.headers.append('x-access-token', this.token);
-        assignment.name = this.name;
+        var x = this.retrieve('token');
+        this.headers.append('x-access-token', x);
+        assignment.name = this.retrieve('name');
         return this.http
             .post(this.base + 'assignment', assignment, { headers: this.headers })
             .toPromise()
             .then(function (res) { return _this.headers.delete('x-access-token'); })
             .catch(this.handleError);
     };
+    IpuGoService.prototype.postEvent = function (event) {
+        var _this = this;
+        this.headers.append('x-access-token', '6SFsbxfypf2o5FyIy0ug');
+        return this.http
+            .post(this.base + 'upcoming', event, { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return _this.headers.delete('x-access-token'); })
+            .catch(this.handleError);
+    };
     IpuGoService.prototype.postAnnouncement = function (announcement) {
         var _this = this;
-        this.headers.append('x-access-token', this.token);
-        announcement.name = this.name;
+        var x = this.retrieve('token');
+        this.headers.append('x-access-token', x);
+        announcement.name = this.retrieve('name');
         return this.http
             .post(this.base + 'announcement', announcement, { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return _this.headers.delete('x-access-token'); })
+            .catch(this.handleError);
+    };
+    IpuGoService.prototype.postTimetable = function (timetable) {
+        var _this = this;
+        this.headers.append('x-access-token', '6SFsbxfypf2o5FyIy0ug');
+        return this.http
+            .post(this.base + 'timetable', timetable, { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return _this.headers.delete('x-access-token'); })
+            .catch(this.handleError);
+    };
+    IpuGoService.prototype.getTimeTable = function () {
+        var _this = this;
+        this.headers.append('x-access-token', '6SFsbxfypf2o5FyIy0ug');
+        var group = this.retrieve('group');
+        return this.http
+            .get(this.base + 'timetable/' + group, { headers: this.headers })
+            .toPromise()
+            .then(function (res) {
+            _this.headers.delete('x-access-token');
+            return res.json();
+        })
+            .catch(this.handleError);
+    };
+    IpuGoService.prototype.changePassword = function (reset) {
+        var _this = this;
+        var x = this.retrieve('token');
+        this.headers.append('x-access-token', x);
+        reset.username = this.retrieve('username');
+        return this.http
+            .post(this.base + 'teacher/reset', reset, { headers: this.headers })
             .toPromise()
             .then(function (res) { return _this.headers.delete('x-access-token'); })
             .catch(this.handleError);
@@ -539,9 +748,15 @@ var LoginComponent = (function () {
     };
     LoginComponent.prototype.login = function () {
         var _this = this;
-        var success = false;
+        var success = false, student = false;
         this.ipuService.setName(this.name);
-        this.ipuService.login(this.teacher).then(function (res) { return _this.ipuService.setToken(res.token); }, function (err) {
+        this.ipuService.login(this.teacher).then(function (res) {
+            _this.ipuService.setToken(res.token);
+            _this.ipuService.setUsername(_this.teacher.username);
+            _this.ipuService.setStudent(res.student);
+            success = true;
+            student = res.student;
+        }, function (err) {
             setTimeout(function () {
                 _this.router.navigate(['/failure']);
             }, 3200);
@@ -564,7 +779,12 @@ var LoginComponent = (function () {
             $('.login div').fadeOut(123);
         }, 2800);
         setTimeout(function () {
-            _this.router.navigate(['/success']);
+            if (success) {
+                if (student)
+                    _this.router.navigate(['/student']);
+                else
+                    _this.router.navigate(['/success']);
+            }
         }, 3200);
     };
     return LoginComponent;
@@ -580,6 +800,146 @@ LoginComponent = __decorate([
 
 var _a, _b;
 //# sourceMappingURL=login.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/reset/reset.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "a{\n  text-decoration: none;\n  display: block;\n  margin-top:20px;\n  border-radius: 50px;\n  background: transparent;\n  padding: 10px 50px;\n  border: 2px solid #DC6180;\n  color: #DC6180;\n  text-transform: uppercase;\n  font-size: 11px;\n  transition-property: background,color;\n  transition-duration: .2s;\n}\n a:focus {\n  box-shadow: none;\n  outline: none;\n}\n a:hover {\n  color: white;\n  background: #DC6180;\n  cursor: pointer;\n  transition-property: background,color;\n  transition-duration: .2s;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/reset/reset.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\n<div class='login'>\n  <div class='login_title'>\n    <span>Reset your password</span>\n  </div>\n  <div class='login_fields'>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Old Password' type='password' [(ngModel)]=\"reset.password\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='New Password' type='password' [(ngModel)]=\"reset.newPassword\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__submit'>\n      <input type='submit' value='Change Password' (click)=\"changePassword()\">\n      <a (click)=\"goBack()\">Go Back</a>\n    </div>\n  </div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/reset/reset.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__ = __webpack_require__("../../../../../src/app/ipu-go.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResetComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ResetComponent = (function () {
+    function ResetComponent(ipuService, router) {
+        this.ipuService = ipuService;
+        this.router = router;
+        this.reset = { username: '', password: '', newPassword: '' };
+    }
+    ResetComponent.prototype.ngOnInit = function () {
+    };
+    ResetComponent.prototype.changePassword = function () {
+        this.ipuService.changePassword(this.reset).then(function (res) { return alert('Password has been reset successfully'); }, function (err) { return alert('Username or password is incorrect'); });
+    };
+    ResetComponent.prototype.goBack = function () {
+        var x = this.ipuService.getStudent();
+        if (x)
+            this.router.navigate(['/student']);
+        else
+            this.router.navigate(['success']);
+    };
+    return ResetComponent;
+}());
+ResetComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'app-reset',
+        template: __webpack_require__("../../../../../src/app/reset/reset.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/reset/reset.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
+], ResetComponent);
+
+var _a, _b;
+//# sourceMappingURL=reset.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/student/student.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".success a{\n  text-decoration: none;\n  display: block;\n  margin-bottom:10px;\n  border-radius: 50px;\n  background: transparent;\n  padding: 10px 50px;\n  border: 2px solid #DC6180;\n  color: #DC6180;\n  text-transform: uppercase;\n  font-size: 11px;\n  transition-property: background,color;\n  transition-duration: .2s;\n}\n.success a:focus {\n  box-shadow: none;\n  outline: none;\n}\n.success a:hover {\n  color: white;\n  background: #DC6180;\n  cursor: pointer;\n  transition-property: background,color;\n  transition-duration: .2s;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/student/student.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class='login'>\n  <div class='success'>\n      <h2>Authentication Success</h2>\n      <p>Welcome back</p>\n        <a routerLink=\"/posttimetable\" >Post a Timetable</a>\n        <a routerLink=\"/postevent\">Post an Event</a>\n        <a routerLink=\"/changepassword\">Change Password</a>\n        <a routerLink=\"/\">Log out</a>\n    </div>\n</div>\n<router-outlet></router-outlet>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/student/student.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StudentComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var StudentComponent = (function () {
+    function StudentComponent() {
+    }
+    StudentComponent.prototype.ngOnInit = function () {
+    };
+    return StudentComponent;
+}());
+StudentComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'app-student',
+        template: __webpack_require__("../../../../../src/app/student/student.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/student/student.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], StudentComponent);
+
+//# sourceMappingURL=student.component.js.map
 
 /***/ }),
 
@@ -604,7 +964,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/success/success.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='login'>\n  <div class='success'>\n      <h2>Authentication Success</h2>\n      <p>Welcome back</p>\n        <a routerLink=\"/postannouncement\" >Post an Announcement</a>\n        <a routerLink=\"/postassignment\">Post an Assignment</a>\n        <a href=\"\">Check a Result</a>\n        <a routerLink=\"/\">Log out</a>\n    </div>\n</div>\n<router-outlet></router-outlet>"
+module.exports = "<div class='login'>\n  <div class='success'>\n      <h2>Authentication Success</h2>\n      <p>Welcome back</p>\n        <a routerLink=\"/postannouncement\" >Post an Announcement</a>\n        <a routerLink=\"/postassignment\">Post an Assignment</a>\n        <a routerLink=\"/changepassword\">Change Password</a>\n        <a routerLink=\"/\">Log out</a>\n    </div>\n</div>\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -641,6 +1001,325 @@ SuccessComponent = __decorate([
 ], SuccessComponent);
 
 //# sourceMappingURL=success.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/timetable/timetable.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "th,td\n    {\n        margin: 0;\n        text-align: center;\n        border-collapse: collapse;\n        outline: 1px solid #4E546D;\n    }\n\n    td\n    {\n        padding: 5px 10px;\n    }\n\n    th\n    {\n        background: #35394a;\n        color: #4E546D;\n        padding: 5px 10px;\n    }\n\n    td:hover\n    {\n        cursor: pointer;\n        background: #35394a;\n        color: #4E546D;\n    }\n    #info input{\n        margin-left: 9%;\n        width: 35%; \n    }\n    button{\n        display: block;\n        margin-bottom: 10px;\n        margin-left: 40%;\n        width: 20%;\n        height: 40px;\n    }\n    .center{\n        left: 50%;\n    }", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/timetable/timetable.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<form role=\"form\" id=\"timetableForm\" novalidate>\n    <label class=\"center\">\n        <input type=\"radio\" [(ngModel)]=\"timetable.shift\" value=\"morning\" name=\"shift\" \n        (click)=\"changeShift(true)\">\n        Morning\n        </label><br/>\n        <label class=\"center\">\n        <input type=\"radio\" [(ngModel)]=\"timetable.shift\" value=\"evening\" name=\"shift\" \n        (click)=\"changeShift(false)\">\n        Evening\n        </label>\n    <div id=\"info\">\n    <input type=\"number\" id=\"sem\" name=\"sem\" placeholder=\"Semester\"\n                            [(ngModel)]=\"timetable.sem\" required min=\"1\" max=\"8\">\n    <input type=\"text\" id=\"group\" name=\"group\" placeholder=\"Group(I4)\" maxlength=\"2\" \n                            [(ngModel)]=\"timetable.group\" required>\n    </div>\n    <table width=\"80%\" align=\"center\" >\n    <tr [hidden]=\"!shift\">\n        <th>Time</th>\n        <th>1<br>8:15-9:15</th>\n        <th>2<br>9:15-10:15</th>\n        <th>3<br>10:15-11:15</th>\n        <th>4<br>11:45-12:15</th>\n        <th>5<br>12:45-1:45</th>\n        <th>6<br>1:45-2:45</th>\n        <th>6<br>2:45-3:45</th>\n    </tr>\n    <tr [hidden]=\"shift\" >\n        <th>Time</th>\n        <th>1<br>11:45-12:45</th>\n        <th>2<br>12:45-1:45</th>\n        <th>3<br>1:45-2:45</th>\n        <th>4<br>2:45-3:45</th>\n        <th>5<br>4:00-5:00</th>\n        <th>6<br>5:00-6:00</th>\n        <th>6<br>6:00-7:00</th>\n    </tr>\n  \n\n    <tr>\n        <th>Monday</th>\n        \n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.monday[0].p1[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.monday[0].p1[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.monday[0].p1[0].teacher\" required> \n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.monday[0].p2[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.monday[0].p2[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.monday[0].p2[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.monday[0].p3[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.monday[0].p3[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.monday[0].p3[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.monday[0].p4[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.monday[0].p4[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.monday[0].p4[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.monday[0].p5[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.monday[0].p5[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.monday[0].p5[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.monday[0].p6[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.monday[0].p6[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.monday[0].p6[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.monday[0].p7.subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.monday[0].p7.room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.monday[0].p7.teacher\" required>\n            </td>\n        \n    </tr>\n\n    <tr>\n        <th>Tuesday</th>\n        \n            \n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.tuesday[0].p1[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.tuesday[0].p1[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.tuesday[0].p1[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.tuesday[0].p2[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.tuesday[0].p2[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.tuesday[0].p2[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.tuesday[0].p3[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.tuesday[0].p3[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.tuesday[0].p3[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.tuesday[0].p4[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.tuesday[0].p4[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.tuesday[0].p4[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.tuesday[0].p5[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.tuesday[0].p5[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.tuesday[0].p5[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.tuesday[0].p6[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.tuesday[0].p6[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.tuesday[0].p6[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.tuesday[0].p7.subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.tuesday[0].p7.room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.tuesday[0].p7.teacher\" required>\n            </td>\n        \n    </tr>\n\n    <tr>\n        <th>Wednesday</th>\n        \n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.wednesday[0].p1[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.wednesday[0].p1[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.wednesday[0].p1[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.wednesday[0].p2[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.wednesday[0].p2[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.wednesday[0].p2[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.wednesday[0].p3[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.wednesday[0].p3[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.wednesday[0].p3[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.wednesday[0].p4[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.wednesday[0].p4[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.wednesday[0].p4[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.wednesday[0].p5[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.wednesday[0].p5[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.wednesday[0].p5[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.wednesday[0].p6[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.wednesday[0].p6[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.wednesday[0].p6[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.wednesday[0].p7.subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.wednesday[0].p7.room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.wednesday[0].p7.teacher\" required>\n            </td>\n\n        \n    </tr>\n\n    <tr>\n        <th>Thursday</th>\n        \n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.thursday[0].p1[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.thursday[0].p1[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.thursday[0].p1[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.thursday[0].p2[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.thursday[0].p2[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.thursday[0].p2[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.thursday[0].p3[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.thursday[0].p3[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.thursday[0].p3[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.thursday[0].p4[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.thursday[0].p4[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.thursday[0].p4[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.thursday[0].p5[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.thursday[0].p5[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.thursday[0].p5[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.thursday[0].p6[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.thursday[0].p6[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.thursday[0].p6[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.thursday[0].p7.subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.thursday[0].p7.room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.thursday[0].p7.teacher\" required>\n            </td>\n\n        \n    </tr>\n\n    <tr>\n        <th>Friday</th>\n        \n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.friday[0].p1[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.friday[0].p1[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.friday[0].p1[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.friday[0].p2[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.friday[0].p2[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.friday[0].p2[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.friday[0].p3[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.friday[0].p3[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.friday[0].p3[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.friday[0].p4[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.friday[0].p4[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.friday[0].p4[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.friday[0].p5[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.friday[0].p5[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.friday[0].p5[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.friday[0].p6[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.friday[0].p6[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.friday[0].p6[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Subject\"\n                [(ngModel)]=\"timetable.friday[0].p7.subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Room\"\n                        [(ngModel)]=\"timetable.friday[0].p7.room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" placeholder=\"Teacher\"\n                        [(ngModel)]=\"timetable.friday[0].p7.teacher\" required>\n            </td>\n        \n    </tr>\n</table>\n<div class=\"center\">\n<button type=\"submit\" (click)=\"sendTimeTable()\">Send Timetable</button>\n<a routerLink=\"/student\" ><button>Go back</button></a>\n</div>\n</form>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/timetable/timetable.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__ = __webpack_require__("../../../../../src/app/ipu-go.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TimetableComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TimetableComponent = (function () {
+    function TimetableComponent(ipuService) {
+        this.ipuService = ipuService;
+        this.shift = true;
+        this.timetable = { shift: '', group: '', sem: '',
+            monday: [{
+                    p1: [{ room: '', subject: '', teacher: '' }],
+                    p2: [{ room: '', subject: '', teacher: '' }],
+                    p3: [{ room: '', subject: '', teacher: '' }],
+                    p4: [{ room: '', subject: '', teacher: '' }],
+                    p5: [{ room: '', subject: '', teacher: '' }],
+                    p6: [{ room: '', subject: '', teacher: '' }],
+                    p7: [{ room: '', subject: '', teacher: '' }]
+                }
+            ],
+            tuesday: [{
+                    p1: [{ room: '', subject: '', teacher: '' }],
+                    p2: [{ room: '', subject: '', teacher: '' }],
+                    p3: [{ room: '', subject: '', teacher: '' }],
+                    p4: [{ room: '', subject: '', teacher: '' }],
+                    p5: [{ room: '', subject: '', teacher: '' }],
+                    p6: [{ room: '', subject: '', teacher: '' }],
+                    p7: [{ room: '', subject: '', teacher: '' }]
+                }
+            ],
+            wednesday: [{
+                    p1: [{ room: '', subject: '', teacher: '' }],
+                    p2: [{ room: '', subject: '', teacher: '' }],
+                    p3: [{ room: '', subject: '', teacher: '' }],
+                    p4: [{ room: '', subject: '', teacher: '' }],
+                    p5: [{ room: '', subject: '', teacher: '' }],
+                    p6: [{ room: '', subject: '', teacher: '' }],
+                    p7: [{ room: '', subject: '', teacher: '' }]
+                }
+            ],
+            thursday: [{
+                    p1: [{ room: '', subject: '', teacher: '' }],
+                    p2: [{ room: '', subject: '', teacher: '' }],
+                    p3: [{ room: '', subject: '', teacher: '' }],
+                    p4: [{ room: '', subject: '', teacher: '' }],
+                    p5: [{ room: '', subject: '', teacher: '' }],
+                    p6: [{ room: '', subject: '', teacher: '' }],
+                    p7: [{ room: '', subject: '', teacher: '' }]
+                }
+            ],
+            friday: [{
+                    p1: [{ room: '', subject: '', teacher: '' }],
+                    p2: [{ room: '', subject: '', teacher: '' }],
+                    p3: [{ room: '', subject: '', teacher: '' }],
+                    p4: [{ room: '', subject: '', teacher: '' }],
+                    p5: [{ room: '', subject: '', teacher: '' }],
+                    p6: [{ room: '', subject: '', teacher: '' }],
+                    p7: [{ room: '', subject: '', teacher: '' }]
+                }
+            ]
+        };
+    }
+    TimetableComponent.prototype.ngOnInit = function () {
+    };
+    TimetableComponent.prototype.sendTimeTable = function () {
+        this.ipuService.postTimetable(this.timetable).then(function (res) { return alert("Timetable has been posted successfully"); }, function (err) { return alert('Timetable could not be posted'); });
+    };
+    TimetableComponent.prototype.changeShift = function (x) {
+        this.shift = x;
+    };
+    return TimetableComponent;
+}());
+TimetableComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'app-timetable',
+        template: __webpack_require__("../../../../../src/app/timetable/timetable.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/timetable/timetable.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */]) === "function" && _a || Object])
+], TimetableComponent);
+
+var _a;
+//# sourceMappingURL=timetable.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/updateform/updateform.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "a{\n  text-decoration: none;\n  display: block;\n  margin-top:20px;\n  border-radius: 50px;\n  background: transparent;\n  padding: 10px 50px;\n  border: 2px solid #DC6180;\n  color: #DC6180;\n  text-transform: uppercase;\n  font-size: 11px;\n  transition-property: background,color;\n  transition-duration: .2s;\n}\n a:focus {\n  box-shadow: none;\n  outline: none;\n}\n a:hover {\n  color: white;\n  background: #DC6180;\n  cursor: pointer;\n  transition-property: background,color;\n  transition-duration: .2s;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/updateform/updateform.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\n<div class='login'>\n  <div class='login_title'>\n    <span>Edit Timetable</span>\n  </div>\n  <div class='login_fields'>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>\n      </div>\n      <input placeholder='Semester-Eg.(4)' type='number' [(ngModel)]=\"sem\" maxlength=\"1\" required >\n        <div class='validation'>\n          <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n        </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Class-Eg.(I4)' type='text' [(ngModel)]=\"group\" maxlength=\"2\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__submit'>\n      <input type='submit' value='Go Edit' (click)=\"go()\">\n      <a routerLink=\"/success\">Go Back</a>\n    </div>\n  </div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/updateform/updateform.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__ = __webpack_require__("../../../../../src/app/ipu-go.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UpdateformComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var UpdateformComponent = (function () {
+    function UpdateformComponent(ipuService, router) {
+        this.ipuService = ipuService;
+        this.router = router;
+    }
+    UpdateformComponent.prototype.ngOnInit = function () {
+    };
+    UpdateformComponent.prototype.go = function () {
+        this.ipuService.setGroup(this.sem + this.group);
+        this.router.navigate(['/updatetime']);
+    };
+    return UpdateformComponent;
+}());
+UpdateformComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'app-updateform',
+        template: __webpack_require__("../../../../../src/app/updateform/updateform.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/updateform/updateform.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
+], UpdateformComponent);
+
+var _a, _b;
+//# sourceMappingURL=updateform.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/updatetime/updatetime.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "th,td\n    {\n        margin: 0;\n        text-align: center;\n        border-collapse: collapse;\n        outline: 1px solid #4E546D;\n    }\n\n    td\n    {\n        padding: 5px 10px;\n    }\n\n    th\n    {\n        background: #35394a;\n        color: #4E546D;\n        padding: 5px 10px;\n    }\n\n    td:hover\n    {\n        cursor: pointer;\n        background: #35394a;\n        color: #4E546D;\n    }\n    #info input{\n        margin-left: 9%;\n        width: 35%; \n    }\n    button{\n        display: block;\n        margin-bottom: 10px;\n        margin-left: 40%;\n        width: 20%;\n        height: 40px;\n    }\n    .center{\n        left: 50%;\n    }", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/updatetime/updatetime.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<form role=\"form\" id=\"timetableForm\" novalidate>\n    <table width=\"80%\" align=\"center\" >\n    <tr [hidden]=\"!shift\">\n        <th>Time</th>\n        <th>1<br>8:15-9:15</th>\n        <th>2<br>9:15-10:15</th>\n        <th>3<br>10:15-11:15</th>\n        <th>4<br>11:45-12:15</th>\n        <th>5<br>12:45-1:45</th>\n        <th>6<br>1:45-2:45</th>\n        <th>6<br>2:45-3:45</th>\n    </tr>\n    <tr [hidden]=\"shift\" >\n        <th>Time</th>\n        <th>1<br>11:45-12:45</th>\n        <th>2<br>12:45-1:45</th>\n        <th>3<br>1:45-2:45</th>\n        <th>4<br>2:45-3:45</th>\n        <th>5<br>4:00-5:00</th>\n        <th>6<br>5:00-6:00</th>\n        <th>6<br>6:00-7:00</th>\n    </tr>\n  \n\n    <tr>\n        <th>Monday</th>\n        \n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.monday[0].p1[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p1[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p1[0].teacher\" required> \n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.monday[0].p2[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p2[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p2[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.monday[0].p3[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p3[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p3[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.monday[0].p4[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p4[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p4[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.monday[0].p5[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p5[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p5[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.monday[0].p6[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p6[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p6[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.monday[0].p7.subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p7.room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.monday[0].p7.teacher\" required>\n            </td>\n        \n    </tr>\n\n    <tr>\n        <th>Tuesday</th>\n        \n            \n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.tuesday[0].p1[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p1[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p1[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.tuesday[0].p2[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p2[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p2[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.tuesday[0].p3[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p3[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p3[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.tuesday[0].p4[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p4[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p4[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.tuesday[0].p5[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p5[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p5[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.tuesday[0].p6[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p6[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p6[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.tuesday[0].p7.subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p7.room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.tuesday[0].p7.teacher\" required>\n            </td>\n        \n    </tr>\n\n    <tr>\n        <th>Wednesday</th>\n        \n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.wednesday[0].p1[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p1[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p1[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.wednesday[0].p2[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p2[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p2[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.wednesday[0].p3[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p3[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p3[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.wednesday[0].p4[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p4[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p4[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.wednesday[0].p5[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p5[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p5[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.wednesday[0].p6[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p6[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p6[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.wednesday[0].p7.subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p7.room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.wednesday[0].p7.teacher\" required>\n            </td>\n\n        \n    </tr>\n\n    <tr>\n        <th>Thursday</th>\n        \n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.thursday[0].p1[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p1[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p1[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.thursday[0].p2[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p2[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p2[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.thursday[0].p3[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p3[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p3[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.thursday[0].p4[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p4[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p4[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.thursday[0].p5[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p5[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p5[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.thursday[0].p6[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p6[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p6[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.thursday[0].p7.subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p7.room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.thursday[0].p7.teacher\" required>\n            </td>\n\n        \n    </tr>\n\n    <tr>\n        <th>Friday</th>\n        \n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.friday[0].p1[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p1[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p1[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.friday[0].p2[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p2[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p2[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.friday[0].p3[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p3[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p3[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.friday[0].p4[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p4[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p4[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.friday[0].p5[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p5[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p5[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.friday[0].p6[0].subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p6[0].room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p6[0].teacher\" required>\n            </td>\n            <td>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                [(ngModel)]=\"timetable.friday[0].p7.subject\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p7.room\" required>\n                <br>\n                <input type=\"text\" id=\"firstname\" name=\"firstname\" \n                        [(ngModel)]=\"timetable.friday[0].p7.teacher\" required>\n            </td>\n        \n    </tr>\n</table>\n<div class=\"center\">\n<button type=\"submit\" (click)=\"sendTimeTable()\">Send Timetable</button>\n<a routerLink=\"/student\" ><button>Go back</button></a>\n</div>\n</form>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/updatetime/updatetime.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__ = __webpack_require__("../../../../../src/app/ipu-go.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UpdatetimeComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var UpdatetimeComponent = (function () {
+    function UpdatetimeComponent(ipuService, router) {
+        this.ipuService = ipuService;
+        this.router = router;
+        this.timetable = { shift: '', group: '', sem: '',
+            monday: [{
+                    p1: [{ room: '', subject: '', teacher: '' }],
+                    p2: [{ room: '', subject: '', teacher: '' }],
+                    p3: [{ room: '', subject: '', teacher: '' }],
+                    p4: [{ room: '', subject: '', teacher: '' }],
+                    p5: [{ room: '', subject: '', teacher: '' }],
+                    p6: [{ room: '', subject: '', teacher: '' }],
+                    p7: [{ room: '', subject: '', teacher: '' }]
+                }
+            ],
+            tuesday: [{
+                    p1: [{ room: '', subject: '', teacher: '' }],
+                    p2: [{ room: '', subject: '', teacher: '' }],
+                    p3: [{ room: '', subject: '', teacher: '' }],
+                    p4: [{ room: '', subject: '', teacher: '' }],
+                    p5: [{ room: '', subject: '', teacher: '' }],
+                    p6: [{ room: '', subject: '', teacher: '' }],
+                    p7: [{ room: '', subject: '', teacher: '' }]
+                }
+            ],
+            wednesday: [{
+                    p1: [{ room: '', subject: '', teacher: '' }],
+                    p2: [{ room: '', subject: '', teacher: '' }],
+                    p3: [{ room: '', subject: '', teacher: '' }],
+                    p4: [{ room: '', subject: '', teacher: '' }],
+                    p5: [{ room: '', subject: '', teacher: '' }],
+                    p6: [{ room: '', subject: '', teacher: '' }],
+                    p7: [{ room: '', subject: '', teacher: '' }]
+                }
+            ],
+            thursday: [{
+                    p1: [{ room: '', subject: '', teacher: '' }],
+                    p2: [{ room: '', subject: '', teacher: '' }],
+                    p3: [{ room: '', subject: '', teacher: '' }],
+                    p4: [{ room: '', subject: '', teacher: '' }],
+                    p5: [{ room: '', subject: '', teacher: '' }],
+                    p6: [{ room: '', subject: '', teacher: '' }],
+                    p7: [{ room: '', subject: '', teacher: '' }]
+                }
+            ],
+            friday: [{
+                    p1: [{ room: '', subject: '', teacher: '' }],
+                    p2: [{ room: '', subject: '', teacher: '' }],
+                    p3: [{ room: '', subject: '', teacher: '' }],
+                    p4: [{ room: '', subject: '', teacher: '' }],
+                    p5: [{ room: '', subject: '', teacher: '' }],
+                    p6: [{ room: '', subject: '', teacher: '' }],
+                    p7: [{ room: '', subject: '', teacher: '' }]
+                }
+            ]
+        };
+        this.shift = true;
+    }
+    UpdatetimeComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.ipuService.getTimeTable().then(function (res) { return _this.timetable = res; });
+    };
+    return UpdatetimeComponent;
+}());
+UpdatetimeComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* Component */])({
+        selector: 'app-updatetime',
+        template: __webpack_require__("../../../../../src/app/updatetime/updatetime.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/updatetime/updatetime.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
+], UpdatetimeComponent);
+
+var _a, _b;
+//# sourceMappingURL=updatetime.component.js.map
 
 /***/ }),
 

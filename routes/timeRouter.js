@@ -138,7 +138,7 @@ timetableRouter.route('/:timetableId')
 .get(Verify.verifyAppUser,function (req, res, next) {
     var sem= req.params.timetableId[0];
     var group= req.params.timetableId.substring(1,req.params.timetableId.length);
-    TimeTables.findOne({"sem":sem,"group":group},function (err, timetable) {
+    TimeTables.findOne({sem,group},function (err, timetable) {
         if (err) next(err);
         if(timetable==null)
             res.json({notification:"University has not issued your timetable. It will be uploaded soon."});
@@ -148,7 +148,9 @@ timetableRouter.route('/:timetableId')
 })
 
 .put(Verify.verifyAppUser,function (req, res, next) {
-    TimeTables.findByIdAndUpdate(req.params.timetableId, {
+    var sem= req.params.timetableId[0];
+    var group= req.params.timetableId.substring(1,req.params.timetableId.length);
+    TimeTables.findOneAndUpdate({sem,group}, {
         $set: req.body
     }, {
         new: true

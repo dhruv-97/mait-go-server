@@ -16,6 +16,10 @@ var Teacher = new Schema({
     admin: {
       type: Boolean,
       default: false
+    },
+    student: {
+        type: Boolean,
+        default: false
     }
 });
 
