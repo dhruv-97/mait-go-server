@@ -1179,7 +1179,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/updateform/updateform.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class='login'>\n  <div class='login_title'>\n    <span>Edit Timetable</span>\n  </div>\n  <div class='login_fields'>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>\n      </div>\n      <input placeholder='Semester-Eg.(4)' type='number' [(ngModel)]=\"sem\" maxlength=\"1\" required >\n        <div class='validation'>\n          <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n        </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Class-Eg.(I4)' type='text' [(ngModel)]=\"group\" maxlength=\"5\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__submit'>\n      <input type='submit' value='Go Edit' (click)=\"go()\">\n      <a routerLink=\"/student\">Go Back</a>\n    </div>\n  </div>\n"
+module.exports = "\n<div class='login'>\n  <div class='login_title'>\n    <span>Edit Timetable</span>\n  </div>\n  <div class='login_fields'>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>\n      </div>\n      <input placeholder='Semester-Eg.(4)' type='number' [(ngModel)]=\"sem\" maxlength=\"1\" required >\n        <div class='validation'>\n          <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n        </div>\n    </div>\n    <div class='login_fields__user'>\n      <div class='icon'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>\n      </div>\n      <input placeholder='Class-Eg.(I4)' type='text' [(ngModel)]=\"group\" maxlength=\"3\" required>\n      <div class='validation'>\n        <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>\n      </div>\n    </div>\n    <div class='login_fields__submit'>\n      <input type='submit' value='Go Edit' (click)=\"go()\">\n      <a routerLink=\"/student\">Go Back</a>\n    </div>\n  </div>\n"
 
 /***/ }),
 
@@ -1336,11 +1336,8 @@ var UpdatetimeComponent = (function () {
     }
     UpdatetimeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var group = this.ipuService.getGroup();
-        var i = group.length - 3;
-        var branch = group.substring(0, i);
-        var group1 = branch + group[i];
-        this.ipuService.getTimeTable(group1).then(function (res) {
+        this.group = this.ipuService.getGroup();
+        this.ipuService.getTimeTable(this.group).then(function (res) {
             if (res.notification[0] == 'U') {
                 alert('No timetable found. Please post it first');
                 _this.router.navigate(['/updateform']);
@@ -1350,23 +1347,8 @@ var UpdatetimeComponent = (function () {
         }, function (err) { return alert('We Have an error'); });
     };
     UpdatetimeComponent.prototype.sendTimeTable = function () {
-        var _this = this;
-        var group = this.ipuService.getGroup();
-        var i = group.length - 3;
-        var branch = group.substring(0, i);
-        var group1 = branch + group[i];
-        var group2 = branch + group[i + 1];
-        var group3 = branch + group[i + 2];
-        console.log(group1, group2, group3);
-        this.timetable.group = group1;
-        this.ipuService.updateTimetable(this.timetable, group1).then(function (res) {
-            _this.timetable.group = group2;
-            _this.ipuService.updateTimetable(_this.timetable, group2).then(function (res) {
-                _this.timetable.group = group3;
-                _this.ipuService.updateTimetable(_this.timetable, group3).then(function (res) {
-                    alert('All timetables were successfully updated');
-                }, function (err) { return alert('Timetable could not be posted'); });
-            }, function (err) { return alert('Timetable could not be posted'); });
+        this.ipuService.updateTimetable(this.timetable, this.group).then(function (res) {
+            alert('Timetable was successfully updated');
         }, function (err) { return alert('Timetable could not be posted'); });
     };
     return UpdatetimeComponent;
