@@ -150,13 +150,14 @@ timetableRouter.route('/:timetableId')
 .put(Verify.verifyAppUser,function (req, res, next) {
     var sem= req.params.timetableId[0];
     var group= req.params.timetableId.substring(1,req.params.timetableId.length);
+    delete req.body._id;
     TimeTables.findOneAndUpdate({sem,group}, {
         $set: req.body
     }, {
         new: true
     }, function (err, timetable) {
-        if (err) next(err);
-        res.json(timetable);
+        if (err) throw(err);
+        res.send('success');
     });
 })
 
