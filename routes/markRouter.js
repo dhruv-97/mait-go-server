@@ -3,11 +3,11 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Marks = require('../models/mark');
 var results = require('../models/result');
-// var map = require('../parsing/mapping.js');
-// var data = require('../parsing/data.js');
+var map = require('../parsing/mapping.js');
+var data = require('../parsing/data.js');
 let programmes = ['031','027','028','036','049','034','030'];
 let batches = ['16','15','14'];
-let sems = [1,2,3,4,5];
+let sems = [1,2,3,4,5,6];
 function createResult(){
   let marksarr=[];
   data.forEach(function(element) {
@@ -169,30 +169,30 @@ MarkRouter.route('/create')
 });
 MarkRouter.route('/rank')
 .get(function(req,res,next){
-  // batches.forEach(function(batch) {
-  //   programmes.forEach(function(pro) {
-  //     sems.forEach(function(sem) {
-        createUniversityRank(6,'027','14');
-        createCollegeRank('207',6,'027','14');
-        createCollegeRank('208',6,'027','14');
-        createCollegeRank('104',6,'027','14');
-        createCollegeRank('101',6,'027','14');
-        createCollegeRank('180',6,'027','14');
-        createCollegeRank('209',6,'027','14');
-        createCollegeRank('255',6,'027','14');
-        createCollegeRank('551',6,'027','14');
-        createCollegeRank('702',6,'027','14');
-        createCollegeRank('153',6,'027','14');
-        createCollegeRank2('512','115',6,'027','14');
-        createCollegeRank2('964','148',6,'027','14');
-        createCollegeRank2('768','132',6,'027','14');
-        createCollegeRank2('963','150',6,'027','14');
-        createCollegeRank2('962','156',6,'027','14');
-        createCollegeRank2('965','133',6,'027','14');
-  //       console.log('We are done');
-  //     }, this);
-  //   }, this);  
-  // }, this);
+  batches.forEach(function(batch) {
+    programmes.forEach(function(pro) {
+      sems.forEach(function(sem) {
+        createUniversityRank(sem,pro,batch);
+        createCollegeRank('207',sem,pro,batch);
+        createCollegeRank('208',sem,pro,batch);
+        createCollegeRank('104',sem,pro,batch);
+        createCollegeRank('101',sem,pro,batch);
+        createCollegeRank('180',sem,pro,batch);
+        createCollegeRank('209',sem,pro,batch);
+        createCollegeRank('255',sem,pro,batch);
+        createCollegeRank('551',sem,pro,batch);
+        createCollegeRank('702',sem,pro,batch);
+        createCollegeRank('153',sem,pro,batch);
+        createCollegeRank2('512','115',sem,pro,batch);
+        createCollegeRank2('964','148',sem,pro,batch);
+        createCollegeRank2('768','132',sem,pro,batch);
+        createCollegeRank2('963','150',sem,pro,batch);
+        createCollegeRank2('962','156',sem,pro,batch);
+        createCollegeRank2('965','133',sem,pro,batch);
+        console.log('We are done');
+      }, this);
+    }, this);  
+  }, this);
   res.send('Trying my best');
 })
 module.exports=MarkRouter;
