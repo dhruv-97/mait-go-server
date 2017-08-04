@@ -134,7 +134,7 @@ resultRouter.route('/:roll')
       if(err) next(err);
       console.log(resp);
       if(resp.length==0)
-        res.json({});
+        res.send(500, { error: "Could not find the roll number" });
       else{
         resp[0].college=mapCollege(resp[0].college);
         resp[0].programme=mapProgramme(resp[0].programme);
