@@ -244,7 +244,7 @@ function createAuthentication(){
           <p>Thank You</p>
           `
       mailOptions.to = element;
-      let username = element.substring(0,element.email.indexOf('@'));
+      let username = element.substring(0,element.indexOf('@'));
       let password = generator.generate({
           length: 6,
           numbers: true
