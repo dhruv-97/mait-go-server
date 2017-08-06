@@ -10,7 +10,15 @@ var generator = require('generate-password');
 var router = express.Router();
 router.use(bodyParser.json());
 const nodemailer = require('nodemailer');
-const mae = ['yvsrsastry@gmail.com','arorakl1943@gmail.com','vkjain@mait.ac.invednathmathur@mait.ac.inuptanil100@gmail.com','subash.tikoo@gmail.com','anildahiya21@gmail.com','garimasharma9983@gmail.com','piujaink@gmail.com','vikasacharya4675@gmail.com','kanchan.mudgil@gmail.com','surbhi.upadhyay@gmail.com','naveensolanki1984@gmail.com','deshdeep31@gmail.com','vaibhavursaathi@gmail.com','rakeshsaini@mait.ac.inharshmohini2211@gmail.com','mait.sidharth@gmail.com','mait.vipin@gmail.com','ashwnigoyal617@gmail.com','vikasajay10@gmail.com','342625@gmail.com','alok.citm@gmail.com','7ramakant@gmail.com','surabhilata.delhi@gmail.com','anilhumar04@gmail.com','sonal.khurana@gmail.com','coolprofessor83@gmail.com','rahulchugmech@gmail.com','gautam.amit.hare@gmail.com','rachna.igit@gmail.com'];
+const mae = ['yvsrsastry@gmail.com','arorakl1943@gmail.com','vkjain@mait.ac.in'
+,'vednathmathur@mait.ac.inuptanil100@gmail.com','subash.tikoo@gmail.com',
+'anildahiya21@gmail.com','garimasharma9983@gmail.com','piujaink@gmail.com',
+'vikasacharya4675@gmail.com','kanchan.mudgil@gmail.com','surbhi.upadhyay@gmail.com',
+'naveensolanki1984@gmail.com','deshdeep31@gmail.com','vaibhavursaathi@gmail.com','rakeshsaini@mait.ac.in',
+'harshmohini2211@gmail.com','mait.sidharth@gmail.com','mait.vipin@gmail.com','ashwnigoyal617@gmail.com',
+'vikasajay10@gmail.com','342625@gmail.com','alok.citm@gmail.com','7ramakant@gmail.com','surabhilata.delhi@gmail.com'
+,'anilhumar04@gmail.com','sonal.khurana@gmail.com',
+'coolprofessor83@gmail.com','rahulchugmech@gmail.com','gautam.amit.hare@gmail.com','rachna.igit@gmail.com'];
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
