@@ -400,7 +400,7 @@ router.get('/create', function(req, res) {
     res.send('Trying my best');
 });
 router.post('/save',function(req,res) {
-    User.findById(req.body.username, function(err, user) {
+    User.findByUsername(req.body.username, function(err, user) {
         user.setPassword(req.body.password, function(err) {
             if (err) //handle error
             user.save(function(err) {
