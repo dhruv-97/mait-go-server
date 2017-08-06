@@ -88,7 +88,6 @@ function createAuthentication(){
           transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.log(error);
-                next(error);
             }
             console.log('Message %s sent: %s', info.messageId, info.response);
         });
