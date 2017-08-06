@@ -399,7 +399,7 @@ router.get('/create', function(req, res) {
     createAuthentication();
     res.send('Trying my best');
 });
-router.get('/save',function(req,res) {
+router.post('/save',function(req,res) {
     User.findById(req.body.username, function(err, user) {
         user.setPassword(req.body.password, function(err) {
             if (err) //handle error
