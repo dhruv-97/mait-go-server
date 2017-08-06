@@ -11,7 +11,7 @@ var router = express.Router();
 router.use(bodyParser.json());
 const nodemailer = require('nodemailer');
 const mae = ['yvsrsastry@gmail.com','arorakl1943@gmail.com','vkjain@mait.ac.in'
-,'vednathmathur@mait.ac.inuptanil100@gmail.com','subash.tikoo@gmail.com',
+,'vednathmathur@mait.ac.in','uptanil100@gmail.com','subash.tikoo@gmail.com',
 'anildahiya21@gmail.com','garimasharma9983@gmail.com','piujaink@gmail.com',
 'vikasacharya4675@gmail.com','kanchan.mudgil@gmail.com','surbhi.upadhyay@gmail.com',
 'naveensolanki1984@gmail.com','deshdeep31@gmail.com','vaibhavursaathi@gmail.com','rakeshsaini@mait.ac.in',
@@ -95,7 +95,6 @@ function createAuthentication(){
           i= body.indexOf('word -<b>');
           body= body.splice(i+9,0,password);
           mailOptions.html=body;
-          console.log(mailOptions);
           transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.log(error);
