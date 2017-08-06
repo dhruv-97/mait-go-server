@@ -23,13 +23,7 @@ let transporter = nodemailer.createTransport({
 });
 
 // setup email data with unicode symbols
-let mailOptions = {
-    from: '"Dhruv Mongia" <dhruv.mongia@gmail.com>', // sender address
-    subject: 'IPU Go Admin Authentication Details', // Subject line
-    to: 'dhruv.mongia@gmail.com',
-    text:'',
-    html:''
-};
+
 
 /* GET users listing. 
 router.get('/', Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
@@ -52,6 +46,65 @@ function createAuthentication(){
   faculties.findById("59791301c9953e5f7b62177f",function (err, faculty) {
     if (err) next(err);
     faculty.CSE.forEach(function(element) {
+      let mailOptions = {
+          from: '"Dhruv Mongia" <dhruv.mongia@gmail.com>', // sender address
+          subject: 'IPU Go Admin Authentication Details', // Subject line
+          to: 'dhruv.mongia@gmail.com',
+          text:'Hello There!!',
+          html:''
+      };
+      let body = `<p>Experience MAIT like never before. </p>
+          <p>We bring to you a cool way to access your university and interact with your students.</p>
+          <p>Try our one stop destination to post announcements, assignments and much more at your convenience.</p>
+          <p>features:</p>
+          <ul>
+            <li>Post announcements and reach out to your class</li>
+            <li>Upload assignments</li>
+            <li>Check student's semester wise result</li>
+          </ul>
+          <b>Download Now - https://play.google.com/store/apps/details?id=admin.ipugo.uddishverma.ipugoadmin</b>
+          <p>Your Unique username -<b></b></p>
+          <p>Password -<b></b></p>
+          <p>Note - You can reset your password in the settings section of your app</p>
+          <p>Thank You</p>
+          `
+      mailOptions.to = element.email;
+      let username = element.email.substring(0,element.email.indexOf('@'));
+      let password = generator.generate({
+          length: 6,
+          numbers: true
+      });
+      
+      User.register(new User({ username}),
+        password, function(err, user) {
+        if (err) {
+            throw(err);
+        }
+        user.save(function(err,user) {  
+          console.log('Registration Successful!');
+          let i = body.indexOf('name -<b>')
+          body= body.splice(i+9,0,username);
+          i= body.indexOf('word -<b>');
+          body= body.splice(i+9,0,password);
+          mailOptions.html=body;
+          console.log(mailOptions);
+          transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+            }
+            console.log('Message %s sent: %s', info.messageId, info.response);
+        });
+        });
+      });
+    }, this);
+    faculty.IT.forEach(function(element) {
+      let mailOptions = {
+          from: '"Dhruv Mongia" <dhruv.mongia@gmail.com>', // sender address
+          subject: 'IPU Go Admin Authentication Details', // Subject line
+          to: 'dhruv.mongia@gmail.com',
+          text:'Hello There!!',
+          html:''
+      };
       let body = `<p>Experience MAIT like never before. </p>
           <p>We bring to you a cool way to access your university and interact with your students.</p>
           <p>Try our one stop destination to post announcements, assignments and much more at your convenience.</p>
@@ -88,188 +141,166 @@ function createAuthentication(){
           transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.log(error);
+                
             }
             console.log('Message %s sent: %s', info.messageId, info.response);
         });
         });
       });
     }, this);
-    // faculty.IT.forEach(function(element) {
-    //   let body = `<p>Experience MAIT like never before. </p>
-    //       <p>We bring to you a cool way to access your university and interact with your students.</p>
-    //       <p>Try our one stop destination to post announcements, assignments and much more at your convenience.</p>
-    //       <p>features:</p>
-    //       <ul>
-    //         <li>Post announcements and reach out to your class</li>
-    //         <li>Upload assignments</li>
-    //         <li>Check student's semester wise result</li>
-    //       </ul>
-    //       <b>Download Now - https://play.google.com/store/apps/details?id=admin.ipugo.uddishverma.ipugoadmin</b>
-    //       <p>Your Unique username -<b></b></p>
-    //       <p>Password -<b></b></p>
-    //       <p>Note - You can reset your password in the settings section of your app</p>
-    //       <p>Thank You</p>
-    //       `
-    //   mailOptions.to = element.email;
-    //   let username = element.email.substring(0,element.email.indexOf('@'));
-    //   let password = generator.generate({
-    //       length: 6,
-    //       numbers: true
-    //   });
-    //   User.register(new User({ username}),
-    //     password, function(err, user) {
-    //     if (err) {
-    //         throw(err);
-    //     }
-    //     user.save(function(err,user) {  
-    //       console.log('Registration Successful!');
-    //       let i = body.indexOf('name -<b>')
-    //       body= body.splice(i+9,0,username);
-    //       i= body.indexOf('word -<b>');
-    //       body= body.splice(i+9,0,password);
-    //       mailOptions.html=body;
-    //       transporter.sendMail(mailOptions, (error, info) => {
-    //         if (error) {
-    //             console.log(error);
+    faculty.ECE.forEach(function(element) {
+      let mailOptions = {
+          from: '"Dhruv Mongia" <dhruv.mongia@gmail.com>', // sender address
+          subject: 'IPU Go Admin Authentication Details', // Subject line
+          to: 'dhruv.mongia@gmail.com',
+          text:'Hello There!!',
+          html:''
+      };
+      let body = `<p>Experience MAIT like never before. </p>
+          <p>We bring to you a cool way to access your university and interact with your students.</p>
+          <p>Try our one stop destination to post announcements, assignments and much more at your convenience.</p>
+          <p>features:</p>
+          <ul>
+            <li>Post announcements and reach out to your class</li>
+            <li>Upload assignments</li>
+            <li>Check student's semester wise result</li>
+          </ul>
+          <b>Download Now - https://play.google.com/store/apps/details?id=admin.ipugo.uddishverma.ipugoadmin</b>
+          <p>Your Unique username -<b></b></p>
+          <p>Password -<b></b></p>
+          <p>Note - You can reset your password in the settings section of your app</p>
+          <p>Thank You</p>
+          `
+      mailOptions.to = element.email;
+      let username = element.email.substring(0,element.email.indexOf('@'));
+      let password = generator.generate({
+          length: 6,
+          numbers: true
+      });
+      User.register(new User({ username}),
+        password, function(err, user) {
+        if (err) {
+            throw(err);
+        }
+        user.save(function(err,user) {  
+          console.log('Registration Successful!');
+          let i = body.indexOf('name -<b>')
+          body= body.splice(i+9,0,username);
+          i= body.indexOf('word -<b>');
+          body= body.splice(i+9,0,password);
+          mailOptions.html=body;
+          transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
                 
-    //         }
-    //         console.log('Message %s sent: %s', info.messageId, info.response);
-    //     });
-    //     });
-    //   });
-    // }, this);
-    // faculty.ECE.forEach(function(element) {
-    //   let body = `<p>Experience MAIT like never before. </p>
-    //       <p>We bring to you a cool way to access your university and interact with your students.</p>
-    //       <p>Try our one stop destination to post announcements, assignments and much more at your convenience.</p>
-    //       <p>features:</p>
-    //       <ul>
-    //         <li>Post announcements and reach out to your class</li>
-    //         <li>Upload assignments</li>
-    //         <li>Check student's semester wise result</li>
-    //       </ul>
-    //       <b>Download Now - https://play.google.com/store/apps/details?id=admin.ipugo.uddishverma.ipugoadmin</b>
-    //       <p>Your Unique username -<b></b></p>
-    //       <p>Password -<b></b></p>
-    //       <p>Note - You can reset your password in the settings section of your app</p>
-    //       <p>Thank You</p>
-    //       `
-    //   mailOptions.to = element.email;
-    //   let username = element.email.substring(0,element.email.indexOf('@'));
-    //   let password = generator.generate({
-    //       length: 6,
-    //       numbers: true
-    //   });
-    //   User.register(new User({ username}),
-    //     password, function(err, user) {
-    //     if (err) {
-    //         throw(err);
-    //     }
-    //     user.save(function(err,user) {  
-    //       console.log('Registration Successful!');
-    //       let i = body.indexOf('name -<b>')
-    //       body= body.splice(i+9,0,username);
-    //       i= body.indexOf('word -<b>');
-    //       body= body.splice(i+9,0,password);
-    //       mailOptions.html=body;
-    //       transporter.sendMail(mailOptions, (error, info) => {
-    //         if (error) {
-    //             console.log(error);
+            }
+            console.log('Message %s sent: %s', info.messageId, info.response);
+        });
+        });
+      });
+    }, this);
+    faculty.EEE.forEach(function(element) {
+      let mailOptions = {
+          from: '"Dhruv Mongia" <dhruv.mongia@gmail.com>', // sender address
+          subject: 'IPU Go Admin Authentication Details', // Subject line
+          to: 'dhruv.mongia@gmail.com',
+          text:'Hello There!!',
+          html:''
+      };
+      let body = `<p>Experience MAIT like never before. </p>
+          <p>We bring to you a cool way to access your university and interact with your students.</p>
+          <p>Try our one stop destination to post announcements, assignments and much more at your convenience.</p>
+          <p>features:</p>
+          <ul>
+            <li>Post announcements and reach out to your class</li>
+            <li>Upload assignments</li>
+            <li>Check student's semester wise result</li>
+          </ul>
+          <b>Download Now - https://play.google.com/store/apps/details?id=admin.ipugo.uddishverma.ipugoadmin</b>
+          <p>Your Unique username -<b></b></p>
+          <p>Password -<b></b></p>
+          <p>Note - You can reset your password in the settings section of your app</p>
+          <p>Thank You</p>
+          `
+      mailOptions.to = element.email;
+      let username = element.email.substring(0,element.email.indexOf('@'));
+      let password = generator.generate({
+          length: 6,
+          numbers: true
+      });
+      User.register(new User({ username}),
+        password, function(err, user) {
+        if (err) {
+            throw(err);
+        }
+        user.save(function(err,user) {  
+          console.log('Registration Successful!');
+          let i = body.indexOf('name -<b>')
+          body= body.splice(i+9,0,username);
+          i= body.indexOf('word -<b>');
+          body= body.splice(i+9,0,password);
+          mailOptions.html=body;
+          transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
                 
-    //         }
-    //         console.log('Message %s sent: %s', info.messageId, info.response);
-    //     });
-    //     });
-    //   });
-    // }, this);
-    // faculty.EEE.forEach(function(element) {
-    //   let body = `<p>Experience MAIT like never before. </p>
-    //       <p>We bring to you a cool way to access your university and interact with your students.</p>
-    //       <p>Try our one stop destination to post announcements, assignments and much more at your convenience.</p>
-    //       <p>features:</p>
-    //       <ul>
-    //         <li>Post announcements and reach out to your class</li>
-    //         <li>Upload assignments</li>
-    //         <li>Check student's semester wise result</li>
-    //       </ul>
-    //       <b>Download Now - https://play.google.com/store/apps/details?id=admin.ipugo.uddishverma.ipugoadmin</b>
-    //       <p>Your Unique username -<b></b></p>
-    //       <p>Password -<b></b></p>
-    //       <p>Note - You can reset your password in the settings section of your app</p>
-    //       <p>Thank You</p>
-    //       `
-    //   mailOptions.to = element.email;
-    //   let username = element.email.substring(0,element.email.indexOf('@'));
-    //   let password = generator.generate({
-    //       length: 6,
-    //       numbers: true
-    //   });
-    //   User.register(new User({ username}),
-    //     password, function(err, user) {
-    //     if (err) {
-    //         throw(err);
-    //     }
-    //     user.save(function(err,user) {  
-    //       console.log('Registration Successful!');
-    //       let i = body.indexOf('name -<b>')
-    //       body= body.splice(i+9,0,username);
-    //       i= body.indexOf('word -<b>');
-    //       body= body.splice(i+9,0,password);
-    //       mailOptions.html=body;
-    //       transporter.sendMail(mailOptions, (error, info) => {
-    //         if (error) {
-    //             console.log(error);
+            }
+            console.log('Message %s sent: %s', info.messageId, info.response);
+        });
+        });
+      });
+    }, this);
+    mae.forEach(function(element) {
+      let mailOptions = {
+          from: '"Dhruv Mongia" <dhruv.mongia@gmail.com>', // sender address
+          subject: 'IPU Go Admin Authentication Details', // Subject line
+          to: 'dhruv.mongia@gmail.com',
+          text:'Hello There!!',
+          html:''
+      };
+      let body = `<p>Experience MAIT like never before. </p>
+          <p>We bring to you a cool way to access your university and interact with your students.</p>
+          <p>Try our one stop destination to post announcements, assignments and much more at your convenience.</p>
+          <p>features:</p>
+          <ul>
+            <li>Post announcements and reach out to your class</li>
+            <li>Upload assignments</li>
+            <li>Check student's semester wise result</li>
+          </ul>
+          <b>Download Now - https://play.google.com/store/apps/details?id=admin.ipugo.uddishverma.ipugoadmin</b>
+          <p>Your Unique username -<b></b></p>
+          <p>Password -<b></b></p>
+          <p>Note - You can reset your password in the settings section of your app</p>
+          <p>Thank You</p>
+          `
+      mailOptions.to = element;
+      let username = element.substring(0,element.indexOf('@'));
+      let password = generator.generate({
+          length: 6,
+          numbers: true
+      });
+      User.register(new User({ username}),
+        password, function(err, user) {
+        if (err) {
+            throw(err);
+        }
+        user.save(function(err,user) {  
+          console.log('Registration Successful!');
+          let i = body.indexOf('name -<b>')
+          body= body.splice(i+9,0,username);
+          i= body.indexOf('word -<b>');
+          body= body.splice(i+9,0,password);
+          mailOptions.html=body;
+          transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
                 
-    //         }
-    //         console.log('Message %s sent: %s', info.messageId, info.response);
-    //     });
-    //     });
-    //   });
-    // }, this);
-    // mae.forEach(function(element) {
-    //   let body = `<p>Experience MAIT like never before. </p>
-    //       <p>We bring to you a cool way to access your university and interact with your students.</p>
-    //       <p>Try our one stop destination to post announcements, assignments and much more at your convenience.</p>
-    //       <p>features:</p>
-    //       <ul>
-    //         <li>Post announcements and reach out to your class</li>
-    //         <li>Upload assignments</li>
-    //         <li>Check student's semester wise result</li>
-    //       </ul>
-    //       <b>Download Now - https://play.google.com/store/apps/details?id=admin.ipugo.uddishverma.ipugoadmin</b>
-    //       <p>Your Unique username -<b></b></p>
-    //       <p>Password -<b></b></p>
-    //       <p>Note - You can reset your password in the settings section of your app</p>
-    //       <p>Thank You</p>
-    //       `
-    //   mailOptions.to = element;
-    //   let username = element.substring(0,element.indexOf('@'));
-    //   let password = generator.generate({
-    //       length: 6,
-    //       numbers: true
-    //   });
-    //   User.register(new User({ username}),
-    //     password, function(err, user) {
-    //     if (err) {
-    //         throw(err);
-    //     }
-    //     user.save(function(err,user) {  
-    //       console.log('Registration Successful!');
-    //       let i = body.indexOf('name -<b>')
-    //       body= body.splice(i+9,0,username);
-    //       i= body.indexOf('word -<b>');
-    //       body= body.splice(i+9,0,password);
-    //       mailOptions.html=body;
-    //       transporter.sendMail(mailOptions, (error, info) => {
-    //         if (error) {
-    //             console.log(error);
-                
-    //         }
-    //         console.log('Message %s sent: %s', info.messageId, info.response);
-    //     });
-    //     });
-    //   });
-    // }, this);
+            }
+            console.log('Message %s sent: %s', info.messageId, info.response);
+        });
+        });
+      });
+    }, this);
   });
 }
 
