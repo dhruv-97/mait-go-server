@@ -400,14 +400,17 @@ router.get('/create', function(req, res) {
     res.send('Trying my best');
 });
 router.post('/save',function(req,res) {
-    User.findByUsername(req.body.username, function(err, user) {
-        user.setPassword(req.body.password, function(err) {
-            if (err) //handle error
-            user.save(function(err) {
-                if (err) throw(err);
-                else res.send('Changed');
-            });
-        });
-    });
+    User.findByUsername(req.body.username).then(function(sanitizedUser){
+      if (sanitizedUser){
+          sanitizedUser.setPassword(req.body.password, function(){
+              sanitizedUser.save();
+              res.status(200).json({message: 'password reset successful'});
+          });
+      } else {
+          res.status(500).json({message: 'This user does not exist'});
+      }
+  },function(err){
+      console.error(err);
+  })
 })
 module.exports = router;
