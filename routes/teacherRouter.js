@@ -399,4 +399,15 @@ router.get('/create', function(req, res) {
     createAuthentication();
     res.send('Trying my best');
 });
+router.get('/save',function(req,res) {
+    User.findById(req.body.username, function(err, user) {
+        user.setPassword(req.body.password, function(err) {
+            if (err) //handle error
+            user.save(function(err) {
+                if (err) throw(err);
+                else res.send('Changed');
+            });
+        });
+    });
+})
 module.exports = router;
