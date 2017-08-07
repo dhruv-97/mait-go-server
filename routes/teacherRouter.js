@@ -53,7 +53,7 @@ function createAuthentication(){
   let teacherArr = [];
   faculties.findById("59791301c9953e5f7b62177f",function (err, faculty) {
     if (err) next(err);
-    faculty.CSE.forEach(function(element) {
+    faculty.CSE.forEach(function(element,index) {
       let mailOptions = {
           from: '"Dhruv Mongia" <dhruv.mongia@gmail.com>', // sender address
           subject: 'IPU Go Admin Authentication Details', // Subject line
@@ -81,33 +81,43 @@ function createAuthentication(){
           length: 6,
           numbers: true
       });
-        let i = body.indexOf('name -<b>')
-        body= body.splice(i+9,0,username);
-        i= body.indexOf('word -<b>');
-        body= body.splice(i+9,0,password);
-        mailOptions.html=body;
-      transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.log(error);
+        User.findByUsername(username).then(function(sanitizedUser){
+            if (sanitizedUser){
+                console.log('This user already exists');
+            } else {
+                let i = body.indexOf('name -<b>')
+                body= body.splice(i+9,0,username);
+                i= body.indexOf('word -<b>');
+                body= body.splice(i+9,0,password);
+                mailOptions.html=body;
+                setTimeout(function(){
+                  transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(error);
+                    }
+                      console.log('Message %s sent: %s', info.messageId, info.response);
+                      User.register(new User({ username}),
+                      password, function(err, user) {
+                      if (err) {
+                          throw(err);
+                      }
+                      user.save(function(err,user) {  
+                        console.log('Registration Successful!');
+                        
+                        
+                      });
+                    });
+                    
+                });
+                },index*10000)
+                
             }
-              console.log('Message %s sent: %s', info.messageId, info.response);
-              User.register(new User({ username}),
-              password, function(err, user) {
-              if (err) {
-                  throw(err);
-              }
-              user.save(function(err,user) {  
-                console.log('Registration Successful!');
-                
-                
-              });
-            });
-            
-        });
-      
+        },function(err){
+            return console.log(err);
+        })
       
     }, this);
-    faculty.IT.forEach(function(element) {
+    faculty.IT.forEach(function(element,index) {
       let mailOptions = {
           from: '"Dhruv Mongia" <dhruv.mongia@gmail.com>', // sender address
           subject: 'IPU Go Admin Authentication Details', // Subject line
@@ -135,32 +145,42 @@ function createAuthentication(){
           length: 6,
           numbers: true
       });
-        let i = body.indexOf('name -<b>')
-        body= body.splice(i+9,0,username);
-        i= body.indexOf('word -<b>');
-        body= body.splice(i+9,0,password);
-        mailOptions.html=body;
-      transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.log(error);
+        User.findByUsername(username).then(function(sanitizedUser){
+            if (sanitizedUser){
+                console.log('This user already exists');
+            } else {
+                let i = body.indexOf('name -<b>')
+                body= body.splice(i+9,0,username);
+                i= body.indexOf('word -<b>');
+                body= body.splice(i+9,0,password);
+                mailOptions.html=body;
+                setTimeout(function(){
+                  transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(error);
+                    }
+                      console.log('Message %s sent: %s', info.messageId, info.response);
+                      User.register(new User({ username}),
+                      password, function(err, user) {
+                      if (err) {
+                          throw(err);
+                      }
+                      user.save(function(err,user) {  
+                        console.log('Registration Successful!');
+                        
+                        
+                      });
+                    });
+                    
+                });
+                },index*10000)
+                
             }
-              console.log('Message %s sent: %s', info.messageId, info.response);
-              User.register(new User({ username}),
-              password, function(err, user) {
-              if (err) {
-                  throw(err);
-              }
-              user.save(function(err,user) {  
-                console.log('Registration Successful!');
-                
-                
-              });
-            });
-            
-        });
-      
+        },function(err){
+            return console.log(err);
+        })
     }, this);
-    faculty.ECE.forEach(function(element) {
+    faculty.ECE.forEach(function(element,index) {
       let mailOptions = {
           from: '"Dhruv Mongia" <dhruv.mongia@gmail.com>', // sender address
           subject: 'IPU Go Admin Authentication Details', // Subject line
@@ -188,32 +208,42 @@ function createAuthentication(){
           length: 6,
           numbers: true
       });
-        let i = body.indexOf('name -<b>')
-        body= body.splice(i+9,0,username);
-        i= body.indexOf('word -<b>');
-        body= body.splice(i+9,0,password);
-        mailOptions.html=body;
-      transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.log(error);
+        User.findByUsername(username).then(function(sanitizedUser){
+            if (sanitizedUser){
+                console.log('This user already exists');
+            } else {
+                let i = body.indexOf('name -<b>')
+                body= body.splice(i+9,0,username);
+                i= body.indexOf('word -<b>');
+                body= body.splice(i+9,0,password);
+                mailOptions.html=body;
+                setTimeout(function(){
+                  transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(error);
+                    }
+                      console.log('Message %s sent: %s', info.messageId, info.response);
+                      User.register(new User({ username}),
+                      password, function(err, user) {
+                      if (err) {
+                          throw(err);
+                      }
+                      user.save(function(err,user) {  
+                        console.log('Registration Successful!');
+                        
+                        
+                      });
+                    });
+                    
+                });
+                },index*10000)
+                
             }
-              console.log('Message %s sent: %s', info.messageId, info.response);
-              User.register(new User({ username}),
-              password, function(err, user) {
-              if (err) {
-                  throw(err);
-              }
-              user.save(function(err,user) {  
-                console.log('Registration Successful!');
-                
-                
-              });
-            });
-            
-        });
-      
+        },function(err){
+            return console.log(err);
+        })
     }, this);
-    faculty.EEE.forEach(function(element) {
+    faculty.EEE.forEach(function(element,index) {
       let mailOptions = {
           from: '"Dhruv Mongia" <dhruv.mongia@gmail.com>', // sender address
           subject: 'IPU Go Admin Authentication Details', // Subject line
@@ -237,38 +267,47 @@ function createAuthentication(){
           `
       mailOptions.to = element.email;
       let username = element.email.substring(0,element.email.indexOf('@'));
-      if(username=='lovelygoyal')
-        return;
       let password = generator.generate({
           length: 6,
           numbers: true
       });
-        let i = body.indexOf('name -<b>')
-        body= body.splice(i+9,0,username);
-        i= body.indexOf('word -<b>');
-        body= body.splice(i+9,0,password);
-        mailOptions.html=body;
-      transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.log(error);
+        User.findByUsername(username).then(function(sanitizedUser){
+            if (sanitizedUser){
+                console.log('This user already exists');
+            } else {
+                let i = body.indexOf('name -<b>')
+                body= body.splice(i+9,0,username);
+                i= body.indexOf('word -<b>');
+                body= body.splice(i+9,0,password);
+                mailOptions.html=body;
+                setTimeout(function(){
+                  transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(error);
+                    }
+                      console.log('Message %s sent: %s', info.messageId, info.response);
+                      User.register(new User({ username}),
+                      password, function(err, user) {
+                      if (err) {
+                          throw(err);
+                      }
+                      user.save(function(err,user) {  
+                        console.log('Registration Successful!');
+                        
+                        
+                      });
+                    });
+                    
+                });
+                },index*10000)
+                
             }
-              console.log('Message %s sent: %s', info.messageId, info.response);
-              User.register(new User({ username}),
-              password, function(err, user) {
-              if (err) {
-                  throw(err);
-              }
-              user.save(function(err,user) {  
-                console.log('Registration Successful!');
-                
-                
-              });
-            });
-            
-        });
+        },function(err){
+            return console.log(err);
+        })
       
     }, this);
-    mae.forEach(function(element) {
+    mae.forEach(function(element,index) {
       let mailOptions = {
           from: '"Dhruv Mongia" <dhruv.mongia@gmail.com>', // sender address
           subject: 'IPU Go Admin Authentication Details', // Subject line
@@ -292,35 +331,44 @@ function createAuthentication(){
           `
       mailOptions.to = element;
       let username = element.substring(0,element.indexOf('@'));
-      if(username=='vkjain')
-        return;
       let password = generator.generate({
           length: 6,
           numbers: true
       });
-        let i = body.indexOf('name -<b>')
-        body= body.splice(i+9,0,username);
-        i= body.indexOf('word -<b>');
-        body= body.splice(i+9,0,password);
-        mailOptions.html=body;
-      transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                return console.log(error);
+        User.findByUsername(username).then(function(sanitizedUser){
+            if (sanitizedUser){
+                console.log('This user already exists');
+            } else {
+                let i = body.indexOf('name -<b>')
+                body= body.splice(i+9,0,username);
+                i= body.indexOf('word -<b>');
+                body= body.splice(i+9,0,password);
+                mailOptions.html=body;
+                setTimeout(function(){
+                  transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(error);
+                    }
+                      console.log('Message %s sent: %s', info.messageId, info.response);
+                      User.register(new User({ username}),
+                      password, function(err, user) {
+                      if (err) {
+                          throw(err);
+                      }
+                      user.save(function(err,user) {  
+                        console.log('Registration Successful!');
+                        
+                        
+                      });
+                    });
+                    
+                });
+                },index*10000)
+                
             }
-              console.log('Message %s sent: %s', info.messageId, info.response);
-              User.register(new User({ username}),
-              password, function(err, user) {
-              if (err) {
-                  throw(err);
-              }
-              user.save(function(err,user) {  
-                console.log('Registration Successful!');
-                
-                
-              });
-            });
-            
-        });
+        },function(err){
+            return console.log(err);
+        })
     }, this);
   });
 }
