@@ -30,7 +30,7 @@ function mapSem(x){
     case '16': return 3;
     case '15': return 5;
     case '14': return 7;
-    default: return 0;
+    default: return 1;
   }
 }
 infoRouter.route('/:roll')
