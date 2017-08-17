@@ -102,7 +102,7 @@ announcementRouter.route('/:announcementId')
     var group= req.params.announcementId.substring(1,3);
     Announcements.find({"sem":sem,"group":group}).sort('-createdAt').exec(function (err, announcement) {
         if (err) next(err);
-        if(announcement=[])
+        if(announcement==[])
             res.json([{name:"Dhruv Mongia",message:"Faculty messages will be posted here",
                 date:createDate(),time:createTime()}]);
         else
