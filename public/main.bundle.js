@@ -951,7 +951,9 @@ var StudentComponent = (function () {
         this.society = false;
     }
     StudentComponent.prototype.ngOnInit = function () {
-        this.ipuService.getSociety();
+        var society = this.ipuService.getSociety();
+        if (society == 'true')
+            this.society = true;
     };
     return StudentComponent;
 }());
