@@ -420,6 +420,7 @@ router.post('/login', function(req, res, next) {
       var token = Verify.getToken(user);
               res.status(200).json({
         student: user.student,
+        society: user.society,
         status: 'Login successful!',
         success: true,
         token: token

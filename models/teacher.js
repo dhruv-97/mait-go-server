@@ -20,6 +20,10 @@ var Teacher = new Schema({
     student: {
         type: Boolean,
         default: false
+    },
+    society:{
+        type: Boolean,
+        default: false
     }
 });
 

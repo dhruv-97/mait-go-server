@@ -580,6 +580,12 @@ var IpuGoService = (function () {
     IpuGoService.prototype.setGroup = function (x) {
         this.store('group', x);
     };
+    IpuGoService.prototype.setSociety = function (x) {
+        this.store('society', x);
+    };
+    IpuGoService.prototype.getSociety = function () {
+        return this.retrieve('society');
+    };
     IpuGoService.prototype.getGroup = function () {
         return this.retrieve('group');
     };
@@ -767,6 +773,7 @@ var LoginComponent = (function () {
             _this.ipuService.setToken(res.token);
             _this.ipuService.setUsername(_this.teacher.username);
             _this.ipuService.setStudent(res.student);
+            _this.ipuService.setSociety(res.society);
             success = true;
             student = res.student;
         }, function (err) {
@@ -916,7 +923,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/student/student.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='login'>\n  <div class='success'>\n      <h2>Authentication Success</h2>\n      <p>Welcome back</p>\n        <a routerLink=\"/posttimetable\" >Post a Timetable</a>\n        <a routerLink=\"/updateform\" >Update a Timetable</a>\n        <a routerLink=\"/postevent\">Post an Event</a>\n        <a routerLink=\"/changepassword\">Change Password</a>\n        <a routerLink=\"/\">Log out</a>\n    </div>\n</div>\n<router-outlet></router-outlet>"
+module.exports = "<div class='login'>\n  <div class='success'>\n      <h2>Authentication Success</h2>\n      <p>Welcome back</p>\n        <a routerLink=\"/posttimetable\" [hidden]=\"society\">Post a Timetable</a>\n        <a routerLink=\"/updateform\" [hidden]=\"society\">Update a Timetable</a>\n        <a routerLink=\"/postevent\" >Post an Event</a>\n        <a routerLink=\"/changepassword\" >Change Password</a>\n        <a routerLink=\"/\">Log out</a>\n    </div>\n</div>\n<router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -925,6 +932,7 @@ module.exports = "<div class='login'>\n  <div class='success'>\n      <h2>Authen
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__ = __webpack_require__("../../../../../src/app/ipu-go.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StudentComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -936,10 +944,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var StudentComponent = (function () {
-    function StudentComponent() {
+    function StudentComponent(ipuService) {
+        this.ipuService = ipuService;
+        this.society = false;
     }
     StudentComponent.prototype.ngOnInit = function () {
+        this.ipuService.getSociety();
     };
     return StudentComponent;
 }());
@@ -949,9 +961,10 @@ StudentComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/student/student.component.html"),
         styles: [__webpack_require__("../../../../../src/app/student/student.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ipu_go_service__["a" /* IpuGoService */]) === "function" && _a || Object])
 ], StudentComponent);
 
+var _a;
 //# sourceMappingURL=student.component.js.map
 
 /***/ }),
@@ -1065,7 +1078,7 @@ var TimetableComponent = (function () {
         this.ipuService = ipuService;
         this.shift = true;
         this.timetable = { shift: '', group: '', sem: '',
-            notification: 'found',
+            notification: 'The timetable may change in the upcoming days. Last updated: 4th Aug',
             monday: [{
                     p1: [{ room: '', subject: '', teacher: '' }],
                     p2: [{ room: '', subject: '', teacher: '' }],
