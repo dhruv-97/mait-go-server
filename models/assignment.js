@@ -38,7 +38,12 @@ var assignmentSchema = new Schema({
     time: {
         type: String,
         required: true
+    },
+    teacher: {
+        type: String,
+        required: true
     }
+    
 }, {
     timestamps: true
 });

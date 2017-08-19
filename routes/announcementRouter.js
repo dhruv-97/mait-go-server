@@ -51,7 +51,7 @@ announcementRouter.use(bodyParser.json());
 announcementRouter.route('/')
 .get(Verify.verifyAppUser,function (req, res, next) {
     
-    Announcements.find({}).sort('-createdAt').exec(function(err, announcements) { 
+    Announcements.find(req.query).sort('-createdAt').exec(function(err, announcements) { 
         if (err) throw err;
         res.json(announcements); 
     });

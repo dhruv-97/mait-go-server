@@ -39,7 +39,7 @@ assignmentRouter.use(bodyParser.json());
 
 assignmentRouter.route('/')
 .get(Verify.verifyAppUser,function (req, res, next) {
-    assignments.find({}).sort('-createdAt').exec( function (err, assignment) {
+    assignments.find(req.query).sort('-createdAt').exec( function (err, assignment) {
         if (err) throw err;
         res.json(assignment);
     });
