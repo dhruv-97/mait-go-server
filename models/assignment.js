@@ -40,8 +40,7 @@ var assignmentSchema = new Schema({
         required: true
     },
     teacher: {
-        type: String,
-        required: true
+        type: String
     }
     
 }, {
