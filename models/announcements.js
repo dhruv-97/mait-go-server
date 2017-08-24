@@ -26,9 +26,6 @@ var announcementSchema = new Schema({
     time: {
         type: String,
         required: true
-    },
-    teacher: {
-        type: String
     }
 }, {
     timestamps: true
