@@ -58,7 +58,7 @@ exports.verifyAdmin = function (req, res, next) {
 exports.verifyAppUser = function (req, res, next) {
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
     if(token){
-        if(token=='6SFsbxfypf2o5FyIy0ug')
+        if(token=='T9WYufXZFj')
             next();
         else{
             var err = new Error('You are not authenticated!');
