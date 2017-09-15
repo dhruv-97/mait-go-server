@@ -4,7 +4,6 @@ npm-debug.log
 /routes/syllabus.pdf
 /parsing
 .DS_Store
-/*.env
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
