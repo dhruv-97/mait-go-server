@@ -30,6 +30,7 @@ var upcomingRouter = require('./routes/upcomingRouter');
 var resultRouter = require('./routes/resultRouter');
 var syllabusRouter = require('./routes/syllabusRouter');
 var infoRouter = require('./routes/infoRouter');
+var updateRouter = require('./routes/updateRouter');
 var teacherRouter = require('./routes/teacherRouter');
 
 var app = express();
@@ -60,6 +61,7 @@ app.use('/result',resultRouter);
 app.use('/syllabus',syllabusRouter);
 app.use('/info',infoRouter);
 app.use('/teacher',teacherRouter);
+app.use('/update',updateRouter);
 
 
 // catch 404 and forward to error handler

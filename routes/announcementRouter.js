@@ -70,7 +70,7 @@ announcementRouter.route('/')
         res.end('Added the announcement with id: ' + id);
         var group = announcement.sem + announcement.group;
         Users.find({class:group},function(err,response){
-            console.log(response);
+            //console.log(response);
             response.forEach(function(element) {
                 let token = element.token;
                 unirest.post('https://fcm.googleapis.com/fcm/send')

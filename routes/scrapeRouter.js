@@ -7,6 +7,8 @@ var Verify=require('./verify');
 var notices = require('../models/notice');
 var datesheets = require('../models/datesheet');
 var results = require('../models/result');
+var Users = require('../models/user');
+var unirest = require('unirest');
 function scrapeNotices(){
     request('http://ipu.ac.in/exam_notices.php', function(err,resp,body){
         if(err)
@@ -25,6 +27,23 @@ function scrapeNotices(){
                         if(notice.length==0){
                             notices.create({"notice":contentText,"url":urlText}, function (err, notice) {
                                 if (err) next(err);
+                                Users.find({},function(err,response){
+                                    //console.log(response);
+                                    response.forEach(function(element) {
+                                        let token = element.token;
+                                        unirest.post('https://fcm.googleapis.com/fcm/send')
+                                        .headers({'Content-Type': 'application/json',
+                                                'Authorization': 'key=AAAAiS4AtkA:APA91bHv6islehAx0nRsakGfz8rEahTFa7DFzPVHipDAV_8__v5utSn4e3PVi2CCNph27-BEmK3Tk_uh47Etj9JF6ppXd2OKKNNIvdQgEhXBH16bk6b42-IHjn_sVlBR06lDU4k9MCe9'})
+                                        .send({ "to":token,
+                                                "data": {
+                                                "title":"New Notice!",
+                                                "body": "There is a new notice. Click here to check out."
+                                                } })
+                                        .end(function (response) {
+                                        console.log(response.body);
+                                        });
+                                    }, this);
+                                });
                                 console.log('notice created!');
                             });
                         }
@@ -60,6 +79,23 @@ function scrapeDatesheets(){
                         if(datesheet.length==0){
                             datesheets.create({"datesheet":contentText,"url":urlText}, function (err, datesheet) {
                                 if (err) throw(err);
+                                Users.find({},function(err,response){
+                                    //console.log(response);
+                                    response.forEach(function(element) {
+                                        let token = element.token;
+                                        unirest.post('https://fcm.googleapis.com/fcm/send')
+                                        .headers({'Content-Type': 'application/json',
+                                                'Authorization': 'key=AAAAiS4AtkA:APA91bHv6islehAx0nRsakGfz8rEahTFa7DFzPVHipDAV_8__v5utSn4e3PVi2CCNph27-BEmK3Tk_uh47Etj9JF6ppXd2OKKNNIvdQgEhXBH16bk6b42-IHjn_sVlBR06lDU4k9MCe9'})
+                                        .send({ "to":token,
+                                                "data": {
+                                                "title":"New Notice!",
+                                                "body": "There is a new datesheet. Click here to check out."
+                                                } })
+                                        .end(function (response) {
+                                        console.log(response.body);
+                                        });
+                                    }, this);
+                                });
                                 console.log('datesheet created!');
                             });
                         }

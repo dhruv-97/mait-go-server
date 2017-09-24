@@ -5,6 +5,8 @@ var shortid = require('shortid');
 var upcomings = require('../models/upcoming');
 const aws = require('aws-sdk');
 var Verify=require('./verify');
+var Users = require('../models/user');
+var unirest = require('unirest');
 
 aws.config.update({region: 'ap-south-1'});
 const S3_BUCKET = process.env.S3_BUCKET_NAME;
@@ -23,6 +25,22 @@ upcomingRouter.route('/')
 .post(Verify.verifyAppUser,function (req, res, next) {
     upcomings.create(req.body, function (err, upcoming) {
         if (err) next(err);
+        Users.find({},function(err,response){
+            response.forEach(function(element) {
+                let token = element.token;
+                unirest.post('https://fcm.googleapis.com/fcm/send')
+                .headers({'Content-Type': 'application/json',
+                        'Authorization': 'key=AAAAiS4AtkA:APA91bHv6islehAx0nRsakGfz8rEahTFa7DFzPVHipDAV_8__v5utSn4e3PVi2CCNph27-BEmK3Tk_uh47Etj9JF6ppXd2OKKNNIvdQgEhXBH16bk6b42-IHjn_sVlBR06lDU4k9MCe9'})
+                .send({ "to":token,
+                        "data": {
+                        "title":"New Event!",
+                        "body": "There is a new event. Click here to check out."
+                        } })
+                .end(function (response) {
+                console.log(response.body);
+                });
+            }, this);
+        });
         console.log('upcoming created!');
         var id = upcoming._id;
         res.writeHead(200, {
