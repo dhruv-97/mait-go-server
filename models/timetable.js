@@ -46,6 +46,8 @@ var timeSchema = new Schema({
         type: String,
         default: 'Your timetable may change in the upcoming days. Please refer to the ones that are posted outside of your classes also.'
     },
+    version: String,
+    updatetype: String,
     shift: {
         type: String,
         enum: ['morning','evening']
