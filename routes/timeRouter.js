@@ -2,7 +2,7 @@ var express = require('express');
 
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-
+var Updates = require('../models/update');
 var TimeTables = require('../models/timetable');
 var Verify=require('./verify');
 //var sample = require('./timetable.json');
@@ -140,11 +140,16 @@ timetableRouter.route('/:timetableId')
     var group= req.params.timetableId.substring(1,req.params.timetableId.length);
     TimeTables.findOne({sem,group},function (err, timetable) {
         if (err) next(err);
-        if(timetable==null)
-            res.json({notification:"University has not issued your timetable. It will be uploaded soon."});
-        else
+        Updates.findOne({},function(err,update){
+            if(timetable==null){
+                timetable = {};
+                timetable.notification = "University has not issued your timetable. It will be uploaded soon.";
+            }
+            timetable.version = update.version;
+            timetable.updatetype = update.updatetype;
             res.json(timetable);
-        });
+          })
+        })  
 })
 
 .put(Verify.verifyAppUser,function (req, res, next) {
