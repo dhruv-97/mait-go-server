@@ -47,8 +47,6 @@ assignmentRouter.route('/')
 .post(Verify.verifyOrdinaryUser,function (req, res, next) {
     req.body.date = createDate();
     req.body.time = createTime();
-    if(req.body.files[1].indexOf('amazon')!=-1)
-        req.body.files=req.body.files.slice(1);
     assignments.create(req.body, function (err, assignment) {
         if (err) throw(err);
         console.log('assignment created!');
