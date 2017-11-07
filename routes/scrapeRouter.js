@@ -124,11 +124,11 @@ scrapeRouter.route('/')
 
 scrapeRouter.route('/notices')
 .get(Verify.verifyAppUser,function (req, res, next) {
-    notices.find({}).sort('createdAt').exec(function (err, notices) {
+    notices.find({}).sort('-createdAt').exec(function (err, notices) {
         if (err) throw err;
         let data = {};
         data.exams=notices;
-        datesheets.find({}).sort('createdAt').exec(function (err, datesheet) {
+        datesheets.find({}).sort('-createdAt').exec(function (err, datesheet) {
             if (err) throw err;
             data.datesheets=datesheet;
             res.json(data);
