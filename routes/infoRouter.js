@@ -26,10 +26,10 @@ function mapProgramme(x){
 }
 function mapSem(x){
   switch(x){
-    case '17': return 1;
-    case '16': return 3;
-    case '15': return 5;
-    case '14': return 7;
+    case '17': return 2;
+    case '16': return 4;
+    case '15': return 6;
+    case '14': return 8;
     default: return 1;
   }
 }
