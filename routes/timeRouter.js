@@ -143,7 +143,7 @@ timetableRouter.route('/:timetableId')
         Updates.findOne({},function(err,update){
             if(timetable==null){
                 timetable = {};
-                timetable.notification = "University has not issued your timetable. It will be uploaded soon.";
+                timetable.notification = "Your timetable will be updated soon";
             }
             timetable.version = update.version;
             timetable.updatetype = update.updatetype;

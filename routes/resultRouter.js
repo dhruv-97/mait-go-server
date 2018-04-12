@@ -55,10 +55,10 @@ var resultRouter = express.Router();
 
 resultRouter.use(bodyParser.json());
 
-resultRouter.route('/')
+resultRouter.route('/college')
 .get(Verify.verifyAppUser,function (req, res, next) {
     if(req.query.college=='148'||req.query.college=='964'){
-      results.find({college:{ $in: [ '148', '964' ] },programme:req.query.programme,sem:req.query.sem} )
+      results.find({college:{ $in: [ '148', '964' ] },programme:req.query.programme,sem:req.query.sem, batch:req.query.batch} )
       .sort('-creditp').exec( function(err,resp){
         if(err) throw(err);
         resp.map(function(ele){
@@ -69,7 +69,7 @@ resultRouter.route('/')
       })  
     }
     else if(req.query.college=='115'||req.query.college=='512'){
-      results.find({college:{ $in: [ '115', '512' ] },programme:req.query.programme,sem:req.query.sem} )
+      results.find({college:{ $in: [ '115', '512' ] },programme:req.query.programme,sem:req.query.sem, batch:req.query.batch} )
       .sort('-creditp').exec( function(err,resp){
         if(err) throw(err);
         resp.map(function(ele){
@@ -80,7 +80,7 @@ resultRouter.route('/')
       })
     }
     else if(req.query.college=='132'||req.query.college=='768'){
-      results.find({college:{ $in: [ '132', '768' ] },programme:req.query.programme,sem:req.query.sem} )
+      results.find({college:{ $in: [ '132', '768' ] },programme:req.query.programme,sem:req.query.sem, batch:req.query.batch} )
       .sort('-creditp').exec( function(err,resp){
         if(err) throw(err);
         resp.map(function(ele){
@@ -91,7 +91,7 @@ resultRouter.route('/')
       })
     }
     else if(req.query.college=='962'||req.query.college=='156'){
-      results.find({college:{ $in: [ '962', '156' ] },programme:req.query.programme,sem:req.query.sem} )
+      results.find({college:{ $in: [ '962', '156' ] },programme:req.query.programme,sem:req.query.sem, batch:req.query.batch} )
       .sort('-creditp').exec( function(err,resp){
         if(err) throw(err);
         resp.map(function(ele){
@@ -102,7 +102,7 @@ resultRouter.route('/')
       })
     }
     else if(req.query.college=='963'||req.query.college=='150'){
-      results.find({college:{ $in: [ '963', '150' ] },programme:req.query.programme,sem:req.query.sem} )
+      results.find({college:{ $in: [ '963', '150' ] },programme:req.query.programme,sem:req.query.sem, batch:req.query.batch} )
       .sort('-creditp').exec( function(err,resp){
         if(err) throw(err);
         resp.map(function(ele){
