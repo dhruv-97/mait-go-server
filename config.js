@@ -1,6 +1,6 @@
 module.exports = {
     'secretKey': process.env.SECRET,
-    'mongoUrl' : process.env.MONGO,
+    'mongoUrl' : 'mongodb://localhost:27017/mait',
     'facebook': {
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET,
